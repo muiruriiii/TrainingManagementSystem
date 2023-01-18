@@ -21,16 +21,22 @@
         <form action="{{url ('/RolesEdit/'.$roles->id)}}" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
-                <h3> Add a New Role </h3>
+                <h3> Edit Role Content </h3>
                 <div class="form-wrapper">
                     <label for="">Role Name</label>
                     <input type="text" name="roleName" class="form-control">
+                    @if($errors->has('roleName'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('roleName') }}</span>
+                    @endif
                 </div>
 
 
                 <div class="form-wrapper">
                     <label for="">Role Description</label>
                     <input type="text" name="roleDescription" class="form-control">
+                    @if($errors->has('roleDescription'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('roleDescription') }}</span>
+                    @endif
                 </div>
 
 

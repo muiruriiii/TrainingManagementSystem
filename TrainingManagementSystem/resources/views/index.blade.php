@@ -2,6 +2,7 @@
 
 
 
+
 <div>
 
     <img class="hrimage" src="{{ URL::asset('images/training4.jpg') }}" alt="Hr Training">

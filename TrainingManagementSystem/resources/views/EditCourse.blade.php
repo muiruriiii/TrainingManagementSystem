@@ -21,24 +21,36 @@
         <form action="{{url ('/CoursesEdit/'.$courses->id)}}" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
-                <h3> Add a New Course </h3>
+                <h3> Edit the Course Content </h3>
                 <div class="form-wrapper">
                     <label for="">Course Name</label>
                     <input type="text" name="courseName" class="form-control">
+                    @if($errors->has('courseName'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('courseName') }}</span>
+                    @endif
                 </div>
 
 
                 <div class="form-wrapper">
                     <label for="">Course Description</label>
                     <input type="text" name="courseDescription" class="form-control">
+                    @if($errors->has('courseDescription'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('courseDescription') }}</span>
+                    @endif
                 </div>
                 <div class="form-wrapper">
                     <label for="">Course Videos</label>
                     <input type="file" id="myFile" name="courseVideos">
+                    @if($errors->has('courseVideos'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('courseVideos') }}</span>
+                    @endif
                 </div>
                 <div class="form-wrapper">
                     <label for="">Course Notes</label>
                     <input type="file" id="myFile" name="courseNotes">
+                    @if($errors->has('courseNotes'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('courseNotes') }}</span>
+                    @endif
                 </div>
 
                 <button style="rgb(160,82,45);"> Submit</button>

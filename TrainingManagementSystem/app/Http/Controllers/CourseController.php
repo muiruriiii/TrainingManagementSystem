@@ -24,5 +24,41 @@ class CourseController extends Controller
         $courses->save();
         return redirect('ViewCourses');
     }
+    public function validateCourses(Request $request)
+     {
+        $request->validate([
+             'courseName'=> 'required',
+             'courseDescription'=> 'required',
+             'courseVideos'=> 'required',
+             'courseNotes'=> 'required'
+        ]);
+        $data = $request->all();
+        Courses::create([
+             'courseName' => $data('courseName'),
+             'courseDescription' => $data('courseDescription'),
+             'courseVideos' => $data('courseVideos'),
+             'courseNotes' => $data('courseNotes')
+        ]);
+         return redirect('/');
+     }
+     public function CoursesEdit($id,Request $request){
+        $request->validate([
+            'courseName'=> 'required',
+            'courseDescription'=> 'required',
+            'courseVideos'=> 'required',
+            'courseNotes'=> 'required'
+        ]);
+        $data = $request->all();
+
+        $courses = Courses::find($id);
+            $courses->courseName = $data->input('courseName');
+            $courses->courseDescription = $data->input('courseDescription');
+            $courses->courseVideos = $data->input('courseVideos');
+            $courses->courseNotes = $data->input('courseNotes');
+            $courses->save();
+
+            return redirect('ViewCourses');
+
+    }
 
 }

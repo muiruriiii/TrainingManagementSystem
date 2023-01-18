@@ -31,6 +31,7 @@ use Illuminate\Support\Facades\Hash;
     Route::get('/', function () {
         return view('index');
             })->name('index');
+
     Route::get('/about', [AboutController::class, 'about'])->name('about');
     Route::get('/register', [RegisterController::class, 'register'])->name('register');
     Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -45,52 +46,14 @@ use Illuminate\Support\Facades\Hash;
     Route::get('/DeleteCourse/{id}', [CourseController::class, 'DeleteCourse'])->name('DeleteCourse');
 
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::post('/register',function(){
-        Users::create([
-            'firstName' => request('firstName'),
-            'lastName' => request('lastName'),
-            'telephoneNumber' => request('telephoneNumber'),
-            'email' => request('email'),
-            'roleID' => request('roleID'),
-            'courseID' => request('courseID'),
-            'password' => Hash::make('password')
-        ]);
-        return redirect('/login');
+    Route::post('/register', [RegisterController::class, 'validateRegistration'])->name('validateRegistration');
+    Route::post('/login', [LoginController::class, 'validateLogin'])->name('validateLogin');
+    Route::post('/roles', [RoleController::class, 'validateRoles'])->name('validateRoles');
+    Route::post('/course', [CourseController::class, 'validateCourses'])->name('validateCourses');
+    Route::post('/RolesEdit/{id}', [RoleController::class, 'RolesEdit'])->name('RolesEdit');
+    Route::post('/CoursesEdit/{id}', [CourseController::class, 'CoursesEdit'])->name('CoursesEdit');
 
-    });
-    Route::post('/roles',function(){
-            Roles::create([
-                'roleName' => request('roleName'),
-                'roleDescription' => request('roleDescription')
-            ]);
-            return redirect('/');
-    });
-     Route::post('/RolesEdit/{id}',function($id,Request $request){
-            $roles = Roles::find($id);
-            $roles->roleName = $request->input('roleName');
-            $roles->roleDescription = $request->input('roleDescription');
-            $roles->save();
 
-            return redirect('ViewRoles');
-     });
-      Route::post('/CoursesEdit/{id}',function($id,Request $request){
-             $courses = Courses::find($id);
-             $courses->courseName = $request->input('courseName');
-             $courses->courseDescription = $request->input('courseDescription');
-             $courses->courseVideos = $request->input('courseVideos');
-             $courses->courseNotes = $request->input('courseNotes');
-             $courses->save();
 
-             return redirect('ViewCourses');
-      });
-     Route::post('/course',function(){
-            Courses::create([
-                'courseName' => request('courseName'),
-                'courseDescription' => request('courseDescription'),
-                'courseVideos' => request('courseVideos'),
-                'courseNotes' => request('courseNotes')
-            ]);
-            return redirect('/');
-     });
      Route::get('/redirect',[HomeController::class,'redirect']);
 

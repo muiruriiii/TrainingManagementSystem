@@ -15,19 +15,25 @@
 </head>
 
 <body>
-
+@if($message = Session::get('success'))
+    <div class="alert alert-info">
+        {{ $message }}
+    </div>
+@endif
 <div class="wrapper">
     <div class="inner">
-        <form action="" method="POST">
+        <form action="/login" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
             <h3><a id="heading" href="{{URL::to('register')}}">Register</a> | Login  </h3>
             <div class="form-wrapper">
                 <label for="">Email</label>
                 <input type="text" name="email" class="form-control">
+
                 @if ($errors->has('email'))
-                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                    <span style="color: red;" class="text-danger">{{ $errors->first('email') }}</span>
                 @endif
+                <br>
             </div>
 
 
@@ -35,12 +41,13 @@
                 <label for="">Password</label>
                 <input type="password" name="password" class="form-control">
                 @if ($errors->has('password'))
-                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                    <span style="color: red;" class="text-danger">{{ $errors->first('password') }}</span>
                 @endif
+                <br>
             </div>
 
 
-            <button style="rgb(160,82,45);">Register Now</button>
+            <button style="rgb(160,82,45);">Login</button>
         </div>
         </form>
     </div>

@@ -25,12 +25,18 @@
                 <div class="form-wrapper">
                     <label for="">Role Name</label>
                     <input type="text" name="roleName" class="form-control">
+                    @if($errors->has('roleName'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('roleName') }}</span>
+                    @endif
                 </div>
 
 
                 <div class="form-wrapper">
                     <label for="">Role Description</label>
                     <input type="text" name="roleDescription" class="form-control">
+                    @if($errors->has('roleDescription'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('roleDescription') }}</span>
+                    @endif
                 </div>
 
 
