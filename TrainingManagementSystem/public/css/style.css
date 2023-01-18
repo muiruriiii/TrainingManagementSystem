@@ -392,6 +392,7 @@ a {
 h2{
     padding-top: 30px;
     text-align: center;
+    color: rgb(160,82,45);;
 }
 
 *{
@@ -408,7 +409,7 @@ body, html {
 
 .cards {
     width: 100%;
-    display: flex;
+    display: inline;
     display: -webkit-flex;
     justify-content: center;
     -webkit-justify-content: center;
@@ -545,3 +546,24 @@ body, html {
     float: right;
     margin: 20px;
 }
+.editbutton, .deletebutton{
+    text-decoration: none;
+    color: #333;
+}
+table{
+    font-family: 'Raleway', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    /*margin-left: 10%;*/
+    /*margin-right: 5%;*/
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+

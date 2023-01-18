@@ -1,23 +1,30 @@
 @include('header')
 
+
+
 <div>
 
     <img class="hrimage" src="{{ URL::asset('images/training4.jpg') }}" alt="Hr Training">
     <h2>OUR COURSES </h2>
     <section class="cards">
         <article class="card card--1">
-            <div class="card__info-hover">
+{{--            <div class="card__info-hover">--}}
 
-            </div>
+{{--            </div>--}}
+
             <div class="card__img"></div>
             <a href="#" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
+
             <div class="card__info">
+
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Customer Service</h3>
-                <span class="card__by">by <a href="#" class="card__author" title="author">C.Muiruri</a></span>
+                </h3>
+                <span class="card__by">by <a href="# " class="card__author" title="author">C.Muiruri</a></span>
             </div>
+
         </article>
 
         <article class="card card--2">
@@ -108,13 +115,13 @@
             <div class="portfolio__img">
                 <img src=" {{ URL::asset('images/owner.jpg') }}" class="about-me__profile" alt="about me profile picture">
             </div>
-{{--            <div class="portfolio__bottom">--}}
-{{--                <div class="portfolio__name">--}}
+            <div class="portfolio__bottom">
+                <div class="portfolio__name">
 
-{{--                    <h2 class="universal-h2">Cynthia Muiruri</h2>--}}
-{{--                </div>--}}
-{{--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, officia, vel. Ad alias asperiores blanditiis in ipsa magnam nemo quam qui recusandae repellat! Accusamus aliquam dolores, exercitationem omnis placeat temporibus.  </p>--}}
-{{--            </div>--}}
+                    <h2 class="universal-h2">Cynthia Muiruri</h2>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, officia, vel. Ad alias asperiores blanditiis in ipsa magnam nemo quam qui recusandae repellat! Accusamus aliquam dolores, exercitationem omnis placeat temporibus.  </p>
+            </div>
         </article>
 
         <div class="about-me__text">

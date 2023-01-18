@@ -24,13 +24,19 @@
             <h3><a id="heading" href="{{URL::to('register')}}">Register</a> | Login  </h3>
             <div class="form-wrapper">
                 <label for="">Email</label>
-                <input type="text" class="form-control">
+                <input type="text" name="email" class="form-control">
+                @if ($errors->has('email'))
+                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                @endif
             </div>
 
 
             <div class="form-wrapper">
                 <label for="">Password</label>
-                <input type="password" class="form-control">
+                <input type="password" name="password" class="form-control">
+                @if ($errors->has('password'))
+                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                @endif
             </div>
 
 
