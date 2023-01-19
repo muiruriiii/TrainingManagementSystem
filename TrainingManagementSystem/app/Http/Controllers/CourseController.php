@@ -34,10 +34,10 @@ class CourseController extends Controller
         ]);
         $data = $request->all();
         Courses::create([
-             'courseName' => $data('courseName'),
-             'courseDescription' => $data('courseDescription'),
-             'courseVideos' => $data('courseVideos'),
-             'courseNotes' => $data('courseNotes')
+             'courseName' => $data['courseName'],
+             'courseDescription' => $data['courseDescription'],
+             'courseVideos' => $data['courseVideos'],
+             'courseNotes' => $data['courseNotes']
         ]);
          return redirect('/');
      }
@@ -51,10 +51,10 @@ class CourseController extends Controller
         $data = $request->all();
 
         $courses = Courses::find($id);
-            $courses->courseName = $data->input('courseName');
-            $courses->courseDescription = $data->input('courseDescription');
-            $courses->courseVideos = $data->input('courseVideos');
-            $courses->courseNotes = $data->input('courseNotes');
+            $courses->courseName = $data['courseName'];
+            $courses->courseDescription = $data['courseDescription'];
+            $courses->courseVideos = $data['courseVideos'];
+            $courses->courseNotes = $data['courseNotes'];
             $courses->save();
 
             return redirect('ViewCourses');

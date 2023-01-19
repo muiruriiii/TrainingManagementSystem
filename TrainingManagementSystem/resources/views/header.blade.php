@@ -17,6 +17,8 @@
 
     <link rel="stylesheet" href="{{ URL::asset('css/style2.css') }}" />
 
+    <link rel="stylesheet" href="{{ URL::asset('path/to/font-awesome/css/font-awesome.min.css') }}" />
+
 
     <title>TMS</title>
 
@@ -59,9 +61,9 @@
                     <li><a href="{{URL::to('login')}}" class="nav-link">Account</a></li>
                 </ul>
             </nav>
-                <b style="color: rgb(160,82,45);margin-left:10px; ">{{ Auth::user()->firstName." ".Auth::user()->lastName}}</b>
             </div>
-
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <b style="color:#fff;margin-left:10px;">{{ Auth::user()->firstName." ".Auth::user()->lastName}}</b>
 
         </div>
     </div>

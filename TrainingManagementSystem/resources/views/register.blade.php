@@ -64,7 +64,7 @@
                 <label for="">Role</label>
                 <?php
                 $db = mysqli_connect("localhost", "root", "", "tms");
-                $sql = mysqli_query($db, "SELECT * FROM roles");
+                $sql = mysqli_query($db, "SELECT * FROM roles WHERE isDeleted = 0");
 
                 echo "<select class='form-control' name='roleID' >";
                 while ($row = mysqli_fetch_array($sql)) {
@@ -82,7 +82,7 @@
                 <label for="">Course Name</label>
                 <?php
                 $db = mysqli_connect("localhost", "root", "", "tms");
-                $sql = mysqli_query($db, "SELECT * FROM courses");
+                $sql = mysqli_query($db, "SELECT * FROM courses WHERE isDeleted = 0");
 
                 echo "<select class='form-control'  name='courseID' >";
                 while ($row = mysqli_fetch_array($sql)) {

@@ -26,14 +26,19 @@
     <tr>
         <th>Role Name</th>
         <th>Role Description</th>
+        <th>
+            Status
+            <p><i>{If deleted, status is 1}</i></p>
+        </th>
         <th colspan="2">Action</th>
     </tr>
     @foreach($roles as $role)
     <tr>
         <td>{{ $role-> roleName }}</td>
         <td>{{ $role-> roleDescription }}</td>
+        <td>{{ $role-> isDeleted }}</td>
         <td><a class="editbutton" href="{{url ('EditRole/'.$role->id) }}">Edit</a></td>
-        <td class="deletebutton">Delete</td>
+        <td><a href="{{url ('DeleteRole/'.$role->id) }}" class="deletebutton">Delete</a></td>
     </tr>
     @endforeach
 </table>

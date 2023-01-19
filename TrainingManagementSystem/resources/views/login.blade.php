@@ -15,11 +15,11 @@
 </head>
 
 <body>
-@if($message = Session::get('success'))
-    <div class="alert alert-info">
-        {{ $message }}
-    </div>
-@endif
+{{--@if($message = Session::get('success'))--}}
+{{--    <div class="alert alert-info">--}}
+{{--        {{ $message }}--}}
+{{--    </div>--}}
+{{--@endif--}}
 <div class="wrapper">
     <div class="inner">
         <form action="/login" method="POST">

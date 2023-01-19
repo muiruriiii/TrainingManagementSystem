@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
@@ -33,27 +32,34 @@ use Illuminate\Support\Facades\Hash;
             })->name('index');
 
     Route::get('/about', [AboutController::class, 'about'])->name('about');
-    Route::get('/register', [RegisterController::class, 'register'])->name('register');
-    Route::get('/login', [LoginController::class, 'login'])->name('login');
-    Route::get('/role', [RoleController::class, 'role'])->name('role');
-    Route::get('/course', [CourseController::class, 'course'])->name('course');
 
-    Route::get('/ViewRoles', [RoleController::class, 'ViewRoles'])->name('ViewRoles');
-    Route::get('/EditRole/{id}', [RoleController::class, 'EditRole'])->name('EditRole');
+    Route::controller(AccountsController::class)->group(function(){
+        Route::get('/register','register')->name('register');
+        Route::post('/register','validateRegistration')->name('validateRegistration');
+        Route::get('/login','login')->name('login');
+        Route::post('/login','validateLogin')->name('validateLogin');
+    });
 
-    Route::get('/ViewCourses', [CourseController::class, 'ViewCourses'])->name('ViewCourses');
-    Route::get('/EditCourse/{id}', [CourseController::class, 'EditCourse'])->name('EditCourse');
-    Route::get('/DeleteCourse/{id}', [CourseController::class, 'DeleteCourse'])->name('DeleteCourse');
+    Route::controller(RoleController::class)->group(function(){
+        Route::get('/role','role')->name('role');
+        Route::get('/ViewRoles','ViewRoles')->name('ViewRoles');
+        Route::get('/EditRole/{id}','EditRole')->name('EditRole');
+        Route::post('/roles','validateRoles')->name('validateRoles');
+        Route::post('/RolesEdit/{id}','RolesEdit')->name('RolesEdit');
+        Route::get('/DeleteRole/{id}','DeleteRole')->name('DeleteRole');
+
+    });
+
+    Route::controller(CourseController::class)->group(function(){
+        Route::get('/course','course')->name('course');
+        Route::get('/ViewCourses','ViewCourses')->name('ViewCourses');
+        Route::get('/EditCourse/{id}','EditCourse')->name('EditCourse');
+        Route::get('/DeleteCourse/{id}','DeleteCourse')->name('DeleteCourse');
+        Route::post('/course','validateCourses')->name('validateCourses');
+        Route::post('/CoursesEdit/{id}','CoursesEdit')->name('CoursesEdit');
+
+    });
 
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::post('/register', [RegisterController::class, 'validateRegistration'])->name('validateRegistration');
-    Route::post('/login', [LoginController::class, 'validateLogin'])->name('validateLogin');
-    Route::post('/roles', [RoleController::class, 'validateRoles'])->name('validateRoles');
-    Route::post('/course', [CourseController::class, 'validateCourses'])->name('validateCourses');
-    Route::post('/RolesEdit/{id}', [RoleController::class, 'RolesEdit'])->name('RolesEdit');
-    Route::post('/CoursesEdit/{id}', [CourseController::class, 'CoursesEdit'])->name('CoursesEdit');
-
-
-
-     Route::get('/redirect',[HomeController::class,'redirect']);
+    Route::get('/redirect',[HomeController::class,'redirect']);
 
