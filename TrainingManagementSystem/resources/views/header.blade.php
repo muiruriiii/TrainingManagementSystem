@@ -59,6 +59,7 @@
                     <li><a href="#" class="nav-link">Services</a></li>
                     <li><a href="#" class="nav-link">Contact</a></li>
                     <li><a href="{{URL::to('login')}}" class="nav-link">Account</a></li>
+                    <li><a href="{{URL::to('logout')}}" class="nav-link">Logout</a></li>
                 </ul>
             </nav>
             </div>

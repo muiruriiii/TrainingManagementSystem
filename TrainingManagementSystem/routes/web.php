@@ -38,6 +38,8 @@ use Illuminate\Support\Facades\Hash;
         Route::post('/register','validateRegistration')->name('validateRegistration');
         Route::get('/login','login')->name('login');
         Route::post('/login','validateLogin')->name('validateLogin');
+        Route::get('/logout','logout')->name('logout');
+
     });
 
     Route::controller(RoleController::class)->group(function(){

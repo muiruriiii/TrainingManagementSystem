@@ -6,6 +6,7 @@ use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Hash;
+use Session;
 
 class AccountsController extends Controller
 {
@@ -55,6 +56,13 @@ class AccountsController extends Controller
             return redirect('/');
         }
          return redirect('/login')->with('success','Invalid login details');
+    }
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+
+        return redirect('login');
     }
 
 }
