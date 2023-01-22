@@ -10,6 +10,15 @@ class CourseController extends Controller
     public function course(){
         return view('course');
     }
+    public function customerService(){
+        return view('customerService');
+    }
+    public function complaintHandling(){
+        return view('complaintHandling');
+    }
+    public function listeningSkills(){
+        return view('listeningSkills');
+    }
     public function ViewCourses(){
         $courses = Courses::all();
         return view('ViewCourses',['courses'=> $courses]);

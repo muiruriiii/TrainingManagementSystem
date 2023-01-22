@@ -52,13 +52,17 @@ use Illuminate\Support\Facades\Hash;
 
     Route::controller(CourseController::class)->group(function(){
         Route::get('/course','course')->name('course');
+        Route::get('/customerService','customerService')->name('customerService');
+        Route::get('/complaintHandling','complaintHandling')->name('complaintHandling');
+        Route::get('/listeningSkills','listeningSkills')->name('listeningSkills');
+
         Route::get('/ViewCourses','ViewCourses')->name('ViewCourses');
         Route::get('/EditCourse/{id}','EditCourse')->name('EditCourse');
         Route::get('/DeleteCourse/{id}','DeleteCourse')->name('DeleteCourse');
         Route::post('/course','validateCourses')->name('validateCourses');
         Route::post('/CoursesEdit/{id}','CoursesEdit')->name('CoursesEdit');
-
     });
+
 
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/redirect',[HomeController::class,'redirect']);

@@ -14,7 +14,7 @@
 {{--            </div>--}}
 
             <div class="card__img"></div>
-            <a href="#" class="card_link">
+            <a href="{{URL::to('customerService')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
 
@@ -23,7 +23,7 @@
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Customer Service</h3>
                 </h3>
-                <span class="card__by">by <a href="# " class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{URL::to('customerService')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
 
         </article>
@@ -33,13 +33,13 @@
 
             </div>
             <div class="card__img"></div>
-            <a href="#" class="card_link">
+            <a href="{{URL::to('complaintHandling')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
             <div class="card__info">
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Complaint Handling</h3>
-                <span class="card__by">by <a href="#" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{URL::to('complaintHandling')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
 
@@ -48,13 +48,13 @@
 
             </div>
             <div class="card__img"></div>
-            <a href="#" class="card_link">
+            <a href="{{URL::to('listeningSkills')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
             <div class="card__info">
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Listening Skills</h3>
-                <span class="card__by">by <a href="#" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{URL::to('listeningSkills')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
 
