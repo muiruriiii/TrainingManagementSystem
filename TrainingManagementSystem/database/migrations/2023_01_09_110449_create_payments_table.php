@@ -17,11 +17,9 @@ return new class extends Migration
               $table->increments('id');
               $table->integer('courseID')->unsigned();
               $table->foreign('courseID')->references('id')->on('courses');
-              $table->integer('duration');
-              $table->integer('paymentType');
-              $table->integer('amount');
-              $table->integer('paymentCode');
-              $table->boolean('isDeleted');
+              $table->string('courseDuration');
+              $table->integer('courseAmount');
+              $table->boolean('isDeleted')->default(0);
               $table->timestamps();
         });
     }

@@ -384,8 +384,8 @@ a {
         padding-top: 30px !important;
         padding-bottom: 30px !important; } }
 .hrimage{
-    height: 600px;
-    width: 1260px;
+    height: auto;
+    width: 100%;
 
 }
 h2{

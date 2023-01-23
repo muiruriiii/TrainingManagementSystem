@@ -117,6 +117,16 @@
       <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/psr/http-client" />
       <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/psr/event-dispatcher" />
       <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/omnipay/common" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/omnipay/paypal" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/moneyphp/money" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/clue/stream-filter" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/php-http/discovery" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/php-http/guzzle7-adapter" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/php-http/httplug" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/php-http/message" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/php-http/message-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/php-http/promise" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

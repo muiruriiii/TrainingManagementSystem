@@ -50,7 +50,7 @@
             <span class="tooltip">Course Description</span>
         </li>
         <li>
-            <a style="background: rgb(160,82,45);" href="#">
+            <a style="background: rgb(160,82,45);" href="{{URL::to('/payment')}}">
                 <i class='bx bx-dollar' ></i>
                 <span class="links_name">Course Payment</span>
             </a>

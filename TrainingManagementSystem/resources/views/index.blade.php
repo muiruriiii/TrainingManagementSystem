@@ -65,13 +65,13 @@
 
             </div>
             <div class="card__img"></div>
-            <a href="#" class="card_link">
+            <a href="{{URL::to('leadershipProgram')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
             <div class="card__info">
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Leadership Program</h3>
-                <span class="card__by">by <a href="#" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{URL::to('leadershipProgram')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
 
@@ -81,13 +81,13 @@
 
             </div>
             <div class="card__img"></div>
-            <a href="#" class="card_link">
+            <a href="{{URL::to('etiquette')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
             <div class="card__info">
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Etiquette</h3>
-                <span class="card__by">by <a href="#" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{URL::to('etiquette')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
 
@@ -96,13 +96,13 @@
 
             </div>
             <div class="card__img"></div>
-            <a href="#" class="card_link">
+            <a href="{{URL::to('communication')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
             <div class="card__info">
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Communication</h3>
-                <span class="card__by">by <a href="#" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{URL::to('communication')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
 

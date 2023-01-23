@@ -50,8 +50,6 @@
             <div class="col-9  text-right">
                 <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5">
                         <span class="icon-menu h3 text-white"></span></a></span>
-
-
             <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
                     <li class="active"><a style="color: rgb(160,82,45);" href="#" class="font-weight-bold">Home</a></li>
@@ -64,8 +62,9 @@
             </nav>
             </div>
             <i class="fa fa-user" aria-hidden="true"></i>
+           @if(Auth::check())
             <b style="color:#fff;margin-left:10px;">{{ Auth::user()->firstName." ".Auth::user()->lastName}}</b>
-
+            @endif
         </div>
     </div>
 

@@ -54,9 +54,14 @@ use Illuminate\Support\Facades\Hash;
 
     Route::controller(CourseController::class)->group(function(){
         Route::get('/course','course')->name('course');
+        Route::get('/payment','payment')->name('payment');
         Route::get('/customerService','customerService')->name('customerService');
         Route::get('/complaintHandling','complaintHandling')->name('complaintHandling');
         Route::get('/listeningSkills','listeningSkills')->name('listeningSkills');
+        Route::get('/leadershipProgram','leadershipProgram')->name('leadershipProgram');
+        Route::get('/etiquette','etiquette')->name('etiquette');
+        Route::get('/communication','communication')->name('communication');
+        Route::post('/payment','validatePayment')->name('validatePayment');
 
         Route::get('/ViewCourses','ViewCourses')->name('ViewCourses');
         Route::get('/EditCourse/{id}','EditCourse')->name('EditCourse');
