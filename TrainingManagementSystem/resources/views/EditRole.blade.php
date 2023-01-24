@@ -24,7 +24,7 @@
                 <h3> Edit Role Content </h3>
                 <div class="form-wrapper">
                     <label for="">Role Name</label>
-                    <input type="text" name="roleName" class="form-control">
+                    <input type="text" name="roleName" value="{{ $roles->roleName }}" class="form-control">
                     @if($errors->has('roleName'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('roleName') }}</span>
                     @endif
@@ -33,7 +33,7 @@
 
                 <div class="form-wrapper">
                     <label for="">Role Description</label>
-                    <input type="text" name="roleDescription" class="form-control">
+                    <input type="text" name="roleDescription" value="{{ $roles->roleDescription }}" class="form-control">
                     @if($errors->has('roleDescription'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('roleDescription') }}</span>
                     @endif
