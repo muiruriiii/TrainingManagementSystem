@@ -94,7 +94,7 @@ class CourseController extends Controller
                 'courseDuration' => $data['courseDuration'],
                 'courseAmount' => $data['courseAmount'],
         ]);
-    return redirect('/')->with('success','Successful Payment');
+         return redirect('/')->with('success','Successful Payment');
 
     }
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PaypalPaymentController;
 
 
 use App\Models\Users;
@@ -61,7 +62,7 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/leadershipProgram','leadershipProgram')->name('leadershipProgram');
         Route::get('/etiquette','etiquette')->name('etiquette');
         Route::get('/communication','communication')->name('communication');
-        Route::post('/payment','validatePayment')->name('validatePayment');
+//         Route::post('/payment','validatePayment')->name('validatePayment');
 
         Route::get('/ViewCourses','ViewCourses')->name('ViewCourses');
         Route::get('/EditCourse/{id}','EditCourse')->name('EditCourse');
@@ -71,6 +72,9 @@ use Illuminate\Support\Facades\Hash;
     });
 
 
+    Route::post('/payment', [PaypalPaymentController::class, 'pay'])->name('payment');
+    Route::get('success', [PaypalPaymentController::class, 'success']);
+    Route::get('error', [PaypalPaymentController::class, 'error']);
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/redirect',[HomeController::class,'redirect']);
 

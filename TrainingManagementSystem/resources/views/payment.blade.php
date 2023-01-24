@@ -22,7 +22,7 @@
 {{--@endif--}}
 <div class="wrapper">
     <div class="inner">
-        <form action="/payment" method="POST">
+        <form action="{{URL('/payment')}}" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
                 <h3> Course Payment  </h3>
@@ -55,7 +55,7 @@
 
                 <div class="form-wrapper">
                     <label for="">Amount</label>
-                    <input type="text" name="courseAmount" class="form-control" value="250" readonly>
+                    <input type="text" name="amount" class="form-control" value="250" readonly>
                     @if ($errors->has('amount'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('amount') }}</span>
                     @endif
@@ -63,7 +63,7 @@
                 </div>
 
 
-                <button style="rgb(160,82,45);">Make Payment</button>
+                <button type="submit" style="rgb(160,82,45);">Make Payment</button>
             </div>
         </form>
     </div>
