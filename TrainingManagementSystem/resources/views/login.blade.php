@@ -22,9 +22,9 @@
 {{--@endif--}}
 <div class="wrapper">
     <div class="inner">
+        <div style="width: 500px;" class="container">
         <form action="/login" method="POST">
             @csrf
-            <div style="width: 500px;" class="container">
             <h3><a id="heading" href="{{URL::to('register')}}">Register</a> | Login  </h3>
             <div class="form-wrapper">
                 <label for="">Email</label>
@@ -46,10 +46,15 @@
                 <br>
             </div>
 
-
+            <div>
             <button style="rgb(160,82,45);">Login</button>
-        </div>
+            </div>
         </form>
+
+
+{{--            <a href="{{URL('auth/google') }}"> <button>--}}
+{{--        <span>Continue with Google</span></button></a>--}}
+
     </div>
 </div>
 

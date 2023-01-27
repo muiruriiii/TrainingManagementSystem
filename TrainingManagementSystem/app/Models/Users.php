@@ -17,7 +17,6 @@ class Users extends Model
         'roleID',
         'courseID',
         'password',
-        'userType',
         'isDeleted'
     ];
 

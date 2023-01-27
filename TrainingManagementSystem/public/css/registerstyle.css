@@ -192,11 +192,11 @@ button:before {
     transform: translate(-50%, -50%);
     display: none;
     content: '\f26b'; }
-
-
-    form {
+form {
         width: 100%;
         padding-right: 15px;
-        padding-left: 15px;  }
+        padding-left: 15px;
+}
+
 
 /*# sourceMappingURL=style.css.map */

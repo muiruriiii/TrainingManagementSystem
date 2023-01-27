@@ -127,6 +127,9 @@
       <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/php-http/message" />
       <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/php-http/message-factory" />
       <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/php-http/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/league/oauth1-client" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/laravel/socialite" />
+      <excludeFolder url="file://$MODULE_DIR$/TrainingManagementSystem/vendor/safaricom/mpesa" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

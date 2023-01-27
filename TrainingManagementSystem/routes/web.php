@@ -9,6 +9,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaypalPaymentController;
+use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\MpesaController;
 
 
 use App\Models\Users;
@@ -71,10 +73,16 @@ use Illuminate\Support\Facades\Hash;
         Route::post('/CoursesEdit/{id}','CoursesEdit')->name('CoursesEdit');
     });
 
+//     Route::get('auth/google',[GoogleAuthController::class,'redirect'])->name('google-auth');
+//     Route::get('auth/google/call-back',[GoogleAuthController::class,'callbackGoogle']);
 
     Route::post('/payment', [PaypalPaymentController::class, 'pay'])->name('payment');
     Route::get('success', [PaypalPaymentController::class, 'success']);
     Route::get('error', [PaypalPaymentController::class, 'error']);
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/redirect',[HomeController::class,'redirect']);
+
+     Route::get('/confirm',[MpesaController::class,'confirm'])->name('confirm');
+
+
 

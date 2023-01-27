@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
     <!-- STYLE CSS -->
-    <link rel="stylesheet" href="{{URL::asset("css/registerstyle.css")}}">
+    <link rel="stylesheet" href="{{asset("css/registerstyle.css")}}">
 
 </head>
 
@@ -29,7 +29,7 @@
         <form action="{{url ('/register')}}" method="POST">
             @csrf
             <div class="container">
-            <h3>Register | <a id="heading" href="{{URL::to('login')}}">Login</a>  </h3>
+            <h3>Register | <a id="heading" href="login">Login</a>  </h3>
             <div class="form-group">
                 <div class="form-wrapper">
                     <label for="">First Name</label>

@@ -1,4 +1,4 @@
-@include('sideBar')
+{{--@include('sideBar')--}}
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
     <!-- STYLE CSS -->
-    <link rel="stylesheet" href="{{URL::asset("css/registerstyle.css")}}">
+    <link rel="stylesheet" href="{{asset('css/registerstyle.css')}}">
 
 </head>
 
@@ -52,7 +52,6 @@
                 @endif
                 <br>
             </div>
-
                 <div class="form-wrapper">
                     <label for="">Amount</label>
                     <input type="text" name="amount" class="form-control" value="250" readonly>
@@ -61,9 +60,23 @@
                     @endif
                     <br>
                 </div>
+{{--                <div class="form-wrapper">--}}
+{{--                    <label for="">Enter Phone Number</label>--}}
+{{--                    <input type="phone" name="phone" class="form-control">--}}
+{{--                    @if ($errors->has('amount'))--}}
+{{--                        <span style="color: red;" class="text-danger">{{ $errors->first('phoneNumber') }}</span>--}}
+{{--                    @endif--}}
+{{--                    <br>--}}
+{{--                </div>--}}
+                <input type="text" name="user" value="{{auth()->user()}}" hidden>
+
 
 
                 <button type="submit" style="rgb(160,82,45);">Make Payment</button>
+
+                <div class="d-flex mt-3 justify-content-between">
+                    <p>You will receive a popup message on your phone once you click on pay now button. Enter your pin to complete transaction.</p>
+                </div>
             </div>
         </form>
     </div>

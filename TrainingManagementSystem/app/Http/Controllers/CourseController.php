@@ -87,12 +87,14 @@ class CourseController extends Controller
             'courseID'=> 'required',
             'courseDuration'=> 'required',
             'courseAmount'=> 'required',
+            'phoneNumber'=> 'required',
         ]);
         $data = $request->all();
         Payment::create([
                 'courseID' => $data['courseID'],
                 'courseDuration' => $data['courseDuration'],
                 'courseAmount' => $data['courseAmount'],
+                'phoneNumber' => $data['phoneNumber'],
         ]);
          return redirect('/')->with('success','Successful Payment');
 
