@@ -552,9 +552,10 @@ body, html {
 table{
     font-family: 'Raleway', sans-serif;
     border-collapse: collapse;
-    width: 100%;
-    /*margin-left: 10%;*/
-    /*margin-right: 5%;*/
+    /*width: 100%;*/
+    width: 85%;
+    margin-left: 10%;
+    margin-right: 5%;
 }
 td, th {
     border: 1px solid #dddddd;

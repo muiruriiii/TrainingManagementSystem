@@ -1,1 +1,1 @@
-<h2>You are logged in</h2>
+@include('dashboardSideBar')

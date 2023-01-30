@@ -1,5 +1,5 @@
 @include('dashboardSideBar')
-<!doctype html>
+    <!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -25,25 +25,21 @@
 
 <table>
     <tr>
-        <th>Course Name</th>
-        <th>Course Description</th>
-        <th>Course Videos</th>
-        <th>Course Notes</th>
-        <th>
-            Status
-            <p><i>{If deleted, status is 1}</i></p>
-        </th>
-        <th colspan="2">Action</th>
+        <th>Payment ID</th>
+        <th>Payer ID</th>
+        <th>Payer Email</th>
+        <th>Amount </th>
+        <th>Currency </th>
+        <th>Payment Status </th>
     </tr>
-    @foreach($courses as $course)
+    @foreach($paypalpayments as $paypalpayment)
         <tr>
-            <td>{{ $course-> courseName }}</td>
-            <td>{{ $course-> courseDescription }}</td>
-            <td>{{ $course-> courseVideos }}</td>
-            <td>{{ $course-> courseNotes }}</td>
-            <td>{{ $course-> isDeleted }}</td>
-            <td><a class="editbutton" href="{{url ('EditCourse/'.$course->id) }}">Edit</a></td>
-            <td><a href="{{url ('DeleteCourse/'.$course->id) }}" class="deletebutton">Delete</a></td>
+            <td>{{ $paypalpayment-> payment_id }}</td>
+            <td>{{ $paypalpayment-> payer_id }}</td>
+            <td>{{ $paypalpayment-> payer_email }}</td>
+            <td>{{ $paypalpayment-> amount }}</td>
+            <td>{{ $paypalpayment-> currency }}</td>
+            <td>{{ $paypalpayment-> payment_status }}</td>
         </tr>
     @endforeach
 </table>

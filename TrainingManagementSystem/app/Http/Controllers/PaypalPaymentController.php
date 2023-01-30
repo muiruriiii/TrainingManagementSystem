@@ -86,4 +86,9 @@ class PaypalPaymentController extends Controller
         return 'User declined the payment!';
     }
 
+    public function ViewPayments(){
+        $paypalpayments = PaypalPayment::all();
+        return view('ViewPayments',['paypalpayments'=> $paypalpayments]);
+    }
+
 }

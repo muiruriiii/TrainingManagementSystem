@@ -72,6 +72,7 @@ use Illuminate\Support\Facades\Hash;
     });
     Route::controller(PaypalPaymentController::class)->group(function(){
         Route::get('/paypalPayment','payment')->name('payment');
+        Route::get('/ViewPayments','ViewPayments')->name('ViewPayments');
         Route::post('/payment','pay')->name('payment');
         Route::get('/success','success');
         Route::get('/errorOccurred','errorOccurred');
@@ -82,7 +83,7 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/mpesaPayment','lipa')->name('lipa');
     });
 
-//         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 //         Route::get('/redirect',[HomeController::class,'redirect']);
 //         Route::get('auth/google',[GoogleAuthController::class,'redirect'])->name('google-auth');
 //         Route::get('auth/google/call-back',[GoogleAuthController::class,'callbackGoogle']);

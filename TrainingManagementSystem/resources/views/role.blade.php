@@ -1,4 +1,4 @@
-
+@include('dashboardSideBar')
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
     <!-- STYLE CSS -->
-    <link rel="stylesheet" href="{{URL::asset("css/registerstyle.css")}}">
+    <link rel="stylesheet" href="{{asset("css/registerstyle.css")}}">
 
 </head>
 
