@@ -16,6 +16,9 @@ class PaypalPaymentController extends Controller
         $this->gateway->setSecret(env('PAYPAL_CLIENT_SECRET'));
         $this->gateway->setTestMode(true);
     }
+    public function payment(){
+        return view('paypalPayment');
+    }
 
     public function pay(Request $request)
     {
@@ -62,12 +65,12 @@ class PaypalPaymentController extends Controller
                 $payment->amount = $arr['transactions'][0]['amount']['total'];
                 $payment->currency = env('PAYPAL_CURRENCY');
                 $payment->payment_status = $arr['state'];
-                return $arr;
-
                 $payment->save();
+                $date = PaypalPayment::all()->where('payment_id',$arr['id']);
 
-                return "Payment is Successful. Your Transaction Id is : " . $arr['id'];
-                return redirect('index');
+                return view('confirm',['transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
+//                 return "Payment is Successful. Your Transaction Id is : " . $arr['id'];
+
             }
             else{
                 return $response->getMessage();
@@ -78,7 +81,7 @@ class PaypalPaymentController extends Controller
         }
     }
 
-    public function error()
+    public function errorOccurred()
     {
         return 'User declined the payment!';
     }

@@ -57,14 +57,12 @@ use Illuminate\Support\Facades\Hash;
 
     Route::controller(CourseController::class)->group(function(){
         Route::get('/course','course')->name('course');
-        Route::get('/payment','payment')->name('payment');
         Route::get('/customerService','customerService')->name('customerService');
         Route::get('/complaintHandling','complaintHandling')->name('complaintHandling');
         Route::get('/listeningSkills','listeningSkills')->name('listeningSkills');
         Route::get('/leadershipProgram','leadershipProgram')->name('leadershipProgram');
         Route::get('/etiquette','etiquette')->name('etiquette');
         Route::get('/communication','communication')->name('communication');
-//         Route::post('/payment','validatePayment')->name('validatePayment');
 
         Route::get('/ViewCourses','ViewCourses')->name('ViewCourses');
         Route::get('/EditCourse/{id}','EditCourse')->name('EditCourse');
@@ -72,17 +70,24 @@ use Illuminate\Support\Facades\Hash;
         Route::post('/course','validateCourses')->name('validateCourses');
         Route::post('/CoursesEdit/{id}','CoursesEdit')->name('CoursesEdit');
     });
+    Route::controller(PaypalPaymentController::class)->group(function(){
+        Route::get('/paypalPayment','payment')->name('payment');
+        Route::post('/payment','pay')->name('payment');
+        Route::get('/success','success');
+        Route::get('/errorOccurred','errorOccurred');
+    });
+    Route::controller(MpesaController::class)->group(function(){
+        Route::get('/confirm','confirm')->name('confirm');
+        Route::post('/lipa','stkPush')->name('stkPush');
+        Route::get('/mpesaPayment','lipa')->name('lipa');
+    });
 
-//     Route::get('auth/google',[GoogleAuthController::class,'redirect'])->name('google-auth');
-//     Route::get('auth/google/call-back',[GoogleAuthController::class,'callbackGoogle']);
+//         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+//         Route::get('/redirect',[HomeController::class,'redirect']);
+//         Route::get('auth/google',[GoogleAuthController::class,'redirect'])->name('google-auth');
+//         Route::get('auth/google/call-back',[GoogleAuthController::class,'callbackGoogle']);
+//         Route::post('/payment','validatePayment')->name('validatePayment');
 
-    Route::post('/payment', [PaypalPaymentController::class, 'pay'])->name('payment');
-    Route::get('success', [PaypalPaymentController::class, 'success']);
-    Route::get('error', [PaypalPaymentController::class, 'error']);
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/redirect',[HomeController::class,'redirect']);
-
-     Route::get('/confirm',[MpesaController::class,'confirm'])->name('confirm');
 
 
 

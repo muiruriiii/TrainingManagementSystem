@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="{{URL::asset('css/courseStyle.css')}}">
+    <link rel="stylesheet" href="{{asset('css/courseStyle.css')}}">
 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
     </div>
     <ul class="nav-list">
         <li>
-            <a style="background: rgb(160,82,45);" href="{{URL::to('/')}}">
+            <a style="background: rgb(160,82,45);" href="{{url('/')}}">
                 <i class='bx bx-home'></i>
                 <span class="links_name">Home</span>
             </a>
@@ -50,7 +50,7 @@
             <span class="tooltip">Course Description</span>
         </li>
         <li>
-            <a style="background: rgb(160,82,45);" href="{{URL::to('/payment')}}">
+            <a style="background: rgb(160,82,45);" href="{{url('/mpesaPayment')}}">
                 <i class='bx bx-dollar' ></i>
                 <span class="links_name">Course Payment</span>
             </a>

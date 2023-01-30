@@ -9,6 +9,9 @@ use App\Models\MpesaTransaction;
 
 class MpesaController extends Controller
 {
+    public function lipa(){
+        return view('mpesaPayment');
+    }
 //STK Push Simulation
     public function stkSimulation()
     {
@@ -103,7 +106,7 @@ class MpesaController extends Controller
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
         $curl_response = curl_exec($curl);
-        return redirect('/confirm');
+        return redirect('/');
 
     }
     public function MpesaRes(Request $request)

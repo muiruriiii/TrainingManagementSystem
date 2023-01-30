@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
     <!-- STYLE CSS -->
-    <link rel="stylesheet" href="{{URL::asset("css/registerstyle.css")}}">
+    <link rel="stylesheet" href="{{asset("css/registerstyle.css")}}">
 
 </head>
 
@@ -25,7 +25,7 @@
         <div style="width: 500px;" class="container">
         <form action="/login" method="POST">
             @csrf
-            <h3><a id="heading" href="{{URL::to('register')}}">Register</a> | Login  </h3>
+            <h3><a id="heading" href="{{url('/register')}}">Register</a> | Login  </h3>
             <div class="form-wrapper">
                 <label for="">Email</label>
                 <input type="text" name="email" class="form-control">

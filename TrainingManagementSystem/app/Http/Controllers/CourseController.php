@@ -79,9 +79,6 @@ class CourseController extends Controller
         return redirect('ViewCourses');
 
     }
-    public function payment(){
-        return view('payment');
-    }
     public function validatePayment(Request $request){
         $request->validate([
             'courseID'=> 'required',

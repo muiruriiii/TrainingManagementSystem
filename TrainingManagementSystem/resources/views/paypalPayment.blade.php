@@ -1,4 +1,4 @@
-{{--@include('sideBar')--}}
+@include('sideBar')
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,8 @@
             @csrf
             <div style="width: 500px;" class="container">
                 <h3> Course Payment  </h3>
-            <div class="form-wrapper">
+                <h3><a id="heading" href="{{url('/mpesaPayment')}}">M-Pesa</a> | Paypal  </h3>
+                <div class="form-wrapper">
                 <label for="">Course Name</label>
                 <?php
                 $db = mysqli_connect("localhost", "root", "", "tms");
@@ -60,23 +61,10 @@
                     @endif
                     <br>
                 </div>
-{{--                <div class="form-wrapper">--}}
-{{--                    <label for="">Enter Phone Number</label>--}}
-{{--                    <input type="phone" name="phone" class="form-control">--}}
-{{--                    @if ($errors->has('amount'))--}}
-{{--                        <span style="color: red;" class="text-danger">{{ $errors->first('phoneNumber') }}</span>--}}
-{{--                    @endif--}}
-{{--                    <br>--}}
-{{--                </div>--}}
+
                 <input type="text" name="user" value="{{auth()->user()}}" hidden>
-
-
-
                 <button type="submit" style="rgb(160,82,45);">Make Payment</button>
 
-                <div class="d-flex mt-3 justify-content-between">
-                    <p>You will receive a popup message on your phone once you click on pay now button. Enter your pin to complete transaction.</p>
-                </div>
             </div>
         </form>
     </div>

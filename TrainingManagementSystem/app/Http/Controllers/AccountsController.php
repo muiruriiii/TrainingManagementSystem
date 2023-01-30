@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Hash;
 use Session;
 
+
 class AccountsController extends Controller
 {
     public function register(){

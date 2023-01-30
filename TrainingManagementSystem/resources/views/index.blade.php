@@ -5,7 +5,7 @@
 
 <div>
 
-    <img class="hrimage" src="{{ URL::asset('images/training4.jpg') }}" alt="Hr Training">
+    <img class="hrimage" src="{{ asset('images/training4.jpg') }}" alt="Hr Training">
     <h2>OUR COURSES </h2>
     <section class="cards">
         <article class="card card--1">
@@ -14,7 +14,7 @@
 {{--            </div>--}}
 
             <div class="card__img"></div>
-            <a href="{{URL::to('customerService')}}" class="card_link">
+            <a href="{{url ('/customerService')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
 
@@ -23,7 +23,7 @@
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Customer Service</h3>
                 </h3>
-                <span class="card__by">by <a href="{{URL::to('customerService')}}" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{url ('/customerService')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
 
         </article>
@@ -33,13 +33,13 @@
 
             </div>
             <div class="card__img"></div>
-            <a href="{{URL::to('complaintHandling')}}" class="card_link">
+            <a href="{{url ('/complaintHandling')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
             <div class="card__info">
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Complaint Handling</h3>
-                <span class="card__by">by <a href="{{URL::to('complaintHandling')}}" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{url ('/complaintHandling')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
 
@@ -48,13 +48,13 @@
 
             </div>
             <div class="card__img"></div>
-            <a href="{{URL::to('listeningSkills')}}" class="card_link">
+            <a href="{{url ('/listeningSkills')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
             <div class="card__info">
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Listening Skills</h3>
-                <span class="card__by">by <a href="{{URL::to('listeningSkills')}}" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{url ('/listeningSkills')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
 
@@ -65,13 +65,13 @@
 
             </div>
             <div class="card__img"></div>
-            <a href="{{URL::to('leadershipProgram')}}" class="card_link">
+            <a href="{{url ('/leadershipProgram')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
             <div class="card__info">
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Leadership Program</h3>
-                <span class="card__by">by <a href="{{URL::to('leadershipProgram')}}" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{url ('/leadershipProgram')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
 
@@ -81,13 +81,13 @@
 
             </div>
             <div class="card__img"></div>
-            <a href="{{URL::to('etiquette')}}" class="card_link">
+            <a href="{{url ('/etiquette')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
             <div class="card__info">
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Etiquette</h3>
-                <span class="card__by">by <a href="{{URL::to('etiquette')}}" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{url ('/etiquette')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
 
@@ -96,13 +96,13 @@
 
             </div>
             <div class="card__img"></div>
-            <a href="{{URL::to('communication')}}" class="card_link">
+            <a href="{{url ('/communication')}}" class="card_link">
                 <div class="card__img--hover"></div>
             </a>
             <div class="card__info">
                 <span class="card__category"> Course</span>
                 <h3 class="card__title">Communication</h3>
-                <span class="card__by">by <a href="{{URL::to('communication')}}" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{url ('/communication')}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
 
@@ -114,7 +114,7 @@
     <div class="about-me-inner site-container">
         <article class="portfolio-wrapper">
             <div class="portfolio__img">
-                <img src=" {{ URL::asset('images/owner.jpg') }}" class="about-me__profile" alt="about me profile picture">
+                <img src=" {{ asset('images/owner.jpg') }}" class="about-me__profile" alt="about me profile picture">
             </div>
             <div class="portfolio__bottom">
                 <div class="portfolio__name">
@@ -146,7 +146,7 @@
                 <h2 class="universal-h2 universal-h2-bckg">What People Are Saying</h2>
                 <p>“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, amet, animi aperiam corporis cumque delectus dignissimos dolorem error maiores minima nobis obcaecati perferendis porro provident quasi, quibusdam tempore ullam vitae?”</p>
 
-                <img src="   {{ URL::asset('images/images/quotes.svg') }}" alt="quotes svg">
+                <img src="   {{asset('images/images/quotes.svg') }}" alt="quotes svg">
                 <h4>Joy Nkatha</h4>
                 <p>Client</p>
             </div>
@@ -161,10 +161,10 @@
             <h5>Follow me!!</h5>
             <div class="social-icons">
 
-                <a href="#" target="_blank"> <img src="{{ URL::asset('images/images/social-twitter.png') }}"alt="social icon"></a>
-                <a href="#" target="_blank"><img src="{{ URL::asset('images/images/social-pinterest.png') }}" alt="social icon"></a>
-                <a href="#" target="_blank"><img src="{{ URL::asset('images/images/social-youtube.png') }}" alt="social icon"></a>
-                <a href="#" target="_blank"><img src="{{ URL::asset('images/images/social-twitter.png') }}" alt="social icon"></a>
+                <a href="#" target="_blank"> <img src="{{ asset('images/images/social-twitter.png') }}"alt="social icon"></a>
+                <a href="#" target="_blank"><img src="{{ asset('images/images/social-pinterest.png') }}" alt="social icon"></a>
+                <a href="#" target="_blank"><img src="{{ asset('images/images/social-youtube.png') }}" alt="social icon"></a>
+                <a href="#" target="_blank"><img src="{{ asset('images/images/social-twitter.png') }}" alt="social icon"></a>
             </div>
             <h5>Share it!</h5>
         </div>
@@ -180,10 +180,10 @@
                     <p class="footer-phone">Phone: +254702125597</p>
                     <p>Email : cmuiruri@gmail.com</p>
                     <div class="social-icons">
-                        <a href="#" target="_blank"> <img src="{{ URL::asset('images/images/social-twitter.png') }}"alt="social icon"></a>
-                        <a href="#" target="_blank"><img src="{{ URL::asset('images/images/social-pinterest.png') }}" alt="social icon"></a>
-                        <a href="#" target="_blank"><img src="{{ URL::asset('images/images/social-youtube.png') }}" alt="social icon"></a>
-                        <a href="#" target="_blank"><img src="{{ URL::asset('images/images/social-twitter.png') }}" alt="social icon"></a>
+                        <a href="#" target="_blank"> <img src="{{ asset('images/images/social-twitter.png') }}"alt="social icon"></a>
+                        <a href="#" target="_blank"><img src="{{ asset('images/images/social-pinterest.png') }}" alt="social icon"></a>
+                        <a href="#" target="_blank"><img src="{{ asset('images/images/social-youtube.png') }}" alt="social icon"></a>
+                        <a href="#" target="_blank"><img src="{{ asset('images/images/social-twitter.png') }}" alt="social icon"></a>
                     </div>
                 </div>
             </div>
@@ -219,13 +219,13 @@
 
 
 
-<script src="{{ URL::asset('js/jquery.min.js') }}"></script>
-<script src="{{ URL::asset('js/slick.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('js/jquery-3.3.1.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('js/popper.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('js/jquery.sticky.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/slick.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.sticky.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 
 
 </body>

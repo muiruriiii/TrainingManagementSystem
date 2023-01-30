@@ -22,7 +22,7 @@ return new class extends Migration
                    $table->string('currency');
                    $table->string('payment_status');
                    $table->timestamps();
-               });
+           });
     }
 
     /**
