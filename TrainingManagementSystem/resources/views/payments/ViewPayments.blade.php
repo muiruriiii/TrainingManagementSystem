@@ -1,4 +1,4 @@
-@include('dashboardSideBar')
+@include('templates.dashboardSideBar')
     <!doctype html>
 <html lang="en">
 <head>

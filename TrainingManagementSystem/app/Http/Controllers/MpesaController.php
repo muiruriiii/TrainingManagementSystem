@@ -10,7 +10,7 @@ use App\Models\MpesaTransaction;
 class MpesaController extends Controller
 {
     public function lipa(){
-        return view('mpesaPayment');
+        return view('payments/mpesaPayment');
     }
 //STK Push Simulation
     public function stkSimulation()
@@ -120,7 +120,7 @@ class MpesaController extends Controller
     }
     public function confirm(){
     //compare codes and validate pay
-        return view('confirm');
+        return view('payments/confirm');
     }
 
 

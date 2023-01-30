@@ -9,33 +9,33 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     public function course(){
-        return view('course');
+        return view('courses/course');
     }
     public function customerService(){
-        return view('customerService');
+        return view('courses/customerService');
     }
     public function complaintHandling(){
-        return view('complaintHandling');
+        return view('courses/complaintHandling');
     }
     public function listeningSkills(){
-        return view('listeningSkills');
+        return view('courses/listeningSkills');
     }
     public function leadershipProgram(){
-        return view('leadershipProgram');
+        return view('courses/leadershipProgram');
     }
     public function etiquette(){
-        return view('etiquette');
+        return view('courses/etiquette');
     }
     public function communication(){
-        return view('etiquette');
+        return view('courses/etiquette');
     }
     public function ViewCourses(){
         $courses = Courses::all();
-        return view('ViewCourses',['courses'=> $courses]);
+        return view('courses/ViewCourses',['courses'=> $courses]);
     }
     public function EditCourse($id){
         $courses = Courses::find($id);
-        return view('EditCourse',['courses'=> $courses]);
+        return view('courses/EditCourse',['courses'=> $courses]);
     }
     public function DeleteCourse($id){
         $courses = Courses::find($id);

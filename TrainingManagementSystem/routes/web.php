@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Hash;
 
 
     Route::get('/', function () {
-        return view('index');
+        return view('home/index');
             })->name('index');
 
     Route::get('/about', [AboutController::class, 'about'])->name('about');

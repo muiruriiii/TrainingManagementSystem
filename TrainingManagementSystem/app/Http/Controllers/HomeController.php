@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function redirect(){
-        $userType = Auth::user()->userType;
-
-        if($userType == '1')
-        {
-            return view('/login');
-        }
-        else
-        {
-            return view('/');
-        }
-    }
+//     public function redirect(){
+//         $userType = Auth::user()->userType;
+//
+//         if($userType == '1')
+//         {
+//             return view('/login');
+//         }
+//         else
+//         {
+//             return view('/');
+//         }
+//     }
 }

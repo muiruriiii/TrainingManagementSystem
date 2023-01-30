@@ -1,4 +1,4 @@
-@include('dashboardSideBar')
+@include('templates.dashboardSideBar')
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,6 +22,7 @@
 <body>
 
 <h2> View Courses </h2>
+
 
 <table>
     <tr>

@@ -17,7 +17,7 @@ class PaypalPaymentController extends Controller
         $this->gateway->setTestMode(true);
     }
     public function payment(){
-        return view('paypalPayment');
+        return view('payments/paypalPayment');
     }
 
     public function pay(Request $request)
@@ -68,7 +68,7 @@ class PaypalPaymentController extends Controller
                 $payment->save();
                 $date = PaypalPayment::all()->where('payment_id',$arr['id']);
 
-                return view('confirm',['transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
+                return view('payments/confirm',['transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
 //                 return "Payment is Successful. Your Transaction Id is : " . $arr['id'];
 
             }
@@ -88,7 +88,7 @@ class PaypalPaymentController extends Controller
 
     public function ViewPayments(){
         $paypalpayments = PaypalPayment::all();
-        return view('ViewPayments',['paypalpayments'=> $paypalpayments]);
+        return view('payments/ViewPayments',['paypalpayments'=> $paypalpayments]);
     }
 
 }

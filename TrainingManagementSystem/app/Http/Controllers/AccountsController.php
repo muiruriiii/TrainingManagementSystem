@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 class AccountsController extends Controller
 {
     public function register(){
-        return view('register');
+        return view('accounts/register');
     }
 
     public function validateRegistration(Request $request)
@@ -44,7 +44,7 @@ class AccountsController extends Controller
 
     }
     public function login(){
-            return view('login');
+            return view('accounts/login');
     }
     public function validateLogin(Request $request){
         $request->validate([

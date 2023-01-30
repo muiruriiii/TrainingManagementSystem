@@ -35,20 +35,19 @@
             <span class="tooltip">Add a Role</span>
         </li>
         <li>
-            <a style="background: rgb(160,82,45);" href="{{url('ViewRoles')}}">
-                <i class='bx bx-group' ></i>
-                <span class="links_name">View Roles</span>
-            </a>
-            <span class="tooltip">View Roles</span>
-        </li>
-        <li>
             <a style="background: rgb(160,82,45);" href="{{url('course')}}">
                 <i class='bx bx-note' ></i>
                 <span class="links_name">Add a Course</span>
             </a>
             <span class="tooltip">Add a Course</span>
         </li>
-
+        <li>
+            <a style="background: rgb(160,82,45);" href="{{url('ViewRoles')}}">
+                <i class='bx bx-group' ></i>
+                <span class="links_name">View Roles</span>
+            </a>
+            <span class="tooltip">View Roles</span>
+        </li>
         <li>
             <a style="background: rgb(160,82,45);" href="{{url('ViewCourses')}}">
                 <i class='bx bx-notepad' ></i>
@@ -64,12 +63,12 @@
             <span class="tooltip">View Payments</span>
         </li>
         <li>
-            <a style="background: rgb(160,82,45);" href="#">
+            <a style="background: rgb(160,82,45);" href="{{url('logout')}}">
                 <i class='bx bx-log-out' id="log_out" ></i>
                 <span class="links_name">Log Out</span>
             </a>
 
-            <a style="background: rgb(160,82,45);" href="">
+            <a style="background: rgb(160,82,45);" href="{{url('logout')}}">
                 <span class="tooltip">Log Out</span>
             </a>
         </li>

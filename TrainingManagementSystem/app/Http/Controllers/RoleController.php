@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 class RoleController extends Controller
 {
     public function role(){
-        return view('role');
+        return view('roles/role');
     }
     public function EditRole($id){
         $roles = Roles::find($id);
-        return view('EditRole',['roles'=> $roles]);
+        return view('roles/EditRole',['roles'=> $roles]);
     }
     public function DeleteRole($id){
          $roles = Roles::find($id);
@@ -22,7 +22,7 @@ class RoleController extends Controller
      }
     public function ViewRoles(){
         $roles = Roles::all();
-        return view('ViewRoles',['roles'=> $roles]);
+        return view('roles/ViewRoles',['roles'=> $roles]);
     }
     public function validateRoles(Request $request)
      {
@@ -35,7 +35,7 @@ class RoleController extends Controller
             'roleName' => $data['roleName'],
             'roleDescription' => $data['roleDescription']
          ]);
-            return redirect('/');
+            return redirect('ViewRoles');
      }
      public function RolesEdit($id,Request $request)
      {

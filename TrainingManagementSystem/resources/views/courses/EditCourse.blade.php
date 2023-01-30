@@ -1,5 +1,5 @@
-
-<!DOCTYPE html>
+@include('templates.sideBar')
+    <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
     <!-- STYLE CSS -->
-    <link rel="stylesheet" href="{{URL::asset("css/registerstyle.css")}}">
+    <link rel="stylesheet" href="{{asset("css/registerstyle.css")}}">
 
 </head>
 
