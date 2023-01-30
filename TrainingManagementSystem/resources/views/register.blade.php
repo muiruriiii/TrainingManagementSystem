@@ -110,6 +110,7 @@
                 <span style="color: red;" class="text-danger">{{ $errors->first('confirmPassword') }}</span>
             @endif
             </div>
+                <input type="hidden" name="userType" value="user">
 {{--            <div class="checkbox">--}}
 {{--                <label>--}}
 {{--                    <input type="checkbox"> I caccept the Terms of Use & Privacy Policy.--}}

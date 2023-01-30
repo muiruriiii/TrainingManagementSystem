@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Hash;
-use Session;
+use Illuminate\Support\Facades\Session;
+
 
 
 class AccountsController extends Controller
@@ -54,7 +55,14 @@ class AccountsController extends Controller
 
         if(Auth::attempt($credentials))
         {
-            return redirect('/');
+            if(Auth::user()->userType == 'admin')
+            {
+                return redirect('dashboard');
+            }
+            else
+            {
+                return redirect('/');
+            }
         }
          return redirect('/login')->with('success','Invalid login details');
     }
