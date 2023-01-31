@@ -55,6 +55,13 @@
             </a>
             <span class="tooltip">View Courses</span>
         </li>
+{{--        <li>--}}
+{{--            <a style="background: rgb(160,82,45);" href="{{url('ViewUsers')}}">--}}
+{{--                <i class='bx bx-notepad' ></i>--}}
+{{--                <span class="links_name">View Users</span>--}}
+{{--            </a>--}}
+{{--            <span class="tooltip">View Users</span>--}}
+{{--        </li>--}}
         <li>
             <a style="background: rgb(160,82,45);" href="{{url('ViewPayments')}}">
                 <i class='bx bx-dollar' ></i>

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('courseID')->unsigned();
             $table->foreign('courseID')->references('id')->on('courses');
             $table->string('password')->nullable();
+//             $table->string('paymentStatus')->nullable();
             $table->boolean('isDeleted')->default(0);
             $table->timestamps();
         });

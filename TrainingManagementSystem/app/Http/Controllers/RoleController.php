@@ -34,24 +34,27 @@ class RoleController extends Controller
         Roles::create([
             'roleName' => $data['roleName'],
             'roleDescription' => $data['roleDescription']
-         ]);
-            return redirect('ViewRoles');
+        ]);
+        return redirect('ViewRoles');
      }
      public function RolesEdit($id,Request $request)
      {
-         $request->validate([
+        $request->validate([
             'roleName'=> 'required',
             'roleDescription'=> 'required'
-         ]);
-            $data = $request->all();
+        ]);
+        $data = $request->all();
 
             $roles = Roles::find($id);
             $roles->roleName = $data['roleName'];
             $roles->roleDescription = $data['roleDescription'];
             $roles->save();
-
-            return redirect('ViewRoles');
-
+        return redirect('ViewRoles');
+     }
+     public static function getRoleName($id)
+     {
+        $roles = Roles::find($id);
+        return $roles->roleName;
      }
 
 }

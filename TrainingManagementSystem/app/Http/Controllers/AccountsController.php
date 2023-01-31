@@ -43,6 +43,16 @@ class AccountsController extends Controller
             return redirect('/login')->with('success','Successful Registration');
 
     }
+    public function ViewUsers(){
+        $users = Users::all();
+        return view('accounts/ViewUsers',['users'=> $users]);
+    }
+    public function DeleteUsers($id){
+        $users = Users::find($id);
+        $users->isDeleted = 1;
+        $users->save();
+        return redirect('ViewUsers');
+    }
     public function login(){
             return view('accounts/login');
     }
@@ -61,6 +71,7 @@ class AccountsController extends Controller
             }
             else
             {
+
                 return redirect('/');
             }
         }

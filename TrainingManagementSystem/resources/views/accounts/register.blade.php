@@ -64,7 +64,7 @@
                 <label for="">Role</label>
                 <?php
                 $db = mysqli_connect("localhost", "root", "", "tms");
-               $sql = mysqli_query($db, "SELECT * FROM roles WHERE isDeleted = 0");
+                $sql = mysqli_query($db, "SELECT * FROM roles WHERE isDeleted = 0");
 
                 echo "<select class='form-control' name='roleID' >";
                 while ($row = mysqli_fetch_array($sql)) {
