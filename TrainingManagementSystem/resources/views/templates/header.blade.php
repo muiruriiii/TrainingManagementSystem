@@ -1,3 +1,6 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -62,9 +65,9 @@
             </nav>
             </div>
             <i class="fa fa-user" aria-hidden="true"></i>
-{{--           @if(Auth::check())--}}
-{{--            <b style="color:#fff;margin-left:10px;">{{ Auth::user()->firstName." ".Auth::user()->lastName}}</b>--}}
-{{--            @endif--}}
+           @if(Auth::check())
+            <b style="color:#fff;margin-left:10px;">{{ Auth::user()->firstName." ".Auth::user()->lastName}}</b>
+            @endif
         </div>
     </div>
 

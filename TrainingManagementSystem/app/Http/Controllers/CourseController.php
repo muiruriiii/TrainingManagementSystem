@@ -58,7 +58,7 @@ class CourseController extends Controller
              'courseVideos' => $data['courseVideos'],
              'courseNotes' => $data['courseNotes']
         ]);
-         return redirect('/');
+         return redirect('ViewCourses');
      }
      public function CoursesEdit($id,Request $request){
         $request->validate([

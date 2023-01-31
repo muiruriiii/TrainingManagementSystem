@@ -1,4 +1,4 @@
-@include('templates.sideBar')
+{{--@include('templates.sideBar')--}}
     <!DOCTYPE html>
 <html>
 <head>

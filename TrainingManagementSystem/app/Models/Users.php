@@ -18,6 +18,7 @@ class Users extends Model
         'courseID',
         'password',
         'userType',
+        'paymentStatus',
         'isDeleted'
     ];
 
