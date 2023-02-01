@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
+use App\Models\UserPayments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -32,15 +33,17 @@ class AccountsController extends Controller
 
 
         Users::create([
-                'firstName' => $data['firstName'],
-                'lastName' => $data['lastName'],
-                'telephoneNumber' => $data['telephoneNumber'],
-                'email' => $data['email'],
-                'roleID' => $data['roleID'],
-                'courseID' => $data['courseID'],
-                'password' => Hash::make($data['password'])
+            'firstName' => $data['firstName'],
+            'lastName' => $data['lastName'],
+            'telephoneNumber' => $data['telephoneNumber'],
+            'email' => $data['email'],
+            'roleID' => $data['roleID'],
+            'courseID' => $data['courseID'],
+            'password' => Hash::make($data['password'])
         ]);
-            return redirect('/login')->with('success','Successful Registration');
+        return redirect('/login')->with('success','Successful Registration');
+
+
 
     }
     public function ViewUsers(){

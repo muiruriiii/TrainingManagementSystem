@@ -1,18 +1,18 @@
 @include('templates.sideBar')
-<?php
+{{--<?php--}}
 
-use App\Models\Users;
-use Illuminate\Support\Facades\Auth;
+{{--use App\Models\Users;--}}
+{{--use Illuminate\Support\Facades\Auth;--}}
 
-$user=Users::find(Auth::user()->id);
+{{--$user=Users::find(Auth::user()->id);--}}
 
-if($user->paymentStatus == 'Approved'){
+{{--if($user->paymentStatus == 'Approved'){--}}
 
-    echo view('courses/leadershipProgram');
-}
-else{
+{{--    echo view('courses/leadershipProgram');--}}
+{{--}--}}
+{{--else{--}}
 
-    echo view('payments/paypalPayment');
-}
+{{--    echo view('payments/paypalPayment');--}}
+{{--}--}}
 
-?>
+{{--?>--}}

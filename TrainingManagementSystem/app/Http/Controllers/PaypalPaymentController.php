@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\PaypalPayment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Users;
 use Omnipay\Omnipay;
 
 class PaypalPaymentController extends Controller
@@ -65,8 +67,21 @@ class PaypalPaymentController extends Controller
                 $payment->amount = $arr['transactions'][0]['amount']['total'];
                 $payment->currency = env('PAYPAL_CURRENCY');
                 $payment->payment_status = $arr['state'];
-                $payment->save();
+
                 $date = PaypalPayment::all()->where('payment_id',$arr['id']);
+
+                if(Auth::check()){
+                    $payment->userID = Auth::user()->id;
+                    $user = Users::find(Auth::user()->id);
+                }
+                $user->paymentStatus = 'Approved';
+                $payment->save();
+                $user->save();
+                return request('courseID');
+                UserPayments::create([
+                   'userID'=>Auth::user()->id,
+                   'courseID'=>$data['courseID']
+                ]);
 
                 return view('payments/confirm',['transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
 //                 return "Payment is Successful. Your Transaction Id is : " . $arr['id'];

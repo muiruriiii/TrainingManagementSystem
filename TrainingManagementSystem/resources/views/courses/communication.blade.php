@@ -1,18 +1,17 @@
-@include('templates.sideBar')
 <?php
-
-use App\Models\Users;
-use Illuminate\Support\Facades\Auth;
-
-$user=Users::find(Auth::user()->id);
-
-if($user->paymentStatus == 'Approved'){
-
-    echo view('courses/communication');
-}
-else{
-
-    echo view('payments/paypalPayment');
-}
-
+$conn = new mysqli("localhost","root","","tms");
+$sql="SELECT * FROM courses";
+$results=$conn->query($sql);
 ?>
+
+<h2>Course Description</h2>
+<div>
+
+    <?php
+    while($row=mysqli_fetch_assoc($results)){
+    ?>
+    <h3><?php echo $row['courseDescription']; ?></h3>
+</div>
+    <?php
+    }
+    ?>

@@ -1,4 +1,4 @@
-{{--@include('templates.sideBar')--}}
+@include('templates.sideBar')
     <!DOCTYPE html>
 <html>
 <head>
@@ -83,6 +83,7 @@
         </form>
     </div>
 </div>
+
 
 </body>
 </html>

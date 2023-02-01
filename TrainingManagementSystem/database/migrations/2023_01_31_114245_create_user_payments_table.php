@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('paypal_payments', function (Blueprint $table) {
+        Schema::create('user_payments', function (Blueprint $table) {
             $table->id();
-            $table->string('payment_id');
-            $table->string('payer_id');
-            $table->string('payer_email');
-            $table->float('amount', 10, 2);
-            $table->string('currency');
-            $table->string('payment_status');
+            $table->integer('courseID')->unsigned();
+            $table->foreign('courseID')->references('id')->on('courses');
+            $table->integer('userID')->unsigned();
+            $table->foreign('userID')->references('id')->on('users');
+            $table->string('status')->default('Accessible');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('user_payments');
     }
 };

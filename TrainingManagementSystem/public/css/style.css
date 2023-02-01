@@ -407,32 +407,14 @@ body, html {
 }
 
 .cards {
-    width: 100%;
-    display: inline;
     display: -webkit-flex;
     justify-content: center;
     -webkit-justify-content: center;
     max-width: 1500px;
-}
-
-.card--1 .card__img, .card--1 .card__img--hover {
-    background-image: url('https://www.salesforce.com/content/dam/web/en_us/www/images/resource-center/article-what-Is-customer-service.jpg');
-}
-
-.card--2 .card__img, .card--2 .card__img--hover {
-    background-image: url('https://www.marketingdonut.co.uk/sites/default/files/2022-09/complaints_1463235290.jpg');
-}
-.card--3 .card__img, .card--3 .card__img--hover {
-    background-image: url('https://www.trainerbubble.com/wp-content/uploads/2015/09/Listening-Skills_web-1024x682.jpg');
-}
-.card--4 .card__img, .card--4 .card__img--hover {
-    background-image: url('https://imageio.forbes.com/specials-images/dam/imageserve/955959130/960x0.jpg?format=jpg&width=960');
-}
-.card--5 .card__img, .card--5 .card__img--hover {
-    background-image: url('https://images.squarespace-cdn.com/content/v1/56d376871bbee09a4bcf9ae8/1462837283451-P1FLPRHF4IE2BM26ZZ3E/bigstock-Business-Celebrate-Cheerful-En-119969099.jpg ');
-}
-.card--6 .card__img, .card--6 .card__img--hover {
-    background-image: url('https://seismic.com/wp-content/uploads/2022/02/blog_header_image_seismic_BHM-edited-scaled.jpg');
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    width: 100%;
 }
 
 .card__like {

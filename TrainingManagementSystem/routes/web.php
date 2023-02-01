@@ -13,6 +13,7 @@ use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\MpesaController;
 
 
+
 use App\Models\Users;
 use App\Models\Roles;
 use App\Models\Courses;
@@ -59,7 +60,7 @@ use Illuminate\Support\Facades\Hash;
 
     Route::controller(CourseController::class)->group(function(){
         Route::get('/course','course')->name('course');
-        Route::get('/customerService','customerService')->name('customerService');
+        Route::get('/customerService/{id}','customerService')->name('customerService');
         Route::get('/complaintHandling','complaintHandling')->name('complaintHandling');
         Route::get('/listeningSkills','listeningSkills')->name('listeningSkills');
         Route::get('/leadershipProgram','leadershipProgram')->name('leadershipProgram');

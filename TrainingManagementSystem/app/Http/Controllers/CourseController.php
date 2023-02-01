@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Courses;
-use App\Models\Payment;
+use App\Models\UserPayments;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +12,17 @@ class CourseController extends Controller
     public function course(){
         return view('courses/course');
     }
-    public function customerService(){
+    public function customerService($id){
+    //courseid, userid
+//     $courseID = Courses::all()->where('courseName', 'Customer Service');
+//     $userid = Auth::user()->id;
+//     $userpayment = UserPayments::all()->where('courseID', $id)->where('userID', $userid);
+//       return $userpayment;
+//     $userpayment->status == 'Accessible';
+//
+//         if(Auth::user()->status == 'Pending'){
+//             return redirect('/paypalPayment');
+//         }
         return view('courses/customerService');
     }
     public function complaintHandling(){
@@ -45,6 +56,7 @@ class CourseController extends Controller
     }
     public function validateCourses(Request $request)
      {
+
         $request->validate([
              'courseName'=> 'required',
              'courseDescription'=> 'required',
@@ -56,7 +68,8 @@ class CourseController extends Controller
              'courseName' => $data['courseName'],
              'courseDescription' => $data['courseDescription'],
              'courseVideos' => $data['courseVideos'],
-             'courseNotes' => $data['courseNotes']
+             'courseNotes' => $data['courseNotes'],
+             'courseProfile' => $data['courseProfile']
         ]);
          return redirect('ViewCourses');
      }
@@ -65,7 +78,8 @@ class CourseController extends Controller
             'courseName'=> 'required',
             'courseDescription'=> 'required',
             'courseVideos'=> 'required',
-            'courseNotes'=> 'required'
+            'courseNotes'=> 'required',
+            'courseProfile'=> 'required'
         ]);
         $data = $request->all();
 
@@ -74,6 +88,8 @@ class CourseController extends Controller
             $courses->courseDescription = $data['courseDescription'];
             $courses->courseVideos = $data['courseVideos'];
             $courses->courseNotes = $data['courseNotes'];
+            $courses->courseNotes = $data['courseProfile'];
+
             $courses->save();
 
         return redirect('ViewCourses');

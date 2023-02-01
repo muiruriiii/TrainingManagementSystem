@@ -52,6 +52,13 @@
                         <span style="color: red;" class="text-danger">{{ $errors->first('courseNotes') }}</span>
                     @endif
                 </div>
+                <div class="form-wrapper">
+                    <label for="">Course Profile</label>
+                    <input type="file" id="myFile" name="courseProfile">
+                    @if($errors->has('courseProfile'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('courseProfile') }}</span>
+                    @endif
+                </div>
 
                 <button style="rgb(160,82,45);"> Submit</button>
             </div>

@@ -1,4 +1,4 @@
-<?php
+k/<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('courseDescription');
             $table->string('courseVideos');
             $table->string('courseNotes');
+            $table->string('courseProfile');
             $table->boolean('isDeleted')->default(0);
             $table->timestamps();
         });
