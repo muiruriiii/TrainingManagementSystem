@@ -16,3 +16,4 @@
 {{--}--}}
 
 {{--?>--}}
+{{$courses->courseDescription}}

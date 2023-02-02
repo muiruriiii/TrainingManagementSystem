@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PaypalPayment;
+use App\Models\Courses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Users;
@@ -18,10 +19,10 @@ class PaypalPaymentController extends Controller
         $this->gateway->setSecret(env('PAYPAL_CLIENT_SECRET'));
         $this->gateway->setTestMode(true);
     }
-    public function payment(){
-        return view('payments/paypalPayment');
+    public function payment($id){
+         $courses = Courses::find($id);
+        return view('payments/paypalPayment',['courses'=>$courses]);
     }
-
     public function pay(Request $request)
     {
         try {
@@ -46,7 +47,7 @@ class PaypalPaymentController extends Controller
         }
     }
 
-    public function success(Request $request)
+    public function success( Request $request)
     {
         if ($request->input('paymentId') && $request->input('PayerID')) {
             $transaction = $this->gateway->completePurchase(array(
@@ -68,22 +69,26 @@ class PaypalPaymentController extends Controller
                 $payment->currency = env('PAYPAL_CURRENCY');
                 $payment->payment_status = $arr['state'];
 
+
                 $date = PaypalPayment::all()->where('payment_id',$arr['id']);
 
                 if(Auth::check()){
                     $payment->userID = Auth::user()->id;
                     $user = Users::find(Auth::user()->id);
+                    $courses = Courses::find($id);
                 }
+
                 $user->paymentStatus = 'Approved';
                 $payment->save();
+                $course->save();
                 $user->save();
-                return request('courseID');
-                UserPayments::create([
-                   'userID'=>Auth::user()->id,
-                   'courseID'=>$data['courseID']
-                ]);
+                //return request('courseID');
+//                 UserPayments::create([
+//                    'userID'=>Auth::user()->id,
+//                    'courseID'=>$data['courseID']
+//                 ]);
 
-                return view('payments/confirm',['transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
+                return view('payments/confirm',['transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date,'courses'=> $courses]);
 //                 return "Payment is Successful. Your Transaction Id is : " . $arr['id'];
 
             }

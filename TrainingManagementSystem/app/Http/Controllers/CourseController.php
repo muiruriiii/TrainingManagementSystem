@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Courses;
-use App\Models\UserPayments;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -12,33 +12,21 @@ class CourseController extends Controller
     public function course(){
         return view('courses/course');
     }
-    public function customerService($id){
+   // public function customerService($id){
     //courseid, userid
-//     $courseID = Courses::all()->where('courseName', 'Customer Service');
+//     $id = Courses::all()->where('courseName', 'Customer Service')
 //     $userid = Auth::user()->id;
-//     $userpayment = UserPayments::all()->where('courseID', $id)->where('userID', $userid);
-//       return $userpayment;
-//     $userpayment->status == 'Accessible';
-//
-//         if(Auth::user()->status == 'Pending'){
+//     $userpayment = UserPayment::all()->where('courseID', $id)->where('userID', $userid)
+//     $userpayment->paymentStatus == 'Accessible'
+//         if(Auth::user()->paymentStatus == 'Pending'){
 //             return redirect('/paypalPayment');
 //         }
-        return view('courses/customerService');
-    }
-    public function complaintHandling(){
-        return view('courses/complaintHandling');
-    }
-    public function listeningSkills(){
-        return view('courses/listeningSkills');
-    }
-    public function leadershipProgram(){
-        return view('courses/leadershipProgram');
-    }
-    public function etiquette(){
-        return view('courses/etiquette');
-    }
-    public function communication(){
-        return view('courses/etiquette');
+//         return view('courses/customerService');
+//     }
+
+    public function coursesDescription($id){
+        $courses = Courses::find($id);
+        return view('courses/coursesDescription', ['courses'=>$courses]);
     }
     public function ViewCourses(){
         $courses = Courses::all();
@@ -56,7 +44,6 @@ class CourseController extends Controller
     }
     public function validateCourses(Request $request)
      {
-
         $request->validate([
              'courseName'=> 'required',
              'courseDescription'=> 'required',
@@ -88,7 +75,7 @@ class CourseController extends Controller
             $courses->courseDescription = $data['courseDescription'];
             $courses->courseVideos = $data['courseVideos'];
             $courses->courseNotes = $data['courseNotes'];
-            $courses->courseNotes = $data['courseProfile'];
+            $courses->courseProfile = $data['courseProfile'];
 
             $courses->save();
 

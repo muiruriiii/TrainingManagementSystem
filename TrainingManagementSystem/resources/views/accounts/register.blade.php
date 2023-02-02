@@ -17,15 +17,6 @@
 <body>
 <div class="wrapper">
     <div class="inner">
-{{--@if($errors->any())--}}
-{{--    <div style="color: red">--}}
-{{--        <ul>--}}
-{{--            @foreach($errors->all() as $error)--}}
-{{--                <li>{{ $error }}</li>--}}
-{{--            @endforeach--}}
-{{--        </ul>--}}
-{{--    </div>--}}
-{{--@endif--}}
         <form action="{{url ('/register')}}" method="POST">
             @csrf
             <div class="container">

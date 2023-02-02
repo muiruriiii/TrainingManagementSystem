@@ -1,116 +1,25 @@
-
-<?php
-$conn = new mysqli("localhost","root","","tms");
-$sql="SELECT * FROM courses";
-$results=$conn->query($sql);
-?>
 @include('templates.header')
-
 <div>
 
     <img class="hrimage" src="{{ asset('images/training4.jpg') }}" alt="Hr Training">
     <h2>OUR COURSES </h2>
     <section class="cards">
-        <?php
-        while($row=mysqli_fetch_assoc($results)){
-        ?>
+        @foreach($courses as $course)
         <article class="card card--1">
-            <div class="card__img"><?php echo '<img src="/images/'.$row['courseProfile'].'"/>'; ?></div>
-            <a href="{{url ('/communication')}}" class="card_link">
+            <div class="card__img"></div>
+            <a href="{{url ('/coursesDescription/'.$course->id)}}" class="card_link">
                 <div class="card__img--hover">
-                    <?php echo '<img src="/images/'.$row['courseProfile'].'"/>';
-                   ?>
                 </div>
             </a>
             <div class="card__info">
             <span class="card__category"> Course</span>
 
-                <h3 class="card__title"><?php echo $row['courseName']; ?></h3>
+                <h3 class="card__title">{{$course->courseName}}</h3>
                 </h3>
-                <span class="card__by">by <a href="{{url ('/communication')}}" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{url ('/communication/'.$course->id)}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
-            <?php
-                }
-            ?>
-
-{{--        <article class="card card--2">--}}
-{{--            <div class="card__info-hover">--}}
-
-{{--            </div>--}}
-{{--            <div class="card__img"></div>--}}
-{{--            <a href="{{url ('/complaintHandling')}}" class="card_link">--}}
-{{--                <div class="card__img--hover"></div>--}}
-{{--            </a>--}}
-{{--            <div class="card__info">--}}
-{{--                <span class="card__category"> Course</span>--}}
-{{--                <h3 class="card__title">Complaint Handling</h3>--}}
-{{--                <span class="card__by">by <a href="{{url ('/complaintHandling')}}" class="card__author" title="author">C.Muiruri</a></span>--}}
-{{--            </div>--}}
-{{--        </article>--}}
-
-{{--        <article class="card card--3">--}}
-{{--            <div class="card__info-hover">--}}
-
-{{--            </div>--}}
-{{--            <div class="card__img"></div>--}}
-{{--            <a href="{{url ('/listeningSkills')}}" class="card_link">--}}
-{{--                <div class="card__img--hover"></div>--}}
-{{--            </a>--}}
-{{--            <div class="card__info">--}}
-{{--                <span class="card__category"> Course</span>--}}
-{{--                <h3 class="card__title">Listening Skills</h3>--}}
-{{--                <span class="card__by">by <a href="{{url ('/listeningSkills')}}" class="card__author" title="author">C.Muiruri</a></span>--}}
-{{--            </div>--}}
-{{--        </article>--}}
-
-{{--    </section>--}}
-{{--    <section class="cards">--}}
-{{--        <article class="card card--4">--}}
-{{--            <div class="card__info-hover">--}}
-
-{{--            </div>--}}
-{{--            <div class="card__img"></div>--}}
-{{--            <a href="{{url ('/leadershipProgram')}}" class="card_link">--}}
-{{--                <div class="card__img--hover"></div>--}}
-{{--            </a>--}}
-{{--            <div class="card__info">--}}
-{{--                <span class="card__category"> Course</span>--}}
-{{--                <h3 class="card__title">Leadership Program</h3>--}}
-{{--                <span class="card__by">by <a href="{{url ('/leadershipProgram')}}" class="card__author" title="author">C.Muiruri</a></span>--}}
-{{--            </div>--}}
-{{--        </article>--}}
-
-
-{{--        <article class="card card--5">--}}
-{{--            <div class="card__info-hover">--}}
-
-{{--            </div>--}}
-{{--            <div class="card__img"></div>--}}
-{{--            <a href="{{url ('/etiquette')}}" class="card_link">--}}
-{{--                <div class="card__img--hover"></div>--}}
-{{--            </a>--}}
-{{--            <div class="card__info">--}}
-{{--                <span class="card__category"> Course</span>--}}
-{{--                <h3 class="card__title">Etiquette</h3>--}}
-{{--                <span class="card__by">by <a href="{{url ('/etiquette')}}" class="card__author" title="author">C.Muiruri</a></span>--}}
-{{--            </div>--}}
-{{--        </article>--}}
-
-{{--        <article class="card card--6">--}}
-{{--            <div class="card__info-hover">--}}
-
-{{--            </div>--}}
-{{--            <div class="card__img"></div>--}}
-{{--            <a href="{{url ('/communication')}}" class="card_link">--}}
-{{--                <div class="card__img--hover"></div>--}}
-{{--            </a>--}}
-{{--            <div class="card__info">--}}
-{{--                <span class="card__category"> Course</span>--}}
-{{--                <h3 class="card__title">Communication</h3>--}}
-{{--                <span class="card__by">by <a href="{{url ('/communication')}}" class="card__author" title="author">C.Muiruri</a></span>--}}
-{{--            </div>--}}
-{{--        </article>--}}
+            @endforeach
 
     </section>
 

@@ -1,4 +1,4 @@
-@include('templates.sideBar')
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,32 +15,17 @@
 </head>
 
 <body>
-{{--@if($message = Session::get('success'))--}}
-{{--    <div class="alert alert-info">--}}
-{{--        {{ $message }}--}}
-{{--    </div>--}}
-{{--@endif--}}
+
 <div class="wrapper">
     <div class="inner">
-        <form action="{{URL('/payment')}}" method="POST">
+        <form action="{{URL('/payment/'.$courses->id)}}" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
                 <h3> Course Payment  </h3>
                 <h3><a id="heading" href="{{url('/mpesaPayment')}}">M-Pesa</a> | Paypal  </h3>
                 <div class="form-wrapper">
-                <label for="">Course Name</label>
-                <?php
-                $db = mysqli_connect("localhost", "root", "", "tms");
-                $sql = mysqli_query($db, "SELECT * FROM courses WHERE isDeleted = 0");
-
-                echo "<select class='form-control'  name='courseID' >";
-                while ($row = mysqli_fetch_array($sql)) {
-                ?>
-                <option class="form-control" value="<?php echo$row['id']?>"> <?php echo$row['courseName']; ?> </option>
-                <?php
-                }
-                echo "</select>";
-                ?>
+                <label>Course Name</label>
+                    <input type="text" name="courseID" class="form-control" value="{{$courses->courseName}}" readonly>
                 @if($errors->has('courseID'))
                     <span style="color: red;" class="text-danger">{{ $errors->first('courseID') }}</span>
                 @endif
@@ -63,7 +48,7 @@
                 </div>
 
                 <input type="text" name="user" value="{{auth()->user()}}" hidden>
-                <button type="submit" style="rgb(160,82,45);">Make Payment</button>
+                <button> Make Payment</button>
 
             </div>
         </form>

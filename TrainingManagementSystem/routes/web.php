@@ -32,7 +32,9 @@ use Illuminate\Support\Facades\Hash;
 
 
     Route::get('/', function () {
-        return view('home/index');
+        $courses=Courses::all()->where('isDeleted',0);
+        return view('home/index',['courses'=>$courses]);
+
             })->name('index');
 
     Route::get('/about', [AboutController::class, 'about'])->name('about');
@@ -63,9 +65,9 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/customerService/{id}','customerService')->name('customerService');
         Route::get('/complaintHandling','complaintHandling')->name('complaintHandling');
         Route::get('/listeningSkills','listeningSkills')->name('listeningSkills');
-        Route::get('/leadershipProgram','leadershipProgram')->name('leadershipProgram');
+        Route::get('/leadershipProgram/{id}','leadershipProgram')->name('leadershipProgram');
         Route::get('/etiquette','etiquette')->name('etiquette');
-        Route::get('/communication','communication')->name('communication');
+        Route::get('/coursesDescription/{id}','coursesDescription')->name('coursesDescription');
 
         Route::get('/ViewCourses','ViewCourses')->name('ViewCourses');
         Route::get('/EditCourse/{id}','EditCourse')->name('EditCourse');
@@ -74,9 +76,9 @@ use Illuminate\Support\Facades\Hash;
         Route::post('/CoursesEdit/{id}','CoursesEdit')->name('CoursesEdit');
     });
     Route::controller(PaypalPaymentController::class)->group(function(){
-        Route::get('/paypalPayment','payment')->name('payment');
+        Route::get('/paypalPayment/{id}','payment')->name('payment');
         Route::get('/ViewPayments','ViewPayments')->name('ViewPayments');
-        Route::post('/payment','pay')->name('payment');
+        Route::post('/payment/{id}','pay')->name('payment');
         Route::get('/success','success');
         Route::get('/errorOccurred','errorOccurred');
     });
