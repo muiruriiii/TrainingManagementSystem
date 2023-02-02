@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaypalPaymentController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\MpesaController;
+use App\Http\Controllers\UserPaymentsController;
 
 
 
@@ -78,7 +79,7 @@ use Illuminate\Support\Facades\Hash;
     Route::controller(PaypalPaymentController::class)->group(function(){
         Route::get('/paypalPayment/{id}','payment')->name('payment');
         Route::get('/ViewPayments','ViewPayments')->name('ViewPayments');
-        Route::post('/payment/{id}','pay')->name('payment');
+        Route::post('/payment','pay');
         Route::get('/success','success');
         Route::get('/errorOccurred','errorOccurred');
     });
@@ -87,8 +88,11 @@ use Illuminate\Support\Facades\Hash;
         Route::post('/lipa','stkPush')->name('stkPush');
         Route::get('/mpesaPayment','lipa')->name('lipa');
     });
+    Route::controller(UserPaymentsController::class)->group(function(){
+        Route::post('/userPayments/{id}','userPayments')->name('userPayment');
+    });
 
-        Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 //         Route::get('/redirect',[HomeController::class,'redirect']);
 //         Route::get('auth/google',[GoogleAuthController::class,'redirect'])->name('google-auth');
 //         Route::get('auth/google/call-back',[GoogleAuthController::class,'callbackGoogle']);

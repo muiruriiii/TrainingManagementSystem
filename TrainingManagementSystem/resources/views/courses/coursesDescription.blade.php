@@ -22,7 +22,10 @@
         {{$courses->courseDescription}}
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut blanditiis distinctio dolorem doloremque ea eius, eligendi harum inventore itaque magnam minus molestias non odio officiis rem velit veritatis voluptatem?
         <p>For further details...</p>
-        <button><a href="{{url ('/paypalPayment/'.$courses->id)}}"> Make Payment</a></button>
+        <button>
+            <a href="{{url ('/paypalPayment/'.$courses->id)}}"> Make Payment
+            </a>
+        </button>
 
     </div>
 

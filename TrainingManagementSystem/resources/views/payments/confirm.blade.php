@@ -80,7 +80,8 @@
                             @endforeach
                         </p>
                         <div>
-                            <button><a href="/" style="rgb(160,82,45); text-decoration: none;">Go back Home</a></button>
+                            <button href="/">Go back Home</button>
+
                         </div>
                         <p style="color: #333;  font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 22px; margin: 0;"></p>
                     </td>
@@ -92,21 +93,19 @@
                 </tr>
 
             </table>
-            <!-- Generic Pod Left Aligned with Price breakdown End -->
 
-            <!-- Seperator Start -->
             <table cellpadding="0" cellspacing="0" cols="1" bgcolor="#d7d7d7" align="center" style="max-width: 600px; width: 100%;">
                 <tr bgcolor="#d7d7d7">
                     <td height="50" style="color: #333;  font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 16px; vertical-align: top;"></td>
                 </tr>
             </table>
-            <!-- Seperator End -->
+
 
         </td>
     </tr>
 
 </table>
-<!-- Content End -->
+
 
 
 </body>

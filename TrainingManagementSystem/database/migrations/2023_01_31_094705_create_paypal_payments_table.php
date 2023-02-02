@@ -22,9 +22,6 @@ return new class extends Migration
             $table->integer('userID')->unsigned();
             $table->foreign('userID')->references('id')->on('users');
 
-            $table->integer('courseID')->unsigned();
-            $table->foreign('courseID')->references('id')->on('courses');
-
             $table->float('amount', 10, 2);
             $table->string('currency');
             $table->string('payment_status');

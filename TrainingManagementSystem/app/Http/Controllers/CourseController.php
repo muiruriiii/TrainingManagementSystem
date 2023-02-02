@@ -58,6 +58,7 @@ class CourseController extends Controller
              'courseNotes' => $data['courseNotes'],
              'courseProfile' => $data['courseProfile']
         ]);
+
          return redirect('ViewCourses');
      }
      public function CoursesEdit($id,Request $request){

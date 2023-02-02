@@ -18,7 +18,7 @@
 
 <div class="wrapper">
     <div class="inner">
-        <form action="/course" method="POST">
+        <form action="/course" enctype="multipart/form-data" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
                 <h3> Add a New Course </h3>

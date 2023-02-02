@@ -18,7 +18,7 @@
 
 <div class="wrapper">
     <div class="inner">
-        <form action="{{URL('/payment/'.$courses->id)}}" method="POST">
+        <form action="{{URL('/payment')}}" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
                 <h3> Course Payment  </h3>
