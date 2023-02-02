@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Users;
 use Omnipay\Omnipay;
+use App\Models\UserPayments;
 
 class PaypalPaymentController extends Controller
 {
@@ -21,6 +22,10 @@ class PaypalPaymentController extends Controller
     }
     public function payment($id){
          $courses = Courses::find($id);
+         UserPayments::create([
+             'courseID'=>$courses->id,
+             'userID'=>Auth::user()->id
+         ]);
         return view('payments/paypalPayment',['courses'=>$courses]);
     }
     public function pay(Request $request)
@@ -47,7 +52,7 @@ class PaypalPaymentController extends Controller
         }
     }
 
-    public function success( Request $request)
+    public function success(Request $request)
     {
         if ($request->input('paymentId') && $request->input('PayerID')) {
             $transaction = $this->gateway->completePurchase(array(
@@ -68,27 +73,23 @@ class PaypalPaymentController extends Controller
                 $payment->amount = $arr['transactions'][0]['amount']['total'];
                 $payment->currency = env('PAYPAL_CURRENCY');
                 $payment->payment_status = $arr['state'];
-
-
                 $date = PaypalPayment::all()->where('payment_id',$arr['id']);
 
                 if(Auth::check()){
                     $payment->userID = Auth::user()->id;
                     $user = Users::find(Auth::user()->id);
-                    $courses = Courses::find($id);
+                    $userpayment = UserPayments::all()->where('userID', Auth::user()->id)->last();
+                    $userpayment->status = 'Accessible';
                 }
+
 
                 $user->paymentStatus = 'Approved';
                 $payment->save();
-                $course->save();
                 $user->save();
-                //return request('courseID');
-//                 UserPayments::create([
-//                    'userID'=>Auth::user()->id,
-//                    'courseID'=>$data['courseID']
-//                 ]);
+                $userpayment->save();
 
-                return view('payments/confirm',['transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date,'courses'=> $courses]);
+
+                return view('payments/confirm',['transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
 //                 return "Payment is Successful. Your Transaction Id is : " . $arr['id'];
 
             }
@@ -110,5 +111,4 @@ class PaypalPaymentController extends Controller
         $paypalpayments = PaypalPayment::all();
         return view('payments/ViewPayments',['paypalpayments'=> $paypalpayments]);
     }
-
 }
