@@ -63,7 +63,7 @@ use Illuminate\Support\Facades\Hash;
 
     Route::controller(CourseController::class)->group(function(){
         Route::get('/course','course')->name('course');
-        Route::get('/customerService/{id}','customerService')->name('customerService');
+        Route::get('/courseContent','courseContent')->name('courseContent');
         Route::get('/complaintHandling','complaintHandling')->name('complaintHandling');
         Route::get('/listeningSkills','listeningSkills')->name('listeningSkills');
         Route::get('/leadershipProgram/{id}','leadershipProgram')->name('leadershipProgram');
@@ -90,6 +90,8 @@ use Illuminate\Support\Facades\Hash;
     });
     Route::controller(UserPaymentsController::class)->group(function(){
         Route::post('/userPayments/{id}','userPayments')->name('userPayment');
+        Route::get('/paidCoursePage/{id}', 'paidCoursePage');
+        Route::get('/checkifPaid/{id}', 'checkifPaid');
     });
 
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');

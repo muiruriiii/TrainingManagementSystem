@@ -80,7 +80,11 @@
                             @endforeach
                         </p>
                         <button>
-                            <a style="color: #fff;" href="{{url ('/')}}">Go back Home
+                            <a style="color: #fff;text-decoration: none;" href="{{url ('/')}}">Go back Home
+                            </a>
+                        </button>
+                        <button>
+                            <a style="color: #fff;text-decoration: none;" href="{{url ('/paidCoursePage/'.$userpayment->courseID)}}">View my Course
                             </a>
                         </button>
                         <p style="color: #333;  font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 22px; margin: 0;"></p>

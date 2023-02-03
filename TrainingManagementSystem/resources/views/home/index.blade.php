@@ -6,9 +6,13 @@
     <section class="cards">
         @foreach($courses as $course)
         <article class="card card--1">
-            <div class="card__img"></div>
-            <a href="{{url ('/coursesDescription/'.$course->id)}}" class="card_link">
+            <div class="card__img">
+
+                <img src="{{url('storage/app/public/uploads/'.$course->courseProfile)}}">
+            </div>
+            <a href="{{url ('/checkifPaid/'.$course->id)}}" class="card_link">
                 <div class="card__img--hover">
+                    <img src="{{url('storage/app/public/uploads/'.$course->courseProfile)}}">
                 </div>
             </a>
             <div class="card__info">
@@ -16,7 +20,7 @@
 
                 <h3 class="card__title">{{$course->courseName}}</h3>
                 </h3>
-                <span class="card__by">by <a href="{{url ('/communication/'.$course->id)}}" class="card__author" title="author">C.Muiruri</a></span>
+                <span class="card__by">by <a href="{{url ('/checkifPaid/'.$course->id)}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
             @endforeach

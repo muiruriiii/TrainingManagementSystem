@@ -1,5 +1,19 @@
 @include('templates.descriptionNavbar')
-
+{{--//--}}
+{{--//use App\Models\Users;--}}
+{{--//use Illuminate\Support\Facades\Auth;--}}
+{{--//--}}
+{{--//$user=Users::find(Auth::user()->id);--}}
+{{--//--}}
+{{--//if($user->paymentStatus == 'Approved'){--}}
+{{--//--}}
+{{--//    echo view('courses/customerService');--}}
+{{--//}--}}
+{{--//else{--}}
+{{--//--}}
+{{--//    echo view('payments/paypalPayment');--}}
+{{--//}--}}
+{{--//--}}
 <h3 id="heading"> Course Description</h3>
     <div class="descContainer text-center">
         <div class="description">

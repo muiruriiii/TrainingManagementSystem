@@ -6,17 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Courses;
 use App\Models\Users;
+use App\Models\UserPayments;
 
 class UserPaymentsController extends Controller
 {
-    public function userPayments($id)
+    public function paidCoursePage($courseID)
     {
-//         if(Auth::check()){
-//             $users = Users::find(Auth::user()->id);
-//         }
-//          $courses = Courses::find($id);
-//          $users->save();
-//          $courses->save();
-         return redirect('/payment');
+        return view('courses/courseContent');
+    }
+    public function checkifPaid($courseID){
+        $userpayments = UserPayments::select('*')->where('userID', Auth::user()->id)
+                            ->where('courseID', $courseID)
+                            ->where('status', 'Accessible')->get();
+        if(count($userpayments) == 0){
+            return redirect('/coursesDescription/'.$courseID);
+        }else{
+            return redirect('/courseContent');
+        }
     }
 }

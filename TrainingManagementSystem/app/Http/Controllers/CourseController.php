@@ -12,7 +12,7 @@ class CourseController extends Controller
     public function course(){
         return view('courses/course');
     }
-   // public function customerService($id){
+   public function courseContent(){
     //courseid, userid
 //     $id = Courses::all()->where('courseName', 'Customer Service')
 //     $userid = Auth::user()->id;
@@ -21,8 +21,8 @@ class CourseController extends Controller
 //         if(Auth::user()->paymentStatus == 'Pending'){
 //             return redirect('/paypalPayment');
 //         }
-//         return view('courses/customerService');
-//     }
+        return view('courses/courseContent');
+    }
 
     public function coursesDescription($id){
         $courses = Courses::find($id);
@@ -44,22 +44,38 @@ class CourseController extends Controller
     }
     public function validateCourses(Request $request)
      {
-        $request->validate([
-             'courseName'=> 'required',
-             'courseDescription'=> 'required',
-             'courseVideos'=> 'required',
-             'courseNotes'=> 'required'
-        ]);
-        $data = $request->all();
-        Courses::create([
-             'courseName' => $data['courseName'],
-             'courseDescription' => $data['courseDescription'],
-             'courseVideos' => $data['courseVideos'],
-             'courseNotes' => $data['courseNotes'],
-             'courseProfile' => $data['courseProfile']
-        ]);
+        $courses = $request->hasFile('courseVideos');
+        if($courses)
+        {
 
-         return redirect('ViewCourses');
+             $newFile= $request->file('courseVideos');
+             $newFile->store('uploads');
+        }
+        $courses = $request->hasFile('courseNotes');
+        if($courses)
+        {
+
+            $newFile= $request->file('courseNotes');
+            $newFile->store('uploads');
+
+        }
+        $courses = $request->hasFile('courseProfile');
+        if($courses)
+        {
+
+            $newFile= $request->file('courseProfile');
+             $newFile->store('uploads');
+
+        }
+     $courses = new Courses([
+     "courseName" => $request->get('courseName'),
+     "courseDescription" => $request->get('courseDescription'),
+     "courseVideos" => $request->courseVideos,
+     "courseNotes" => $request->courseNotes,
+     "courseProfile"=> $request->courseProfile
+     ]);
+     $courses->save();
+     return redirect('ViewCourses');
      }
      public function CoursesEdit($id,Request $request){
         $request->validate([
@@ -78,7 +94,6 @@ class CourseController extends Controller
             $courses->courseNotes = $data['courseNotes'];
             $courses->courseProfile = $data['courseProfile'];
 
-            $courses->save();
 
         return redirect('ViewCourses');
 

@@ -1,5 +1,6 @@
 @include('templates.sideBar')
 
+Aloha
 {{--//--}}
 {{--//use App\Models\Users;--}}
 {{--//use Illuminate\Support\Facades\Auth;--}}

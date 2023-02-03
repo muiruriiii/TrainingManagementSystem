@@ -73,7 +73,6 @@ class PaypalPaymentController extends Controller
                 $payment->amount = $arr['transactions'][0]['amount']['total'];
                 $payment->currency = env('PAYPAL_CURRENCY');
                 $payment->payment_status = $arr['state'];
-                $date = PaypalPayment::all()->where('payment_id',$arr['id']);
 
                 if(Auth::check()){
                     $payment->userID = Auth::user()->id;
@@ -82,14 +81,14 @@ class PaypalPaymentController extends Controller
                     $userpayment->status = 'Accessible';
                 }
 
-
                 $user->paymentStatus = 'Approved';
                 $payment->save();
                 $user->save();
                 $userpayment->save();
 
+                $date = PaypalPayment::all()->where('payment_id',$arr['id']);
 
-                return view('payments/confirm',['transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
+                return view('payments/confirm',['userpayment'=>$userpayment,'transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
 //                 return "Payment is Successful. Your Transaction Id is : " . $arr['id'];
 
             }
