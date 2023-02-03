@@ -79,10 +79,10 @@
                             {{ $dated->created_at }}
                             @endforeach
                         </p>
-                        <div>
-                            <button href="/">Go back Home</button>
-
-                        </div>
+                        <button>
+                            <a style="color: #fff;" href="{{url ('/')}}">Go back Home
+                            </a>
+                        </button>
                         <p style="color: #333;  font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 22px; margin: 0;"></p>
                     </td>
                     <td width="36" style="color: #333;  font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 16px; vertical-align: top;"></td>
