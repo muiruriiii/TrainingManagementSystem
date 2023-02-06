@@ -20,6 +20,7 @@
         <div class="logo_name">TMS</div>
         <i class='bx bx-menu' id="btn" ></i>
     </div>
+
     <ul class="nav-list">
         <li>
             <a style="background: rgb(160,82,45);" href="{{url('/')}}">
@@ -30,35 +31,21 @@
         </li>
 
         <li>
-            <a style="background: rgb(160,82,45);" href="#">
+            <a style="background: rgb(160,82,45);" href="{{url('courseNotes/'.$courseID)}}">
                 <i class='bx bx-note' ></i>
                 <span class="links_name">Course Notes</span>
             </a>
             <span class="tooltip">Course Notes</span>
         </li>
         <li>
-            <a style="background: rgb(160,82,45);" href="#">
+            <a style="background: rgb(160,82,45);" href="{{url('courseVideos/'.$courseID)}}">
                 <i class="bx bx-video"></i>
                 <span class="links_name">Course Videos</span>
             </a>
             <span class="tooltip">Course Videos</span>
         </li>
         <li>
-            <a style="background: rgb(160,82,45);" href="#">
-                <i class='bx bx-notepad' ></i>
-                <span class="links_name">Course Description</span>
-            </a>
-            <span class="tooltip">Course Description</span>
-        </li>
-        <li>
-            <a style="background: rgb(160,82,45);" href="{{url('/mpesaPayment')}}">
-                <i class='bx bx-dollar' ></i>
-                <span class="links_name">Course Payment</span>
-            </a>
-            <span class="tooltip">Course Payment</span>
-        </li>
-        <li>
-            <a style="background: rgb(160,82,45);" href="#">
+            <a style="background: rgb(160,82,45);" href="/logout">
                 <i class='bx bx-log-out' id="log_out" ></i>
                 <span class="links_name">Log Out</span>
             </a>
@@ -68,6 +55,7 @@
             </a>
         </li>
     </ul>
+
 
 
 </div>

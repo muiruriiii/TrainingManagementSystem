@@ -1,4 +1,4 @@
-@include('templates.sideBar')
+@include('templates.dashboardSideBar')
     <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +18,13 @@
 
 <div class="wrapper">
     <div class="inner">
-        <form action="{{url ('/CoursesEdit/'.$courses->id)}}" method="POST">
+        <form action="{{url ('/CoursesEdit/'.$course->id)}}" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
                 <h3> Edit the Course Content </h3>
                 <div class="form-wrapper">
                     <label for="">Course Name</label>
-                    <input type="text" name="courseName" value="{{$courses->courseName}}" class="form-control">
+                    <input type="text" name="courseName" value="{{$course->courseName}}" class="form-control">
                     @if($errors->has('courseName'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('courseName') }}</span>
                     @endif
@@ -33,7 +33,7 @@
 
                 <div class="form-wrapper">
                     <label for="">Course Description</label>
-                    <input type="text" name="courseDescription" value="{{$courses->courseDescription}}" class="form-control">
+                    <input type="text" name="courseDescription" value="{{$course->courseDescription}}" class="form-control">
                     @if($errors->has('courseDescription'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('courseDescription') }}</span>
                     @endif
@@ -44,6 +44,7 @@
                     @if($errors->has('courseVideos'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('courseVideos') }}</span>
                     @endif
+                    <img src = "{{asset($course->courseVideos)}}">
                 </div>
                 <div class="form-wrapper">
                     <label for="">Course Notes</label>
@@ -51,6 +52,15 @@
                     @if($errors->has('courseNotes'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('courseNotes') }}</span>
                     @endif
+                    <img src = "{{asset($course->courseNotes)}}">
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Course Profile</label>
+                    <input type="file" id="myFile" name="courseProfile">
+                    @if($errors->has('courseProfile'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('courseProfile') }}</span>
+                    @endif
+                    <img src = "{{asset($course->courseProfile)}}">
                 </div>
 
                 <button style="rgb(160,82,45);"> Submit</button>

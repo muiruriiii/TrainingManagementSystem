@@ -7,12 +7,11 @@
         @foreach($courses as $course)
         <article class="card card--1">
             <div class="card__img">
-
-                <img src="{{url('storage/app/public/uploads/'.$course->courseProfile)}}">
+                <img src = "{{asset($course->courseProfile)}}">
             </div>
             <a href="{{url ('/checkifPaid/'.$course->id)}}" class="card_link">
                 <div class="card__img--hover">
-                    <img src="{{url('storage/app/public/uploads/'.$course->courseProfile)}}">
+                    <img src = "{{asset($course->courseProfile)}}">
                 </div>
             </a>
             <div class="card__info">

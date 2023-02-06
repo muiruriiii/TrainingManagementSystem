@@ -36,15 +36,15 @@
         </th>
         <th colspan="2">Action</th>
     </tr>
-    @foreach($courses as $course)
+    @foreach($course as $courses)
         <tr>
-            <td>{{ $course-> courseName }}</td>
-            <td>{{ $course-> courseDescription }}</td>
-            <td>{{ $course-> courseVideos }}</td>
-            <td>{{ $course-> courseNotes }}</td>
-            <td>{{ $course-> isDeleted }}</td>
-            <td><a class="editbutton" href="{{url ('EditCourse/'.$course->id) }}">Edit</a></td>
-            <td><a href="{{url ('DeleteCourse/'.$course->id) }}" class="deletebutton">Delete</a></td>
+            <td>{{ $courses-> courseName }}</td>
+            <td>{{ $courses-> courseDescription }}</td>
+            <td>{{ $courses-> courseVideos }}</td>
+            <td>{{ $courses-> courseNotes }}</td>
+            <td>{{ $courses-> isDeleted }}</td>
+            <td><a class="editbutton" href="{{url ('EditCourse/'.$courses->id) }}">Edit</a></td>
+            <td><a href="{{url ('DeleteCourse/'.$courses->id) }}" class="deletebutton">Delete</a></td>
         </tr>
     @endforeach
 </table>

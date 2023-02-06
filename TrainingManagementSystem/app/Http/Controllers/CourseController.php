@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Courses;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Request;
 
@@ -12,21 +13,28 @@ class CourseController extends Controller
     public function course(){
         return view('courses/course');
     }
-   public function courseContent(){
-        return view('courses/courseContent');
+    public function courseContent($id){
+        return view('courses/courseContent', ['courseID'=>$id]);
     }
-
+    public function courseNotes($id){
+        $courses = Courses::find($id);
+        return view('courses/courseNotes', ['courseID'=>$id, 'course'=>$courses]);
+    }
+    public function courseVideos($id){
+            $courses = Courses::find($id);
+            return view('courses/courseVideos',['courseID'=>$id, 'course'=>$courses]);
+    }
     public function coursesDescription($id){
         $courses = Courses::find($id);
         return view('courses/coursesDescription', ['courses'=>$courses]);
     }
     public function ViewCourses(){
         $courses = Courses::all();
-        return view('courses/ViewCourses',['courses'=> $courses]);
+        return view('courses/ViewCourses',['course'=> $courses]);
     }
     public function EditCourse($id){
         $courses = Courses::find($id);
-        return view('courses/EditCourse',['courses'=> $courses]);
+        return view('courses/EditCourse',['courseID'=>$id, 'course'=>$courses]);
     }
     public function DeleteCourse($id){
         $courses = Courses::find($id);
@@ -35,59 +43,45 @@ class CourseController extends Controller
         return redirect('ViewCourses');
     }
     public function validateCourses(Request $request)
-     {
-        $courses = $request->hasFile('courseVideos');
-        if($courses)
-        {
+    {
+        $profileName = time().$request->file('courseProfile')->getClientOriginalName();
+        $path = $request->file('courseProfile')->storeAs('uploads', $profileName, 'public');
 
-             $newFile= $request->file('courseVideos');
-             $newFile->store('uploads');
-        }
-        $courses = $request->hasFile('courseNotes');
-        if($courses)
-        {
+        $videos = time().$request->file('courseVideos')->getClientOriginalName();
+        $path = $request->file('courseVideos')->storeAs('videos', $videos, 'public');
 
-            $newFile= $request->file('courseNotes');
-            $newFile->store('uploads');
+        $notes = time().$request->file('courseNotes')->getClientOriginalName();
+        $path = $request->file('courseNotes')->storeAs('notes', $notes, 'public');
 
-        }
-        $courses = $request->hasFile('courseProfile');
-        if($courses)
-        {
+        $courses = new Courses([
+        "courseName" => $request->get('courseName'),
+        "courseDescription" => $request->get('courseDescription'),
+        "courseVideos" => '/storage/'.$path,
+        "courseNotes" => '/storage/'.$path,
+        "courseProfile"=> '/storage/'.$path
+        ]);
 
-            $newFile= $request->file('courseProfile');
-             $newFile->store('uploads');
-
-        }
-     $courses = new Courses([
-     "courseName" => $request->get('courseName'),
-     "courseDescription" => $request->get('courseDescription'),
-     "courseVideos" => $request->courseVideos,
-     "courseNotes" => $request->courseNotes,
-     "courseProfile"=> $request->courseProfile
-     ]);
-     $courses->save();
-     return redirect('ViewCourses');
+        $courses->save();
+        return redirect('ViewCourses');
      }
      public function CoursesEdit($id,Request $request){
         $request->validate([
-            'courseName'=> 'required',
-            'courseDescription'=> 'required',
-            'courseVideos'=> 'required',
-            'courseNotes'=> 'required',
-            'courseProfile'=> 'required'
+        'courseName'=> 'required',
+        'courseDescription'=> 'required',
+        'courseNotes'=>'required',
+        'courseVideos'=>'required',
+        'courseProfile'=>'required'
         ]);
         $data = $request->all();
 
-        $courses = Courses::find($id);
-            $courses->courseName = $data['courseName'];
-            $courses->courseDescription = $data['courseDescription'];
-            $courses->courseVideos = $data['courseVideos'];
-            $courses->courseNotes = $data['courseNotes'];
-            $courses->courseProfile = $data['courseProfile'];
-
-
-        return redirect('ViewCourses');
+    $courses = Courses::find($id);
+    $courses->courseName = $data['courseName'];
+    $courses->courseDescription = $data['courseDescription'];
+    $courses->courseNotes = $data['courseNotes'];
+    $courses->courseVideos = $data['courseVideos'];
+    $courses->courseProfile = $data['courseProfile'];
+    $roles->save();
+    return redirect('ViewCourses');
 
     }
     public function validatePayment(Request $request){
