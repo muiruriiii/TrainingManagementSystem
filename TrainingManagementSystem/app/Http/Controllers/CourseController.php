@@ -13,14 +13,6 @@ class CourseController extends Controller
         return view('courses/course');
     }
    public function courseContent(){
-    //courseid, userid
-//     $id = Courses::all()->where('courseName', 'Customer Service')
-//     $userid = Auth::user()->id;
-//     $userpayment = UserPayment::all()->where('courseID', $id)->where('userID', $userid)
-//     $userpayment->paymentStatus == 'Accessible'
-//         if(Auth::user()->paymentStatus == 'Pending'){
-//             return redirect('/paypalPayment');
-//         }
         return view('courses/courseContent');
     }
 

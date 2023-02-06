@@ -25,7 +25,6 @@ class AccountsController extends Controller
             'telephoneNumber'=> 'required',
             'email'=> 'required|email|unique:users',
             'roleID'=> 'required',
-            'courseID'=> 'required',
             'password'=> 'required|min:6',
             'confirmPassword'=> 'required|min:6|same:password'
         ]);
@@ -38,7 +37,6 @@ class AccountsController extends Controller
             'telephoneNumber' => $data['telephoneNumber'],
             'email' => $data['email'],
             'roleID' => $data['roleID'],
-            'courseID' => $data['courseID'],
             'password' => Hash::make($data['password'])
         ]);
         return redirect('/login')->with('success','Successful Registration');

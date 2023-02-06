@@ -15,7 +15,6 @@ class Users extends Model
         'telephoneNumber',
         'email',
         'roleID',
-        'courseID',
         'password',
         'userType',
         'paymentStatus',

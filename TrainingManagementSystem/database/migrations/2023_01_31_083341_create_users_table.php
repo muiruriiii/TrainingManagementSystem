@@ -23,8 +23,6 @@ return new class extends Migration
             $table->foreign('roleID')->references('id')->on('roles');
             $table->string('userType')->default('user');
             $table->string('paymentStatus')->default('Pending');
-            $table->integer('courseID')->unsigned();
-            $table->foreign('courseID')->references('id')->on('courses');
             $table->string('password')->nullable();
             $table->boolean('isDeleted')->default(0);
             $table->timestamps();

@@ -70,24 +70,6 @@
             @endif
             </div>
             <div class="form-wrapper">
-                <label for="">Course Name</label>
-                <?php
-                $db = mysqli_connect("localhost", "root", "", "tms");
-                $sql = mysqli_query($db, "SELECT * FROM courses WHERE isDeleted = 0");
-
-                echo "<select class='form-control'  name='courseID' >";
-                while ($row = mysqli_fetch_array($sql)) {
-                ?>
-                <option class="form-control" value="<?php echo$row['id']?>"> <?php echo$row['courseName']; ?> </option>
-                <?php
-                }
-                echo "</select>";
-                ?>
-            @if($errors->has('courseID'))
-                <span style="color: red;" class="text-danger">{{ $errors->first('courseID') }}</span>
-            @endif
-            </div>
-            <div class="form-wrapper">
                 <label for="">Password</label>
                 <input type="password" name="password" class="form-control">
             @if($errors->has('password'))
