@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<h2> View Courses </h2>
+<h2> View Payments </h2>
 
 <table>
     <tr>
