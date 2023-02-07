@@ -44,6 +44,13 @@ class CourseController extends Controller
     }
     public function validateCourses(Request $request)
     {
+        $request->validate([
+                'courseName'=> 'required',
+                'courseDescription'=> 'required',
+                'courseNotes'=>'required',
+                'courseVideos'=>'required',
+                'courseProfile'=>'nullable'
+        ]);
         $profileName = time().$request->file('courseProfile')->getClientOriginalName();
         $pathProfile = $request->file('courseProfile')->storeAs('uploads', $profileName, 'public');
 
@@ -64,7 +71,7 @@ class CourseController extends Controller
         $courses->save();
         return redirect('ViewCourses');
      }
-     public function CoursesEdit($id,Request $request){
+    public function CoursesEdit($id,Request $request){
         $request->validate([
         'courseName'=> 'required',
         'courseDescription'=> 'required',
@@ -72,17 +79,27 @@ class CourseController extends Controller
         'courseVideos'=>'required',
         'courseProfile'=>'required'
         ]);
-        $data = $request->all();
+        if($request->courseProfile){
+            $profileName = time() . '.' . $request->courseProfile->getClientOriginalName();
+            $pathProfile = $request->courseProfile->storeAs('uploads', $profileName, 'public');
+        }
+        if($request->courseNotes){
+            $notes = time() . '.' . $request->courseNotes->getClientOriginalName();
+            $pathNotes = $request->courseNotes->storeAs('notes', $notes, 'public');
+        }
+        if($request->courseVideos){
+            $videos = time() . '.' . $request->courseVideos->getClientOriginalName();
+            $pathVideos = $request->courseVideos->storeAs('videos', $videos, 'public');
+        }
+            $courses = Courses::find($id);
+            $courses->courseName = $request->get('courseName');
+            $courses->courseDescription = $request->get('courseDescription');
+            $courses->courseNotes =  '/storage/'.$pathNotes;
+            $courses->courseVideos =  '/storage/'.$pathVideos;
+            $courses->courseProfile =  '/storage/'.$pathProfile;
 
-    $courses = Courses::find($id);
-    $courses->courseName = $data['courseName'];
-    $courses->courseDescription = $data['courseDescription'];
-    $courses->courseNotes = $data['courseNotes'];
-    $courses->courseVideos = $data['courseVideos'];
-    $courses->courseProfile = $data['courseProfile'];
-    $courses->save();
-    return redirect('ViewCourses');
-
+       $courses->save();
+       return redirect('ViewCourses');
     }
     public function validatePayment(Request $request){
         $request->validate([

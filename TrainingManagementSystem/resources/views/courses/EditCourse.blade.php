@@ -18,7 +18,7 @@
 
 <div class="wrapper">
     <div class="inner">
-        <form action="{{url ('/CoursesEdit/'.$course->id)}}" method="POST">
+        <form action="{{url ('/CoursesEdit/'.$course->id)}}" enctype="multipart/form-data" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
                 <h3> Edit the Course Content </h3>
@@ -44,7 +44,10 @@
                     @if($errors->has('courseVideos'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('courseVideos') }}</span>
                     @endif
-                    <img src = "{{asset($course->courseVideos)}}">
+                    <video style="width: 320px" controls>
+                        <source src="{{asset($course->courseVideos)}}" type="video/mp4">
+                    </video>
+{{--                     <img src = "{{asset($course->courseVideos)}}">--}}
                 </div>
                 <div class="form-wrapper">
                     <label for="">Course Notes</label>
@@ -52,7 +55,9 @@
                     @if($errors->has('courseNotes'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('courseNotes') }}</span>
                     @endif
-                    <img src = "{{asset($course->courseNotes)}}">
+                    <iframe src="{{asset($course->courseNotes)}}">
+                    </iframe>
+{{--                    <img src = "{{asset($course->courseNotes)}}">--}}
                 </div>
                 <div class="form-wrapper">
                     <label for="">Course Profile</label>
