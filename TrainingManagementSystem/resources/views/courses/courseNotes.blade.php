@@ -1,7 +1,6 @@
 @include('templates.sideBar')
-<h3 id="heading"> Course Notes</h3>
+
+<center><iframe class="pdf" src="{{asset($course->courseNotes)}}">
+</iframe></center>
 
 
-<img src = "{{asset($course->courseNotes)}}">
-
-</div>

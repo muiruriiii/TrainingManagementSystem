@@ -197,6 +197,13 @@ form {
         padding-right: 15px;
         padding-left: 15px;
 }
+.pdf{
+    height:1000px;
+    width:100%;
 
-
-/*# sourceMappingURL=style.css.map */
+}
+.video
+{
+    width: 1000px;
+    height: 500px;
+}

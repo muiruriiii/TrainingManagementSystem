@@ -10,6 +10,11 @@
 
         </div>
         <div>
+            <p>
+                To access a course, kindly <a style="color:rgb(160,82,45);" href="{{url('/login')}}"> log in </a> then make payment
+            </p>
+        </div>
+        <div>
         <button>
             <a style="color: #fff;" href="{{url ('/paypalPayment/'.$courses->id)}}"> Make Payment
             </a>

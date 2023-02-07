@@ -45,20 +45,20 @@ class CourseController extends Controller
     public function validateCourses(Request $request)
     {
         $profileName = time().$request->file('courseProfile')->getClientOriginalName();
-        $path = $request->file('courseProfile')->storeAs('uploads', $profileName, 'public');
+        $pathProfile = $request->file('courseProfile')->storeAs('uploads', $profileName, 'public');
 
         $videos = time().$request->file('courseVideos')->getClientOriginalName();
-        $path = $request->file('courseVideos')->storeAs('videos', $videos, 'public');
+        $pathVideos = $request->file('courseVideos')->storeAs('videos', $videos, 'public');
 
         $notes = time().$request->file('courseNotes')->getClientOriginalName();
-        $path = $request->file('courseNotes')->storeAs('notes', $notes, 'public');
+        $pathNotes = $request->file('courseNotes')->storeAs('notes', $notes, 'public');
 
         $courses = new Courses([
         "courseName" => $request->get('courseName'),
         "courseDescription" => $request->get('courseDescription'),
-        "courseVideos" => '/storage/'.$path,
-        "courseNotes" => '/storage/'.$path,
-        "courseProfile"=> '/storage/'.$path
+        "courseVideos" => '/storage/'.$pathVideos,
+        "courseNotes" => '/storage/'.$pathNotes,
+        "courseProfile"=> '/storage/'.$pathProfile
         ]);
 
         $courses->save();
@@ -80,7 +80,7 @@ class CourseController extends Controller
     $courses->courseNotes = $data['courseNotes'];
     $courses->courseVideos = $data['courseVideos'];
     $courses->courseProfile = $data['courseProfile'];
-    $roles->save();
+    $courses->save();
     return redirect('ViewCourses');
 
     }
