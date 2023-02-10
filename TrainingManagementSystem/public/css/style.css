@@ -388,11 +388,12 @@ a, a:hover {
     width: 100%;
 
 }
-/*h2{*/
-/*    padding-top: 30px;*/
-/*    text-align: center;*/
-/*    color: rgb(160,82,45);;*/
-/*}*/
+h2{
+    padding-top: 30px;
+    text-align: center;
+    color: rgb(160,82,45);
+    font-family: 'Raleway', sans-serif;
+}
 
 *{
     box-sizing: border-box;
@@ -577,6 +578,8 @@ h3 {
     font-size: 22px;
     text-align: center;
     margin: 32px;
+    margin-right: 2px;
+    margin-left: 2px;
     color: #333;
     letter-spacing: 2px;
 }
@@ -593,7 +596,7 @@ button {
     background: rgb(160,82,45);
     font-size: 14px;
     text-transform: uppercase;
-    font-family: "Muli-SemiBold";
+    font-family: 'Raleway', sans-serif;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);

@@ -27,20 +27,7 @@
             </a>
             <span class="tooltip">Dashboard</span>
         </li>
-        <li>
-            <a style="background: rgb(160,82,45);" href="{{url('role')}}">
-                <i class="bx bx-user"></i>
-                <span class="links_name">Add a Role</span>
-            </a>
-            <span class="tooltip">Add a Role</span>
-        </li>
-        <li>
-            <a style="background: rgb(160,82,45);" href="{{url('course')}}">
-                <i class='bx bx-note' ></i>
-                <span class="links_name">Add a Course</span>
-            </a>
-            <span class="tooltip">Add a Course</span>
-        </li>
+
         <li>
             <a style="background: rgb(160,82,45);" href="{{url('ViewRoles')}}">
                 <i class='bx bx-group' ></i>
@@ -48,6 +35,7 @@
             </a>
             <span class="tooltip">View Roles</span>
         </li>
+
         <li>
             <a style="background: rgb(160,82,45);" href="{{url('ViewCourses')}}">
                 <i class='bx bx-notepad' ></i>
@@ -55,32 +43,34 @@
             </a>
             <span class="tooltip">View Courses</span>
         </li>
-{{--        <li>--}}
-{{--            <a style="background: rgb(160,82,45);" href="{{url('ViewUsers')}}">--}}
-{{--                <i class='bx bx-notepad' ></i>--}}
-{{--                <span class="links_name">View Users</span>--}}
-{{--            </a>--}}
-{{--            <span class="tooltip">View Users</span>--}}
-{{--        </li>--}}
+
         <li>
-            <a style="background: rgb(160,82,45);" href="{{url('ViewPayments')}}">
+            <a style="background: rgb(160,82,45);" href="{{url('ViewUsers')}}">
+                <i class='bx bx-group' ></i>
+                <span class="links_name">View Users</span>
+            </a>
+            <span class="tooltip">View Users</span>
+        </li>
+
+        <li>
+            <a style="background: rgb(160,82,45);" href="{{url('ViewPaypalPayments')}}">
                 <i class='bx bx-dollar' ></i>
                 <span class="links_name">View Payments</span>
             </a>
             <span class="tooltip">View Payments</span>
         </li>
+
         <li>
             <a style="background: rgb(160,82,45);" href="{{url('logout')}}">
                 <i class='bx bx-log-out' id="log_out" ></i>
                 <span class="links_name">Log Out</span>
             </a>
-
             <a style="background: rgb(160,82,45);" href="{{url('logout')}}">
                 <span class="tooltip">Log Out</span>
             </a>
         </li>
-    </ul>
 
+    </ul>
 
 </div>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

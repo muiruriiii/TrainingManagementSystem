@@ -15,13 +15,13 @@
 </head>
 
 <body>
-
 <div class="wrapper">
     <div class="inner">
         <form action="/roles" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
-                <h3> Add a New Role </h3>
+                <h3 id="heading"> ROLES </h3>
+                    <h3 id="heading">Add |<a id="heading" href="ViewRoles"> View</a></h3>
                 <div class="form-wrapper">
                     <label for="">Role Name</label>
                     <input type="text" name="roleName" class="form-control">

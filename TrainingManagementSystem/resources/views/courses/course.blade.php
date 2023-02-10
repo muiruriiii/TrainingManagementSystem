@@ -21,7 +21,10 @@
         <form action="/course" enctype="multipart/form-data" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
-                <h3> Add a New Course </h3>
+                <h3 id="heading"> COURSES </h3>
+                <center>
+                    <h3 id="heading">Add | <a id="heading" href="ViewCourses">View</a>  </h3>
+                </center>
                 <div class="form-wrapper">
                     <label for="">Course Name</label>
                     <input type="text" name="courseName" class="form-control">

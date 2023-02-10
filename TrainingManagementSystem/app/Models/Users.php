@@ -20,5 +20,10 @@ class Users extends Model
         'paymentStatus',
         'isDeleted'
     ];
+    //To display the role name on the view users table
+    public function roles()
+    {
+        return $this->belongsTo(Roles::class, 'roleID','id');
+    }
 
 }

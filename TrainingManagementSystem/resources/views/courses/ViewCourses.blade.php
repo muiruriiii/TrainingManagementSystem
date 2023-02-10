@@ -21,8 +21,10 @@
 </head>
 <body>
 
-<h3 id="heading"> View Courses </h3>
-
+<h3 id="heading"> COURSES </h3>
+<center>
+    <h3 id="heading">View | <a id="heading" href="course">Add</a>  </h3>
+</center>
 <table>
     <tr>
         <th>Course Name</th>

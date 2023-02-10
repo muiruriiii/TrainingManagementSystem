@@ -119,9 +119,9 @@ class CourseController extends Controller
          return redirect('/')->with('success','Successful Payment');
 
     }
-    public static function getCourseName($id){
-        $course = Courses::find($id);
-        return $course->courseName;
-    }
+//     public static function getCourseName($id){
+//         $course = Courses::find($id);
+//         return $course->courseName;
+//     }
 
 }

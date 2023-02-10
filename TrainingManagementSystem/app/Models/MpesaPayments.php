@@ -15,5 +15,9 @@ class MpesaPayments extends Model
     'phoneNumber',
     'userID'
     ];
-
+//To display the user's name on the view payments table
+    public function users()
+    {
+        return $this->belongsTo(Users::class, 'userID','id');
+    }
 }

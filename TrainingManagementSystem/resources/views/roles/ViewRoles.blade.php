@@ -20,8 +20,11 @@
 
     </head>
 <body>
+<h3 id="heading"> ROLES </h3>
+{{--<center>--}}
+    <h3 id="heading">View |<a id="heading" href="role"> Add</a></h3>
 
-<h3 id="heading"> View Roles </h3>
+{{--</center>--}}
 <table>
     <tr>
         <th>Role Name</th>

@@ -45,7 +45,7 @@ class AccountsController extends Controller
 
     }
     public function ViewUsers(){
-        $users = Users::all();
+        $users = Users::paginate(1);
         return view('accounts/ViewUsers',['users'=> $users]);
     }
     public function DeleteUsers($id){
@@ -85,6 +85,7 @@ class AccountsController extends Controller
 
         return redirect('login');
     }
+
 
 
 }
