@@ -73,7 +73,7 @@ class PaypalPaymentController extends Controller
                 $payment->amount = $arr['transactions'][0]['amount']['total'];
                 $payment->currency = env('PAYPAL_CURRENCY');
                 $payment->payment_status = $arr['state'];
-
+    //To store the id of the user making the payment in the userpayments table and to retrieve the last payment made and change the status to Accessible
                 if(Auth::check()){
                     $payment->userID = Auth::user()->id;
                     $user = Users::find(Auth::user()->id);

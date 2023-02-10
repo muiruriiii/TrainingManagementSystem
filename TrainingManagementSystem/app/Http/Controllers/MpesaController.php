@@ -3,21 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Carbon;
-use App\Models\MpesaTransaction;
+use App\Models\MpesaPayments;
+use App\Models\UserPayments;
+use App\Models\Courses;
+use App\Models\Users;
+use Illuminate\Support\Facades\Log;
+
 
 class MpesaController extends Controller
 {
-    public function lipa(){
-        return view('payments/mpesaPayment');
+    public function lipa($id){
+    $courses = Courses::find($id);
+        UserPayments::create([
+         'courseID'=>$courses->id,
+         'userID'=>Auth::user()->id
+        ]);
+        return view('payments/mpesaPayment',['courses'=>$courses]);
     }
 //STK Push Simulation
     public function stkSimulation()
     {
         $mpesa = new \Safaricom\Mpesa\Mpesa();
         $BusinessShortCode=174379;
-        $LipaNaMpesaPasskey="bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
+        $LipaNaMpesaPasskey="";
         $TransactionType="CustomerPayBillOnline";
         $Amount="1";
         $PartyA="";
@@ -75,7 +86,7 @@ class MpesaController extends Controller
     }
     public function stkPush(Request $request)
     {
-        $user = $request->user;
+
         $amount = $request->amount;
         $phone =  $request->phone;
         $formatedPhone = substr($phone, 1); //7*******
@@ -92,7 +103,7 @@ class MpesaController extends Controller
         'PartyA' => $phoneNumber,
         'PartyB' => 174379,
         'PhoneNumber' => $phoneNumber,
-        'CallBackURL' => 'http://8d8b-41-80-107-56.ngrok.io/api/stk/push/callback/url',
+        'CallBackURL' => 'https://b258-105-162-23-59.ngrok.io/api/stk/push/callback/url',
         'AccountReference' => "TMS Tester Payment",
         'TransactionDesc' => "Lipa Na M-PESA"
         ];
@@ -106,22 +117,57 @@ class MpesaController extends Controller
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
         $curl_response = curl_exec($curl);
-        return redirect('/');
+
+        return redirect('/mpesaConfirm');
 
     }
     public function MpesaRes(Request $request)
     {
         $response = json_decode($request->getContent());
+        $responseData = $response->Body->stkCallback->CallbackMetadata;
+        $responseCode = $response->Body->stkCallback->ResultCode;
+        $responseMessage=$response->Body->stkCallback->ResultDesc;
+        $amount=$responseData->Item[0]->Value;
+        $mpesaTransactionID=$responseData->Item[1]->Value;
+        $phoneNumber=$responseData->Item[4]->Value;
+        Log::info(json_encode($responseData));
 
-        $trn = new MpesaTransaction;
-        $trn->response = json_encode($response);
-        $trn->PhoneNumber = $response->PhoneNumber;
-        $trn->save();
+        $mpesaPayment = new MpesaPayments();
+        $mpesaPayment->courseAmount = $amount;
+        $mpesaPayment->transactionID = $mpesaTransactionID;
+        $mpesaPayment->phoneNumber = $phoneNumber;
+        $mpesaPayment->save();
+
+        Log::info($mpesaPayment);
     }
-    public function confirm(){
-    //compare codes and validate pay
-        return view('payments/confirm');
+    public function mpesaConfirm(){
+        $userpayment = UserPayments::all()->where('userID', Auth::user()->id)->last();
+        if($userpayment->status == 'Accessible'){
+            return view('payments/mpesaConfirm');
+        }else{
+           return view('payments/mpesaConfirm');
+        }
     }
+//To check if the transaction code in the database is similar to the one entered by the user
+    public function confirmTransaction(Request $request){
+        $mpesaPayment = $request->transaction;
+        $allmpesaTransaction = MpesaPayments::all()->where('transactionID',$mpesaPayment)->first();
+//If similar the status is set to Accessible and user ID of the logged in user is set
+        if($allmpesaTransaction){
+            $user = Users::find(Auth::user()->id);
+            $allmpesaTransaction->userID = Auth::user()->id;
+            $userpayment = UserPayments::all()->where('userID',Auth::user()->id)->last();
+
+            $userpayment->status = 'Accessible';
+            $user->paymentStatus = 'Approved';
+            $allmpesaTransaction->save();
+            $user->save();
+            $userpayment->save();
+
+            return redirect ('paidCoursePage/'.$userpayment->courseID);
+        }
+    }
+
 
 
 

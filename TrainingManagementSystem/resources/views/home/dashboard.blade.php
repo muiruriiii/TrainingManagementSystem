@@ -18,17 +18,17 @@
         </div>
     </div>
 
-        <div style="box-shadow: 0 4px 8px 0 black;"class="card">
-            <div>
-                <div class="numbers">
-                    {{$coursesPaid}}
-                </div>
-                <a style="text-decoration: none;" href="" class="cardName">COURSES PAID FOR</a>
-            </div>
-            <div class="iconBox">
-                <ion-icon name="logo-usd"></ion-icon>
-            </div>
-        </div>
+{{--        <div style="box-shadow: 0 4px 8px 0 black;"class="card">--}}
+{{--            <div>--}}
+{{--                <div class="numbers">--}}
+{{--                    {{$coursesPaid}}--}}
+{{--                </div>--}}
+{{--                <a style="text-decoration: none;" href="" class="cardName">COURSES PAID FOR</a>--}}
+{{--            </div>--}}
+{{--            <div class="iconBox">--}}
+{{--                <ion-icon name="logo-usd"></ion-icon>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         <div style="box-shadow: 0 4px 8px 0 black;"class="card">
             <div>

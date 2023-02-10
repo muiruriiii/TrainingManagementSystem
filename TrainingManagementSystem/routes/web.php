@@ -38,7 +38,8 @@ use Illuminate\Support\Facades\Hash;
 
             })->name('index');
 
-    Route::get('/about', [AboutController::class, 'about'])->name('about');
+    Route::get('/services', [HomeController::class, 'services'])->name('services');
+    Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
     Route::controller(AccountsController::class)->group(function(){
         Route::get('/register','register')->name('register');
@@ -84,7 +85,10 @@ use Illuminate\Support\Facades\Hash;
     Route::controller(MpesaController::class)->group(function(){
         Route::get('/confirm','confirm')->name('confirm');
         Route::post('/lipa','stkPush')->name('stkPush');
-        Route::get('/mpesaPayment','lipa')->name('lipa');
+        Route::get('/mpesaPayment/{id}','lipa')->name('lipa');
+        Route::get('/mpesaConfirm','mpesaConfirm')->name('mpesaConfirm');
+        Route::post('/confirmTransaction','confirmTransaction')->name('confirmTransaction');
+
     });
     Route::controller(UserPaymentsController::class)->group(function(){
         Route::post('/userPayments/{id}','userPayments')->name('userPayment');
