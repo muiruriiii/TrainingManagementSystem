@@ -30,7 +30,7 @@ class CourseController extends Controller
         return view('courses/coursesDescription', ['courses'=>$courses]);
     }
     public function ViewCourses(){
-        $courses = Courses::all();
+        $courses = Courses::paginate(1);
         return view('courses/ViewCourses',['course'=> $courses]);
     }
     public function EditCourse($id){

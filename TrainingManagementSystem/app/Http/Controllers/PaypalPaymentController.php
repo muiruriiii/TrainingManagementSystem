@@ -107,7 +107,7 @@ class PaypalPaymentController extends Controller
     }
 
     public function ViewPaypalPayments(){
-        $paypalpayments = PaypalPayment::all();
+        $paypalpayments = PaypalPayment::paginate(1);
         return view('payments/ViewPaypalPayments',['paypalpayments'=> $paypalpayments]);
     }
     public function paypalConfirm(){

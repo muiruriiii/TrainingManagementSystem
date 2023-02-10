@@ -21,7 +21,7 @@ class RoleController extends Controller
          return redirect('ViewRoles');
      }
     public function ViewRoles(){
-        $roles = Roles::all();
+        $roles = Roles::paginate(1);
         return view('roles/ViewRoles',['roles'=> $roles]);
     }
     public function validateRoles(Request $request)

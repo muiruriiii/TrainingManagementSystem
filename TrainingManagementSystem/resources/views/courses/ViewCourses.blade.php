@@ -21,8 +21,7 @@
 </head>
 <body>
 
-<h2> View Courses </h2>
-
+<h3 id="heading"> View Courses </h3>
 
 <table>
     <tr>
@@ -48,6 +47,9 @@
         </tr>
     @endforeach
 </table>
-
+    <div class="d-flex justify-content-center">
+        {{--    To display on each side of the selected page if the pages are too many--}}
+        {{$course->onEachSide(1)->links()}}
+    </div>
 </body>
 </html>

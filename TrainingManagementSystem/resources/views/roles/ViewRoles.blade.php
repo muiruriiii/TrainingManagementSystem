@@ -21,8 +21,7 @@
     </head>
 <body>
 
-<h2>View Roles</h2>
-
+<h3 id="heading"> View Roles </h3>
 <table>
     <tr>
         <th>Role Name</th>
@@ -43,6 +42,10 @@
     </tr>
     @endforeach
 </table>
+    <div class="d-flex justify-content-center">
+        {{--    To display on each side of the selected page if the pages are too many--}}
+        {{$roles->onEachSide(1)->links()}}
+    </div>
 
 </body>
 </html>
