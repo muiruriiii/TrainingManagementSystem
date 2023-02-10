@@ -88,7 +88,7 @@ class PaypalPaymentController extends Controller
 
                 $date = PaypalPayment::all()->where('payment_id',$arr['id']);
 
-                return view('payments/confirm',['userpayment'=>$userpayment,'transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
+                return view('payments/paypalConfirm',['userpayment'=>$userpayment,'transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
 //                 return "Payment is Successful. Your Transaction Id is : " . $arr['id'];
 
             }
@@ -106,8 +106,11 @@ class PaypalPaymentController extends Controller
         return 'User declined the payment!';
     }
 
-    public function ViewPayments(){
+    public function ViewPaypalPayments(){
         $paypalpayments = PaypalPayment::all();
-        return view('payments/ViewPayments',['paypalpayments'=> $paypalpayments]);
+        return view('payments/ViewPaypalPayments',['paypalpayments'=> $paypalpayments]);
+    }
+    public function paypalConfirm(){
+        return view('payments/paypalConfirm');
     }
 }

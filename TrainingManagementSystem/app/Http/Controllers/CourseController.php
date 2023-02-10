@@ -14,7 +14,8 @@ class CourseController extends Controller
         return view('courses/course');
     }
     public function courseContent($id){
-        return view('courses/courseContent', ['courseID'=>$id]);
+        $courses = Courses::find($id);
+        return view('courses/courseContent', ['courses'=>$courses , 'courseID'=>$id]);
     }
     public function courseNotes($id){
         $courses = Courses::find($id);

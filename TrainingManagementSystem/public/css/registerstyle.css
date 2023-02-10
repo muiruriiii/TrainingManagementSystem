@@ -17,10 +17,11 @@ input, textarea, select, button {
 
 p, h1, h2, h3, h4, h5, h6, ul {
     margin: 0;
-    font-family: 'Raleway', sans-serif;}
+    font-family: 'Raleway', sans-serif;
+}
 #heading{
     text-decoration: none;
-    font-family: "Muli-Bold";
+    font-family: 'Raleway', sans-serif;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 22px;
@@ -32,7 +33,6 @@ p, h1, h2, h3, h4, h5, h6, ul {
 #heading:hover{
     border-bottom: solid ;
 }
-
 img {
     max-width: 100%; }
 

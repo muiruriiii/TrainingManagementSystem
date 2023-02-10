@@ -29,8 +29,8 @@ p {
 
 /*h1, h2, h3, h4, h5, h6,*/
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'Nunito';
-    font-weight: 50;
+    font-family: 'Raleway', sans-serif;
+    font-size: 22px;
 }
 a {
     -webkit-transition: .3s all ease;
@@ -388,11 +388,11 @@ a, a:hover {
     width: 100%;
 
 }
-h2{
-    padding-top: 30px;
-    text-align: center;
-    color: rgb(160,82,45);;
-}
+/*h2{*/
+/*    padding-top: 30px;*/
+/*    text-align: center;*/
+/*    color: rgb(160,82,45);;*/
+/*}*/
 
 *{
     box-sizing: border-box;

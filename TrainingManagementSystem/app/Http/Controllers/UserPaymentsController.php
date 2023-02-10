@@ -12,7 +12,8 @@ class UserPaymentsController extends Controller
 {
     public function paidCoursePage($courseID)
     {
-        return view('courses/courseContent',['courseID'=>$courseID]);
+        $courses = Courses::find($courseID);
+        return view('courses/courseContent',['courses'=>$courses,'courseID'=>$courseID]);
     }
     public function checkifPaid($courseID){
         $userpayments = UserPayments::select('*')->where('userID', Auth::user()->id)

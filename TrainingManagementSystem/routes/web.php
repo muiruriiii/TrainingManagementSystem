@@ -77,7 +77,8 @@ use Illuminate\Support\Facades\Hash;
     });
     Route::controller(PaypalPaymentController::class)->group(function(){
         Route::get('/paypalPayment/{id}','payment')->name('payment');
-        Route::get('/ViewPayments','ViewPayments')->name('ViewPayments');
+        Route::get('/paypalConfirm','paypalConfirm')->name('paypalConfirm');
+        Route::get('/ViewPaypalPayments','ViewPaypalPayments')->name('ViewPaypalPayments');
         Route::post('/payment','pay');
         Route::get('/success','success');
         Route::get('/errorOccurred','errorOccurred');
@@ -88,6 +89,7 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/mpesaPayment/{id}','lipa')->name('lipa');
         Route::get('/mpesaConfirm','mpesaConfirm')->name('mpesaConfirm');
         Route::post('/confirmTransaction','confirmTransaction')->name('confirmTransaction');
+        Route::get('/ViewMpesaPayments','ViewMpesaPayments')->name('ViewMpesaPayments');
 
     });
     Route::controller(UserPaymentsController::class)->group(function(){
