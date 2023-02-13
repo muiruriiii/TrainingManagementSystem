@@ -30,7 +30,7 @@
 
                 <div class="form-wrapper">
                     <label for="">Transaction Code</label>
-                    <input type="text" id="transaction" name="transaction" class="form-control" placeholder="e.g. RB97B5WMYN">
+                    <input type="text" id="transaction" name="transaction" class="form-control" placeholder="e.g. RBD4KM3EFU">
                     <br>
                 </div>
                 <div>

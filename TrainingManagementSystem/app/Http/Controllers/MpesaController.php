@@ -17,11 +17,11 @@ class MpesaController extends Controller
 {
     public function lipa($id){
     $courses = Courses::find($id);
-        UserPayments::create([
-         'courseID'=>$courses->id,
-         'userID'=>Auth::user()->id
-        ]);
-        return view('payments/mpesaPayment',['courses'=>$courses]);
+//     UserPayments::create([
+//         'courseID'=>$courses->id,
+//         'userID'=>Auth::user()->id
+//     ]);
+    return view('payments/mpesaPayment',['courses'=>$courses]);
     }
 //STK Push Simulation
     public function stkSimulation()
@@ -84,7 +84,7 @@ class MpesaController extends Controller
 
         return $access_token->access_token;
     }
-    public function stkPush(Request $request)
+    public function stkPush(Request $request, $id)
     {
 
         $amount = $request->amount;
@@ -103,7 +103,7 @@ class MpesaController extends Controller
         'PartyA' => $phoneNumber,
         'PartyB' => 174379,
         'PhoneNumber' => $phoneNumber,
-        'CallBackURL' => 'https://2750-105-162-50-32.ngrok.io/api/stk/push/callback/url',
+        'CallBackURL' => 'https://9c7f-41-80-108-126.ngrok.io/api/stk/push/callback/url',
         'AccountReference' => "TMS Tester Payment",
         'TransactionDesc' => "Lipa Na M-PESA"
         ];
@@ -117,7 +117,11 @@ class MpesaController extends Controller
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
         $curl_response = curl_exec($curl);
-
+        $courses = Courses::find($id);
+        UserPayments::create([
+            'courseID'=>$courses->id,
+            'userID'=>Auth::user()->id
+        ]);
         return redirect('/mpesaConfirm');
 
     }
@@ -138,6 +142,7 @@ class MpesaController extends Controller
         $mpesaPayment->phoneNumber = $phoneNumber;
         $mpesaPayment->save();
 
+
         Log::info($mpesaPayment);
     }
     public function mpesaConfirm(){
@@ -145,7 +150,7 @@ class MpesaController extends Controller
         if($userpayment->status == 'Accessible'){
             return view('payments/mpesaConfirm');
         }else{
-           return view('payments/mpesaConfirm');
+           return view('payments/mpesaPayment');
         }
     }
 //To check if the transaction code in the database is similar to the one entered by the user
@@ -163,6 +168,7 @@ class MpesaController extends Controller
             $allmpesaTransaction->save();
             $user->save();
             $userpayment->save();
+
             return redirect ('paidCoursePage/'.$userpayment->courseID);
         }
     }

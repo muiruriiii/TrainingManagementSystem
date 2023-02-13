@@ -22,7 +22,7 @@
             @csrf
             <div style="width: 500px;" class="container">
                 <h3> Course Payment  </h3>
-                <h3><a id="heading" href="{{url('/mpesaPayment/'.$courses->id)}}">M-Pesa</a> | Paypal  </h3>
+                <h3 style="color: rgb(160,82,45); ">Paypal | <a id="heading" href="{{url('/mpesaPayment/'.$courses->id)}}">M-Pesa</a></h3>
                 <div class="form-wrapper">
                 <label>Course Name</label>
                     <input type="text" name="courseID" class="form-control" value="{{$courses->courseName}}" readonly>

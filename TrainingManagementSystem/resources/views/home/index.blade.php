@@ -1,9 +1,8 @@
 @include('templates.header')
 <div>
-
     <img class="hrimage" src="{{ asset('images/training4.jpg') }}" alt="Hr Training">
     <h2>OUR COURSES </h2>
-    <section id="services" class="cards">
+    <section id="courses" class="cards">
         @foreach($courses as $course)
         <article class="card card--1">
             <div class="card__img">
@@ -23,8 +22,10 @@
             </div>
         </article>
             @endforeach
-
     </section>
+
+
+
 
 </div>
 

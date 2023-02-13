@@ -20,7 +20,9 @@
         <form action="{{url ('/register')}}" method="POST">
             @csrf
             <div class="container">
-            <h3>Register | <a id="heading" href="login">Login</a>  </h3>
+            <h3 style="color: rgb(160,82,45); ">
+                Register | <a id="heading" href="login">Login</a>
+            </h3>
             <div class="form-group">
                 <div class="form-wrapper">
                     <label for="">First Name</label>
@@ -71,30 +73,38 @@
             </div>
             <div class="form-wrapper">
                 <label for="">Password</label>
-                <input type="password" name="password" class="form-control">
+                <input id="myInput" type="password" name="password" class="form-control">
             @if($errors->has('password'))
                 <span style="color: red;" class="text-danger">{{ $errors->first('password') }}</span>
             @endif
             </div>
             <div class="form-wrapper">
                 <label for="">Confirm Password</label>
-                <input type="password" name="confirmPassword" class="form-control">
+                <input id="confirmInput" type="password" name="confirmPassword" class="form-control">
             @if($errors->has('confirmPassword'))
                 <span style="color: red;" class="text-danger">{{ $errors->first('confirmPassword') }}</span>
             @endif
             </div>
+                <input type="checkbox" onclick="myFunction()">Show Password
                 <input type="hidden" name="userType" value="user">
-{{--            <div class="checkbox">--}}
-{{--                <label>--}}
-{{--                    <input type="checkbox"> I caccept the Terms of Use & Privacy Policy.--}}
-{{--                    <span class="checkmark"></span>--}}
-{{--                </label>--}}
-{{--            </div>--}}
             <button style="rgb(160,82,45);">Register Now</button>
             </div>
         </form>
     </div>
 </div>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myInput");
+        var y = document.getElementById("confirmInput");
+        if (x.type === "password" && y.type === "password") {
+            x.type = "text";
+            y.type = "text";
+        } else {
+            x.type = "password";
+            y.type = "password";
+        }
+    }
+</script>
+</body>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-</html>
+

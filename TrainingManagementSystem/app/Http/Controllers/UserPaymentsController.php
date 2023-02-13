@@ -17,13 +17,18 @@ class UserPaymentsController extends Controller
     }
     //To check if a user has paid for a course or not on the user payments table. If no payment has been made by that user then redirect to course description page
     public function checkifPaid($courseID){
-        $userpayments = UserPayments::select('*')->where('userID', Auth::user()->id)
-                        ->where('courseID', $courseID)
-                        ->where('status', 'Accessible')->get();
-        if(count($userpayments) == 0){
-            return redirect('/coursesDescription/'.$courseID);
+        if(Auth::check())
+        {
+            $userpayments = UserPayments::select('*')->where('userID', Auth::user()->id)
+                            ->where('courseID', $courseID)
+                            ->where('status', 'Accessible')->get();
+            if(count($userpayments) == 0){
+                return redirect('/coursesDescription/'.$courseID);
+            }else{
+                return redirect('/courseContent/'.$courseID);
+            }
         }else{
-            return redirect('/courseContent/'.$courseID);
+            return redirect('/login');
         }
     }
 }

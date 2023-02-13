@@ -9,7 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class RoleController extends Controller
 {
     public function role(){
-        return view('roles/role');
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            return view('roles/role');
+        }
     }
     public function EditRole($id){
         if(Auth::user()->userType != 'admin'){

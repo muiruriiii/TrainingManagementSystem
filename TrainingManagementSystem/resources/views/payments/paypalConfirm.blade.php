@@ -43,7 +43,7 @@
                     <td width="36" style="color: #333;  font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 16px; vertical-align: top;"></td>
                     <td style="color: #333;  font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 16px; vertical-align: top;">
                         <p style="color: #333;  font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 22px; margin: 0;">
-                            Hi,
+                            Hi, {{ $user->firstName .' '.$user->lastName }}
                         </p>
                     </td>
                     <td width="36" style="color: #333;  font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 16px; vertical-align: top;"></td>

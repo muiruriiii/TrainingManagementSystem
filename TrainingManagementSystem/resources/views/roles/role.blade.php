@@ -21,7 +21,7 @@
             @csrf
             <div style="width: 500px;" class="container">
                 <h3 id="heading"> ROLES </h3>
-                    <h3 id="heading">Add |<a id="heading" href="ViewRoles"> View</a></h3>
+                    <h3 style="color: rgb(160,82,45);" id="heading">Add |<a id="heading" href="ViewRoles"> View</a></h3>
                 <div class="form-wrapper">
                     <label for="">Role Name</label>
                     <input type="text" name="roleName" class="form-control">

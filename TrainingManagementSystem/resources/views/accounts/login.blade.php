@@ -15,17 +15,14 @@
 </head>
 
 <body>
-{{--@if($message = Session::get('success'))--}}
-{{--    <div class="alert alert-info">--}}
-{{--        {{ $message }}--}}
-{{--    </div>--}}
-{{--@endif--}}
 <div class="wrapper">
     <div class="inner">
         <div style="width: 500px;" class="container">
         <form action="/login" method="POST">
             @csrf
-            <h3><a id="heading" href="{{url('/register')}}">Register</a> | Login  </h3>
+            <h3 style="color: rgb(160,82,45); ">Login |
+                <a id="heading" href="{{url('/register')}}">Register</a>
+            </h3>
             <div class="form-wrapper">
                 <label for="">Email</label>
                 <input type="text" name="email" class="form-control">
@@ -39,24 +36,30 @@
 
             <div class="form-wrapper">
                 <label for="">Password</label>
-                <input type="password" name="password" class="form-control">
+                <input id="myInput" type="password" name="password" class="form-control">
                 @if ($errors->has('password'))
                     <span style="color: red;" class="text-danger">{{ $errors->first('password') }}</span>
                 @endif
                 <br>
+                <input type="checkbox" onclick="myFunction()">Show Password
             </div>
 
             <div>
             <button style="rgb(160,82,45);">Login</button>
             </div>
         </form>
-
-
-{{--            <a href="{{URL('auth/google') }}"> <button>--}}
-{{--        <span>Continue with Google</span></button></a>--}}
-
+        </div>
     </div>
 </div>
-
+<script>
+    function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
 </body>
 </html>

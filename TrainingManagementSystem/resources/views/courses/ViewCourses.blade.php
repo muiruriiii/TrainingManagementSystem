@@ -23,7 +23,7 @@
 
 <h3 id="heading"> COURSES </h3>
 <center>
-    <h3 id="heading">View | <a id="heading" href="course">Add</a>  </h3>
+    <h3 style="color: rgb(160,82,45);" id="heading">View | <a id="heading" href="course">Add</a>  </h3>
 </center>
 <table>
     <tr>

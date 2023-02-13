@@ -16,12 +16,12 @@
 <body>
 <div class="wrapper">
     <div class="inner">
-        <form action="{{URL('/lipa')}}" method="POST">
+        <form action="{{URL('/lipa/'.$courses->id)}}" method="POST">
             @csrf
 
             <div style="width: 500px;" class="container">
                 <h3> Course Payment  </h3>
-                <h3><a id="heading" href="{{url('/paypalPayment/'.$courses->id)}}">Paypal</a> | Mpesa  </h3>
+                <h3 style="color: rgb(160,82,45); ">Mpesa | <a id="heading" href="{{url('/paypalPayment/'.$courses->id)}}">Paypal</a></h3>
                 <div class="form-wrapper">
                     <label>Course Name</label>
                     <input type="text" name="courseID" class="form-control" value="{{$courses->courseName}}" readonly>

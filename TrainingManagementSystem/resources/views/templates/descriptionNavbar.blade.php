@@ -57,7 +57,7 @@
                     <a style="font-family: 'Raleway', sans-serif;" class="nav-link mx-2 font-weight-lighter text-white" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a style="font-family: 'Raleway', sans-serif;" class="nav-link mx-2 font-weight-lighter text-white" href="{{url('/services')}}">Services</a>
+                    <a style="font-family: 'Raleway', sans-serif;" class="nav-link mx-2 font-weight-lighter text-white" href="#">Courses</a>
                 </li>
                 <li class="nav-item">
                     <a style="font-family: 'Raleway', sans-serif;"class="nav-link mx-2 font-weight-lighter text-white" href="#">Contact</a>

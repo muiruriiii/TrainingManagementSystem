@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
+
     <link rel="stylesheet" href="{{asset('css/courseStyle.css')}}">
 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -29,19 +30,19 @@
         </li>
 
         <li>
-            <a style="background: rgb(160,82,45);" href="{{url('ViewRoles')}}">
+            <a style="background: rgb(160,82,45);" href="{{url('role')}}">
                 <i class='bx bx-group' ></i>
-                <span class="links_name">View Roles</span>
+                <span class="links_name">Add a Role</span>
             </a>
-            <span class="tooltip">View Roles</span>
+            <span class="tooltip">Add a Role</span>
         </li>
 
         <li>
-            <a style="background: rgb(160,82,45);" href="{{url('ViewCourses')}}">
+            <a style="background: rgb(160,82,45);" href="{{url('course')}}">
                 <i class='bx bx-notepad' ></i>
-                <span class="links_name">View Courses</span>
+                <span class="links_name">Add a Course</span>
             </a>
-            <span class="tooltip">View Courses</span>
+            <span class="tooltip">Add a Course</span>
         </li>
 
         <li>

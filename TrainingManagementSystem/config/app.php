@@ -181,6 +181,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Illuminate\Auth\AuthServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -214,7 +215,9 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
      'aliases' => [
+        'Auth' => Illuminate\Support\Facades\Auth::class,
         'Mpesa' => \Safaricom\Mpesa\Mpesa\MpesaServiceProvider::class
+
         ],
 
 ];

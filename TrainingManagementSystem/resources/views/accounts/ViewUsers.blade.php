@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<h3 id="heading"> View Users </h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> View Users </h3>
 <table>
     <tr>
         <th>First Name</th>

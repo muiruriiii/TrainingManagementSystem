@@ -11,7 +11,11 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     public function course(){
-        return view('courses/course');
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            return view('courses/course');
+        }
     }
     public function courseContent($id){
         $courses = Courses::find($id);

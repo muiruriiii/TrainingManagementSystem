@@ -85,7 +85,7 @@ use Illuminate\Support\Facades\Hash;
     });
     Route::controller(MpesaController::class)->group(function(){
         Route::get('/confirm','confirm')->name('confirm');
-        Route::post('/lipa','stkPush')->name('stkPush');
+        Route::post('/lipa/{id}','stkPush')->name('stkPush');
         Route::get('/mpesaPayment/{id}','lipa')->name('lipa');
         Route::get('/mpesaConfirm','mpesaConfirm')->name('mpesaConfirm');
         Route::post('/confirmTransaction','confirmTransaction')->name('confirmTransaction');

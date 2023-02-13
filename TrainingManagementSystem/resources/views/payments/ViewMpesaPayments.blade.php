@@ -23,7 +23,7 @@
 
 <h3 id="heading"> View Payments </h3>
 <center>
-<h3 id="heading">Mpesa |<a id="heading" href="ViewPaypalPayments"> Paypal</a></h3>
+<h3 style="color: rgb(160,82,45);" id="heading">Mpesa |<a id="heading" href="ViewPaypalPayments"> Paypal</a></h3>
 </center>
 
 <table>
@@ -38,7 +38,7 @@
             <td>{{ $mpesapayment-> courseAmount }}</td>
             <td>{{ $mpesapayment-> transactionID }}</td>
             <td>{{ $mpesapayment-> phoneNumber }}</td>
-            <td>{{ $mpesapayment-> users->lastName }}</td>
+            <td>{{ $mpesapayment-> users->firstName. ' '.$mpesapayment-> users->lastName}}</td>
         </tr>
     @endforeach
 </table>

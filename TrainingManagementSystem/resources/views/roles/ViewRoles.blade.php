@@ -22,7 +22,7 @@
 <body>
 <h3 id="heading"> ROLES </h3>
 {{--<center>--}}
-    <h3 id="heading">View |<a id="heading" href="role"> Add</a></h3>
+    <h3 style="color: rgb(160,82,45);" id="heading">View |<a id="heading" href="role"> Add</a></h3>
 
 {{--</center>--}}
 <table>

@@ -83,7 +83,7 @@ class PaypalPaymentController extends Controller
                 $userpayment->save();
 
                 $date = PaypalPayment::all()->where('payment_id',$arr['id']);
-                return view('payments/paypalConfirm',['userpayment'=>$userpayment,'transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
+                return view('payments/paypalConfirm',['userpayment'=>$userpayment,'user'=>$user,'transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
 //                 return "Payment is Successful. Your Transaction Id is : " . $arr['id'];
             }
             else{

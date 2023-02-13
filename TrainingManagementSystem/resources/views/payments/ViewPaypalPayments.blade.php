@@ -23,7 +23,7 @@
 
 <h3 id="heading"> View Payments </h3>
 <center>
-<h3 id="heading">Paypal | <a id="heading" href="ViewMpesaPayments">Mpesa</a>  </h3>
+<h3 style="color: rgb(160,82,45);" id="heading">Paypal | <a id="heading" href="ViewMpesaPayments">Mpesa</a>  </h3>
 </center>
 <table>
     <tr>

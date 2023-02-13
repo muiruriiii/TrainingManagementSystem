@@ -46,7 +46,7 @@ use Illuminate\Support\Facades\Auth;
                     <ul class="site-menu main-menu js-clone-nav ml-auto ">
                         <li class="active"><a style="color: rgb(160,82,45);" href="/" class="font-weight-bold">Home</a></li>
                         <li><a href="#about" class="nav-link">About</a></li>
-                        <li><a href="#services" class="nav-link">Services</a></li>
+                        <li><a href="#courses" class="nav-link">Courses</a></li>
                         <li><a href="#contact" class="nav-link">Contact</a></li>
                         <li><a href="{{url('/login')}}" class="nav-link">Account</a></li>
                         <li><a href="{{url('/logout')}}" class="nav-link">Logout</a></li>
