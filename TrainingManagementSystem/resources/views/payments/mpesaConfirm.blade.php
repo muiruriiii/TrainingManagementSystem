@@ -3,33 +3,43 @@
 {{--@else--}}
 {{--    @include('common.header')--}}
 {{--@endif--}}
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mpesa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="{{asset("css/registerstyle.css")}}">
+
+</head>
+
 <body>
-<main>
-    <div>
-        <form method = "post" id = "addForm" action = "{{ url('/confirmTransaction') }}" class="row g-3 form">
-            @csrf
-            <h3 class = "text-center">MPESA Confirmation</h3>
-            @if(session()->has('message'))
-                <div class="alert alert-sucess">
-                    {{ session()->get('message') }}
+
+<div class="wrapper">
+    <div class="inner">
+        <div style="width: 500px;" class="container">
+            <form action="{{ url('/confirmTransaction') }}" method="POST">
+                @csrf
+            <h3 id="heading" class = "text-center">MPESA Confirmation</h3>
+
+                <div class="form-wrapper">
+                    <label for="">Transaction Code</label>
+                    <input type="text" id="transaction" name="transaction" class="form-control" placeholder="e.g. RB97B5WMYN">
+                    <br>
                 </div>
-            @endif
-
-            <div class="col-12">
-                @if($errors->has('transaction'))
-                    <div class = "alert alert-danger" role = "alert">
-                        {{ $errors->first('transaction') }}
-                    </div>
-                @endif
-                <label for="transaction" class="form-label">Transaction Code</label>
-                <input type="text" class="form-control" id="transaction" name = "transaction" placeholder="e.g. RB97B5WMYN">
-            </div>
-
-            <div class="col-12 text-center">
-                <button type="submit">Confirm</button>
-            </div>
-        </form>
-
+                <div>
+                    <button type="submit" style="rgb(160,82,45);">Confirm</button>
+                </div>
+            </form>
+        </div>
     </div>
-</main>
+    </div>
 </body>
+</html>
+

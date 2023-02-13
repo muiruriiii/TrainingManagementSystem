@@ -103,7 +103,7 @@ class MpesaController extends Controller
         'PartyA' => $phoneNumber,
         'PartyB' => 174379,
         'PhoneNumber' => $phoneNumber,
-        'CallBackURL' => 'https://b258-105-162-23-59.ngrok.io/api/stk/push/callback/url',
+        'CallBackURL' => 'https://2750-105-162-50-32.ngrok.io/api/stk/push/callback/url',
         'AccountReference' => "TMS Tester Payment",
         'TransactionDesc' => "Lipa Na M-PESA"
         ];
@@ -163,9 +163,12 @@ class MpesaController extends Controller
             $allmpesaTransaction->save();
             $user->save();
             $userpayment->save();
-
             return redirect ('paidCoursePage/'.$userpayment->courseID);
         }
+    }
+    public function ViewMpesaPayments(){
+        $mpesapayments = MpesaPayments::paginate(1);
+        return view('payments/ViewMpesaPayments',['mpesapayments'=> $mpesapayments]);
     }
 
 
