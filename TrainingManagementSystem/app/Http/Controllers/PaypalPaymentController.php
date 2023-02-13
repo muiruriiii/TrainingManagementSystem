@@ -38,20 +38,16 @@ class PaypalPaymentController extends Controller
                 'returnUrl' => url('success'),
                 'cancelUrl' => url('error')
             ))->send();
-//             return $request->courseID;
-
             if ($response->isRedirect()) {
                 $response->redirect();
             }
             else{
                 return $response->getMessage();
             }
-
-        } catch (\Throwable $th) {
-            return $th->getMessage();
+        }catch (\Throwable $th) {
+        return $th->getMessage();
         }
     }
-
     public function success(Request $request)
     {
         if ($request->input('paymentId') && $request->input('PayerID')) {
@@ -87,10 +83,8 @@ class PaypalPaymentController extends Controller
                 $userpayment->save();
 
                 $date = PaypalPayment::all()->where('payment_id',$arr['id']);
-
                 return view('payments/paypalConfirm',['userpayment'=>$userpayment,'transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
 //                 return "Payment is Successful. Your Transaction Id is : " . $arr['id'];
-
             }
             else{
                 return $response->getMessage();
@@ -100,15 +94,17 @@ class PaypalPaymentController extends Controller
             return 'Payment declined!!';
         }
     }
-
     public function errorOccurred()
     {
         return 'User declined the payment!';
     }
-
     public function ViewPaypalPayments(){
+        if(Auth::user()->userType != 'admin'){
+                return view('accounts/login');
+        }else{
         $paypalpayments = PaypalPayment::paginate(1);
         return view('payments/ViewPaypalPayments',['paypalpayments'=> $paypalpayments]);
+        }
     }
     public function paypalConfirm(){
         return view('payments/paypalConfirm');

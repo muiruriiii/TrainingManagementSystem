@@ -22,26 +22,38 @@ class CourseController extends Controller
         return view('courses/courseNotes', ['courseID'=>$id, 'course'=>$courses]);
     }
     public function courseVideos($id){
-            $courses = Courses::find($id);
-            return view('courses/courseVideos',['courseID'=>$id, 'course'=>$courses]);
+        $courses = Courses::find($id);
+        return view('courses/courseVideos',['courseID'=>$id, 'course'=>$courses]);
     }
     public function coursesDescription($id){
         $courses = Courses::find($id);
         return view('courses/coursesDescription', ['courses'=>$courses]);
     }
     public function ViewCourses(){
-        $courses = Courses::paginate(1);
-        return view('courses/ViewCourses',['course'=> $courses]);
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            $courses = Courses::paginate(1);
+            return view('courses/ViewCourses',['course'=> $courses]);
+        }
     }
     public function EditCourse($id){
-        $courses = Courses::find($id);
-        return view('courses/EditCourse',['courseID'=>$id, 'course'=>$courses]);
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            $courses = Courses::find($id);
+            return view('courses/EditCourse',['courseID'=>$id, 'course'=>$courses]);
+        }
     }
     public function DeleteCourse($id){
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
         $courses = Courses::find($id);
         $courses->isDeleted = 1;
         $courses->save();
         return redirect('ViewCourses');
+        }
     }
     public function validateCourses(Request $request)
     {
@@ -111,17 +123,12 @@ class CourseController extends Controller
         ]);
         $data = $request->all();
         Payment::create([
-                'courseID' => $data['courseID'],
-                'courseDuration' => $data['courseDuration'],
-                'courseAmount' => $data['courseAmount'],
-                'phoneNumber' => $data['phoneNumber'],
+            'courseID' => $data['courseID'],
+            'courseDuration' => $data['courseDuration'],
+            'courseAmount' => $data['courseAmount'],
+            'phoneNumber' => $data['phoneNumber'],
         ]);
          return redirect('/')->with('success','Successful Payment');
-
     }
-//     public static function getCourseName($id){
-//         $course = Courses::find($id);
-//         return $course->courseName;
-//     }
 
 }

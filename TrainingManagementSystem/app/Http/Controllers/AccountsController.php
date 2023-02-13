@@ -29,8 +29,6 @@ class AccountsController extends Controller
             'confirmPassword'=> 'required|min:6|same:password'
         ]);
         $data = $request->all();
-
-
         Users::create([
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
@@ -40,22 +38,27 @@ class AccountsController extends Controller
             'password' => Hash::make($data['password'])
         ]);
         return redirect('/login')->with('success','Successful Registration');
-
-
-
     }
     public function ViewUsers(){
-        $users = Users::paginate(1);
-        return view('accounts/ViewUsers',['users'=> $users]);
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            $users = Users::paginate(1);
+            return view('accounts/ViewUsers',['users'=> $users]);
+        }
     }
     public function DeleteUsers($id){
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
         $users = Users::find($id);
         $users->isDeleted = 1;
         $users->save();
         return redirect('ViewUsers');
+        }
     }
     public function login(){
-            return view('accounts/login');
+        return view('accounts/login');
     }
     public function validateLogin(Request $request){
         $request->validate([
@@ -72,7 +75,6 @@ class AccountsController extends Controller
             }
             else
             {
-
                 return redirect('/');
             }
         }
@@ -82,10 +84,6 @@ class AccountsController extends Controller
     {
         Session::flush();
         Auth::logout();
-
         return redirect('login');
     }
-
-
-
 }

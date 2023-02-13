@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Roles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
@@ -11,18 +12,30 @@ class RoleController extends Controller
         return view('roles/role');
     }
     public function EditRole($id){
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
         $roles = Roles::find($id);
         return view('roles/EditRole',['roles'=> $roles]);
+        }
     }
     public function DeleteRole($id){
-         $roles = Roles::find($id);
-         $roles->isDeleted = 1;
-         $roles->save();
-         return redirect('ViewRoles');
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+        $roles = Roles::find($id);
+        $roles->isDeleted = 1;
+        $roles->save();
+        return redirect('ViewRoles');
+        }
      }
     public function ViewRoles(){
-        $roles = Roles::paginate(1);
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            $roles = Roles::paginate(1);
         return view('roles/ViewRoles',['roles'=> $roles]);
+        }
     }
     public function validateRoles(Request $request)
      {
@@ -51,10 +64,10 @@ class RoleController extends Controller
             $roles->save();
         return redirect('ViewRoles');
      }
-     public static function getRoleName($id)
-     {
-        $roles = Roles::find($id);
-        return $roles->roleName;
-     }
+//      public static function getRoleName($id)
+//      {
+//         $roles = Roles::find($id);
+//         return $roles->roleName;
+//      }
 
 }

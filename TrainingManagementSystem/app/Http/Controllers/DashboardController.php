@@ -12,6 +12,9 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
     //To display total number of courses in the system
         $courses = Courses::all()->where('isDeleted',0)->count('id');
     //To display total number of courses paid for
@@ -23,6 +26,7 @@ class DashboardController extends Controller
                                     ->where('userType','user')
                                     ->count('id');
         return view ('home/dashboard',['courses'=>$courses,'coursesPaid'=>$coursesPaid,'users'=>$users,'noCourseUsers'=>$noCourseUsers]);
+        }
     }
 
 

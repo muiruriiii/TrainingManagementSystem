@@ -167,8 +167,12 @@ class MpesaController extends Controller
         }
     }
     public function ViewMpesaPayments(){
+        if(Auth::user()->userType != 'admin'){
+                return view('accounts/login');
+        }else{
         $mpesapayments = MpesaPayments::paginate(1);
         return view('payments/ViewMpesaPayments',['mpesapayments'=> $mpesapayments]);
+        }
     }
 
 
