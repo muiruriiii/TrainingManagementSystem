@@ -1,5 +1,5 @@
 @include('templates.dashboardSideBar')
-<!doctype html>
+    <!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -18,10 +18,14 @@
 
     <link rel="stylesheet" href="{{asset('css/style2.css') }}" />
 
-    </head>
+</head>
 <body>
 
-    <h3 style="color: rgb(160,82,45);" id="heading"> All Roles |<a id="heading" href="role"> Add </a>|<a id="heading" href="ViewTrashedRoles"> Trashed Roles</a> </h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> TRASHED ROLES | <a id="heading" href="{{url('ViewRoles') }}">All ROLES</a></h3>
+<div class="col col-md-11 text-right">
+    <span style="display: inline-block"><h3><a class="deletebutton" href="{{url('RestoreAllRoles') }}"><b>Restore All</b></a></h3></span>
+    <i style="display: inline-block;color: rgb(160,82,45);" class="fa-sharp fa-solid fa-trash-arrow-up"></i>
+</div>
 <table>
     <tr>
         <th>Role Name</th>
@@ -29,26 +33,24 @@
         <th colspan="3">Action</th>
     </tr>
     @if(count($roles) > 0 )
-    @foreach($roles as $role)
-    <tr>
-        <td>{{ $role-> roleName }}</td>
-        <td>{{ $role-> roleDescription }}</td>
-        <td><a class="editbutton" href="{{url ('EditRole/'.$role->id) }}">Edit</a></td>
-        <td><a class="deletebutton" href="{{url ('DeleteRole/'.$role->id) }}">Delete</a></td>
-        <td><a class="deletebutton" href="{{url ('ForceDeleteRoles/'.$role->id) }}">Force Delete</a></td>
+        @foreach($roles as $role)
+            <tr>
+                <td>{{ $role-> roleName }}</td>
+                <td>{{ $role-> roleDescription }}</td>
+                <td><a class="deletebutton" href="{{url ('RestoreRoles/'.$role->id) }}">Restore</a></td>
 
-    </tr>
-    @endforeach
+            </tr>
+        @endforeach
     @else
         <tr>
             <td colspan="4"class="text-center"><b>No Roles Found</b></td>
         </tr>
     @endif
 </table>
-    <div class="d-flex justify-content-center">
-        {{--    To display on each side of the selected page if the pages are too many--}}
-        {{$roles->onEachSide(1)->links()}}
-    </div>
+{{--<div class="d-flex justify-content-center">--}}
+{{--    --}}{{--    To display on each side of the selected page if the pages are too many--}}
+{{--    {{$roles->onEachSide(1)->links()}}--}}
+{{--</div>--}}
 
 </body>
 </html>

@@ -40,21 +40,21 @@ class AccountsController extends Controller
         return redirect('/login')->with('success','Successful Registration');
     }
     public function ViewUsers(){
-        if(Auth::user()->userType != 'admin'){
-            return view('accounts/login');
-        }else{
+//         if(Auth::user()->userType != 'admin'){
+//             return view('accounts/login');
+//         }else{
             $users = Users::paginate(3);
             return view('accounts/ViewUsers',['users'=> $users]);
-        }
+//         }
     }
 
     public function DeleteUsers($id){
-        if(Auth::user()->userType != 'admin'){
-            return view('accounts/login');
-        }else{
+//         if(Auth::user()->userType != 'admin'){
+//             return view('accounts/login');
+//         }else{
         $users = Users::find($id)->delete();
         return redirect('ViewUsers');
-        }
+//         }
     }
     public function ViewTrashedUsers()
     {

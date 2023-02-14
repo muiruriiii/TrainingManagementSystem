@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('roleName');
             $table->string('roleDescription');
-            $table->boolean('isDeleted')->default(0);
+            $table->softDeletes()->nullable;
             $table->timestamps();
         });
     }

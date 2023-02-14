@@ -41,9 +41,7 @@
         <th>Telephone Number</th>
         <th>Email</th>
         <th>Role</th>
-        <th>Soft Delete</th>
-        <th>Force Delete</th>
-{{--        <th colspan="2">Action</th>--}}
+        <th colspan="3">Action</th>
     </tr>
     @if(count($users) > 0 )
     @foreach($users as $user)
@@ -57,7 +55,7 @@
                 <td colspan="2"><b>ADMIN</b></td>
             @else
             <td><a class="deletebutton" href="{{url ('DeleteUsers/'.$user->id) }}">Delete</a></td>
-            <td><a class="deletebutton" href="{{url ('ForceDeleteUsers/'.$user->id) }}">Force Delete</a></td>
+            <td><a class="deletebutton" href="{{url ('ForceDeleteUsers/'.$user->id) }}">Delete Forever</a></td>
             @endif
         </tr>
 

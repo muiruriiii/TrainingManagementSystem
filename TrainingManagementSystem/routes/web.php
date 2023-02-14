@@ -63,6 +63,11 @@ use Illuminate\Support\Facades\Hash;
         Route::post('/roles','validateRoles')->name('validateRoles');
         Route::post('/RolesEdit/{id}','RolesEdit')->name('RolesEdit');
         Route::get('/DeleteRole/{id}','DeleteRole')->name('DeleteRole');
+        Route::get('/ViewTrashedRoles','ViewTrashedRoles')->name('ViewTrashedRoles');
+        Route::get('/RestoreRoles/{id}','RestoreRoles')->name('RestoreRoles');
+        Route::get('/RestoreAllRoles','RestoreAllRoles')->name('RestoreAllRoles');
+        Route::get('/ForceDeleteRoles/{id}','ForceDeleteRoles')->name('ForceDeleteRoles');
+
 
     });
 
