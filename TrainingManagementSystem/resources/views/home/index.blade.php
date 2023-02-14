@@ -148,7 +148,7 @@
     </div>
     <div class="footer-bottom">
         <div class="site-container footer-bottom-inner">
-            <p>© 2023 Author | All rights Reserved.</p>
+            <p>© 2023 Bityarn | All rights Reserved.</p>
             {{--            <div class="footer-bottom__img">--}}
             {{--                <img src="{{ URL::asset('images/images/footer-mastercard.png') }}" alt="footer image">--}}
             {{--                <img src="{{ URL::asset('images/images/footer-paypal.png') }}" alt="footer image">--}}

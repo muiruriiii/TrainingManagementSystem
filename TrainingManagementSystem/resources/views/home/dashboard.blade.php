@@ -2,7 +2,6 @@
 <div>
 {{$courses}}
 
-
 </div>
 
 <center><div class="cardBox">
