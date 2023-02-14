@@ -43,20 +43,38 @@ class AccountsController extends Controller
         if(Auth::user()->userType != 'admin'){
             return view('accounts/login');
         }else{
-            $users = Users::paginate(1);
+            $users = Users::paginate(3);
             return view('accounts/ViewUsers',['users'=> $users]);
         }
     }
+
     public function DeleteUsers($id){
         if(Auth::user()->userType != 'admin'){
             return view('accounts/login');
         }else{
-        $users = Users::find($id);
-        $users->isDeleted = 1;
-        $users->save();
+        $users = Users::find($id)->delete();
         return redirect('ViewUsers');
         }
     }
+    public function ViewTrashedUsers()
+    {
+        $users = Users::onlyTrashed()->get();
+        return view('accounts/ViewTrashedUsers',['users'=> $users]);
+    }
+    public function RestoreUsers($id){
+        Users::whereId($id)->restore();
+         return redirect('ViewTrashedUsers');
+    }
+    public function RestoreAllUsers(){
+        Users::onlyTrashed()->restore();
+        return back();
+    }
+    public function ForceDeleteUsers($id){
+        Users::find($id)->forceDelete();
+        return back();
+    }
+
+
     public function login(){
         return view('accounts/login');
     }

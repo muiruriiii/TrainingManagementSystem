@@ -49,6 +49,10 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/logout','logout')->name('logout');
         Route::get('/ViewUsers','ViewUsers')->name('ViewUsers');
         Route::get('/DeleteUsers/{id}','DeleteUsers')->name('DeleteUsers');
+        Route::get('/ViewTrashedUsers','ViewTrashedUsers')->name('ViewTrashedUsers');
+        Route::get('/RestoreUsers/{id}','RestoreUsers')->name('RestoreUsers');
+        Route::get('/RestoreAllUsers','RestoreAllUsers')->name('RestoreAllUsers');
+        Route::get('/ForceDeleteUsers/{id}','ForceDeleteUsers')->name('ForceDeleteUsers');
 
     });
 

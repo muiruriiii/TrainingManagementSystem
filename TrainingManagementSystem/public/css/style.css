@@ -531,6 +531,8 @@ body, html {
 .editbutton, .deletebutton{
     text-decoration: none;
     color: #333;
+    font-size: 15px;
+    color: rgb(160,82,45);
 }
 table{
     font-family: 'Raleway', sans-serif;

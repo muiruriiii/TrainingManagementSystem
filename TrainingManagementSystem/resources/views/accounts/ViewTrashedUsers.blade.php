@@ -20,8 +20,7 @@
 
 </head>
 <body>
-
-<h3 style="color: rgb(160,82,45);" id="heading"> All Users | <a id="heading" href="{{url('ViewTrashedUsers') }}">Trashed Users</a></h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> TRASHED USERS | <a id="heading" href="{{url('ViewUsers') }}">All Users</a></h3>
 
 @if(session()->has('success'))
 
@@ -29,23 +28,24 @@
         {{ @session()->get('success') }}
     </div>
 @endif
-<div class="col col-md-6 text-right">
-
-
+<div class="col col-md-11 text-right">
+    <span style="display: inline-block"><h3><a class="deletebutton" href="{{url('RestoreAllUsers') }}"><b>Restore All</b></a></h3></span>
+    <i style="display: inline-block;color: rgb(160,82,45);" class="fa-sharp fa-solid fa-trash-arrow-up"></i>
 </div>
 
+
 <table>
+
     <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Telephone Number</th>
         <th>Email</th>
         <th>Role</th>
-        <th>Soft Delete</th>
-        <th>Force Delete</th>
-{{--        <th colspan="2">Action</th>--}}
+        <th>Restore</th>
+        {{--        <th colspan="2">Action</th>--}}
     </tr>
-    @if(count($users) > 0 )
+    {{--    @if(count($users) > 0 )--}}
     @foreach($users as $user)
         <tr>
             <td>{{ $user-> firstName }}</td>
@@ -53,27 +53,34 @@
             <td>{{ $user-> telephoneNumber }}</td>
             <td>{{ $user-> email }}</td>
             <td>{{ $user->roles->roleName }}</td>
-            @if($user-> userType == 'admin' )
-                <td colspan="2"><b>ADMIN</b></td>
-            @else
-            <td><a class="deletebutton" href="{{url ('DeleteUsers/'.$user->id) }}">Delete</a></td>
-            <td><a class="deletebutton" href="{{url ('ForceDeleteUsers/'.$user->id) }}">Force Delete</a></td>
-            @endif
+            <td><a class="deletebutton" href="{{url ('RestoreUsers/'.$user->id) }}">Restore</a></td>
+
         </tr>
 
+        {{--        @if($user-> userType == 'user' )--}}
+        {{--            @elseif($user-> userType == 'user')--}}
+        {{--                {--}}
+        {{--                <td><b>Deleted User</b></td>--}}
+        {{--                }--}}
+        {{--            @else--}}
+        {{--            {--}}
+        {{--                <td><b>ADMIN</b></td>--}}
+        {{--            }--}}
 
+        {{--            @endif--}}
+        {{--        </tr>--}}
     @endforeach
-    @else
-    <tr>
-        <td colspan="4"class="text-center">No Users Found</td>
-    </tr>
-    @endif
+    {{--    @else--}}
+    {{--    <tr>--}}
+    {{--        <td colspan="4"class="text-center">No Users Found</td>--}}
+    {{--    </tr>--}}
+    {{--    @endif--}}
 </table>
 
-<div class="d-flex justify-content-center">
+{{--<div class="d-flex justify-content-center">--}}
 {{--        To display on each side of the selected page if the pages are too many--}}
-    {{$users->links()}}
-</div>
+{{--    {{$users->onEachSide(1)->links()}}--}}
+{{--</div>--}}
 
 </body>
 </html>

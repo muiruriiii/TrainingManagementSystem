@@ -23,8 +23,8 @@ return new class extends Migration
             $table->foreign('roleID')->references('id')->on('roles');
             $table->string('userType')->default('user');
             $table->string('paymentStatus')->default('Pending');
-            $table->string('password')->nullable();
-            $table->boolean('isDeleted')->default(0);
+            $table->string('password');
+            $table->softDeletes()->nullable;
             $table->timestamps();
         });
     }
