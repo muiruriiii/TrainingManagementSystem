@@ -106,6 +106,31 @@ class PaypalPaymentController extends Controller
         return view('payments/ViewPaypalPayments',['paypalpayments'=> $paypalpayments]);
         }
     }
+    public function DeletePayPalPayments($id){
+    //         if(Auth::user()->userType != 'admin'){
+    //             return view('accounts/login');
+    //         }else{
+        $paypalpayments = PaypalPayment::find($id)->delete();
+        return redirect('ViewPaypalPayments');
+    //         }
+    }
+    public function ViewTrashedPayPalPayments()
+    {
+        $paypalpayments = PaypalPayment::onlyTrashed()->get();
+        return view('payments/ViewTrashedPaypalPayments',['paypalpayments'=> $paypalpayments]);
+    }
+    public function RestorePayPalPayments($id){
+        PaypalPayment::whereId($id)->restore();
+        return redirect('ViewTrashedPayPalPayments');
+    }
+    public function RestoreAllPayPalPayments(){
+        PaypalPayment::onlyTrashed()->restore();
+        return back();
+    }
+    public function ForceDeletePayPalPayments($id){
+        PaypalPayment::find($id)->forceDelete();
+        return back();
+    }
     public function paypalConfirm(){
         return view('payments/paypalConfirm');
     }

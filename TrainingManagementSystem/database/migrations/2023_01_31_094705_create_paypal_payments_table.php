@@ -25,6 +25,7 @@ return new class extends Migration
             $table->float('amount', 10, 2);
             $table->string('currency');
             $table->string('payment_status');
+            $table->softDeletes()->nullable;
             $table->timestamps();
         });
     }

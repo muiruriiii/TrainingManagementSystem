@@ -21,8 +21,11 @@
 </head>
 <body>
 
-<h3 style="color: rgb(160,82,45);" id="heading"> All PaypalPayments |<a id="heading" href="ViewMpesaPayments"> Mpesa </a>|<a id="heading" href="ViewTrashedPaypalPayments"> Trashed Paypal Payments</a> </h3>
-
+<h3 style="color: rgb(160,82,45);" id="heading"> TRASHED Paypal Payments | <a id="heading" href="{{url('ViewPaypalPayments') }}">All Paypal Payments</a></h3>
+<div class="col col-md-11 text-right">
+    <span style="display: inline-block"><h3><a class="deletebutton" href="{{url('RestoreAllPaypalPayments') }}"><b>Restore All</b></a></h3></span>
+    <i style="display: inline-block;color: rgb(160,82,45);" class="fa-sharp fa-solid fa-trash-arrow-up"></i>
+</div>
 <table>
     <tr>
         <th>Payment ID</th>
@@ -41,16 +44,15 @@
             <td>{{ $paypalpayment-> users->lastName }}</td>
             <td>{{ $paypalpayment-> amount }}</td>
             <td>{{ $paypalpayment-> currency }}</td>
-            <td><a class="deletebutton" href="{{url ('DeletePaypalPayments/'.$paypalpayment->id) }}">Delete</a></td>
-            <td><a class="deletebutton" href="{{url ('ForceDeletePaypalPayments/'.$paypalpayment->id) }}">Delete Forever</a></td>
+            <td><a class="deletebutton" href="{{url ('RestorePaypalPayments/'.$paypalpayment->id) }}">Restore</a></td>
         </tr>
     @endforeach
 </table>
 
-<div class="d-flex justify-content-center">
-{{--    To display on each side of the selected page if the pages are too many--}}
-    {{$paypalpayments->onEachSide(1)->links()}}
-</div>
+{{--<div class="d-flex justify-content-center">--}}
+{{--    --}}{{--    To display on each side of the selected page if the pages are too many--}}
+{{--    {{$paypalpayments->onEachSide(1)->links()}}--}}
+{{--</div>--}}
 
 </body>
 </html>

@@ -95,6 +95,12 @@ use Illuminate\Support\Facades\Hash;
         Route::post('/payment','pay');
         Route::get('/success','success');
         Route::get('/errorOccurred','errorOccurred');
+        Route::get('/DeletePaypalPayments/{id}','DeletePaypalPayments')->name('DeletePaypalPayments');
+        Route::get('/ViewTrashedPaypalPayments','ViewTrashedPaypalPayments')->name('ViewTrashedPaypalPayments');
+        Route::get('/RestorePaypalPayments/{id}','RestorePaypalPayments')->name('RestorePaypalPayments');
+        Route::get('/RestoreAllPaypalPayments','RestoreAllPaypalPayments')->name('RestoreAllPaypalPayments');
+        Route::get('/ForceDeletePaypalPayments/{id}','ForceDeletePaypalPayments')->name('ForceDeletePaypalPayments');
+
     });
     Route::controller(MpesaController::class)->group(function(){
         Route::get('/confirm','confirm')->name('confirm');
@@ -102,7 +108,12 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/mpesaPayment/{id}','lipa')->name('lipa');
         Route::get('/mpesaConfirm','mpesaConfirm')->name('mpesaConfirm');
         Route::post('/confirmTransaction','confirmTransaction')->name('confirmTransaction');
+        Route::get('/DeleteMpesaPayments/{id}','DeleteMpesaPayments')->name('DeleteMpesaPayments');
         Route::get('/ViewMpesaPayments','ViewMpesaPayments')->name('ViewMpesaPayments');
+        Route::get('/ViewTrashedMpesaPayments','ViewTrashedMpesaPayments')->name('ViewTrashedMpesaPayments');
+        Route::get('/RestoreMpesaPayments/{id}','RestoreMpesaPayments')->name('RestoreMpesaPayments');
+        Route::get('/RestoreAllMpesaPayments','RestoreAllMpesaPayments')->name('RestoreAllMpesaPayments');
+        Route::get('/ForceDeleteMpesaPayments/{id}','ForceDeleteMpesaPayments')->name('ForceDeleteMpesaPayments');
 
     });
     Route::controller(UserPaymentsController::class)->group(function(){
