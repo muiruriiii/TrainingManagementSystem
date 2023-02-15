@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use App\Models\UserPayments;
+use App\Models\Roles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -14,7 +15,8 @@ use Illuminate\Support\Facades\Auth;
 class AccountsController extends Controller
 {
     public function register(){
-        return view('accounts/register');
+        $role = Roles::all();
+        return view('accounts/register',['roles'=>$role]);
     }
 
     public function validateRegistration(Request $request)

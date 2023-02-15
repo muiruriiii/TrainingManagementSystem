@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Courses extends Model
 {
-    use HasFactory;
-     protected $fillable = ['id','courseName','courseDescription','courseVideos','courseNotes','courseProfile','isDeleted'];
+    use HasFactory, SoftDeletes;
+    protected $fillable = ['id','courseName','courseDescription','courseVideos','courseNotes','courseProfile','isDeleted'];
+    protected $dates = ['deleted_at'];
+
 }

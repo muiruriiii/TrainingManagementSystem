@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('courseVideos');
             $table->string('courseNotes');
             $table->string('courseProfile');
-            $table->boolean('isDeleted')->default(0);
+             $table->softDeletes()->nullable;
             $table->timestamps();
         });
     }

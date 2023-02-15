@@ -53,11 +53,28 @@ class CourseController extends Controller
         if(Auth::user()->userType != 'admin'){
             return view('accounts/login');
         }else{
-        $courses = Courses::find($id);
-        $courses->isDeleted = 1;
-        $courses->save();
+        $courses = Courses::find($id)->delete();
+//         $courses->isDeleted = 1;
+//         $courses->save();
         return redirect('ViewCourses');
         }
+    }
+    public function ViewTrashedCourses()
+    {
+        $courses = Courses::onlyTrashed()->get();
+        return view('courses/ViewTrashedCourses',['course'=> $courses]);
+    }
+    public function RestoreCourses($id){
+        Courses::whereId($id)->restore();
+         return redirect('ViewTrashedCourses');
+    }
+    public function RestoreAllCourses(){
+        Courses::onlyTrashed()->restore();
+        return back();
+    }
+    public function ForceDeleteCourses($id){
+        Courses::find($id)->forceDelete();
+        return back();
     }
     public function validateCourses(Request $request)
     {

@@ -83,6 +83,10 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/DeleteCourse/{id}','DeleteCourse')->name('DeleteCourse');
         Route::post('/course','validateCourses')->name('validateCourses');
         Route::post('/CoursesEdit/{id}','CoursesEdit')->name('CoursesEdit');
+        Route::get('/ViewTrashedCourses','ViewTrashedCourses')->name('ViewTrashedCourses');
+        Route::get('/RestoreCourses/{id}','RestoreCourses')->name('RestoreCourses');
+        Route::get('/RestoreAllCourses','RestoreAllCourses')->name('RestoreAllCourses');
+        Route::get('/ForceDeleteCourses/{id}','ForceDeleteCourses')->name('ForceDeleteCourses');
     });
     Route::controller(PaypalPaymentController::class)->group(function(){
         Route::get('/paypalPayment/{id}','payment')->name('payment');

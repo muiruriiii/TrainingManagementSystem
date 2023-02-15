@@ -85,10 +85,5 @@ class RoleController extends Controller
             $roles->save();
         return redirect('ViewRoles');
      }
-//      public static function getRoleName($id)
-//      {
-//         $roles = Roles::find($id);
-//         return $roles->roleName;
-//      }
 
 }

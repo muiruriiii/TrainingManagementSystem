@@ -1,5 +1,5 @@
 @include('templates.dashboardSideBar')
-<!doctype html>
+    <!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -21,10 +21,11 @@
 </head>
 <body>
 
-<h3 id="heading"> COURSES </h3>
-<center>
-    <h3 style="color: rgb(160,82,45);" id="heading"> All Courses |<a id="heading" href="course"> Add </a>|<a id="heading" href="ViewTrashedCourses"> Trashed Courses</a> </h3>
-</center>
+<h3 style="color: rgb(160,82,45);" id="heading"> TRASHED COURSES | <a id="heading" href="{{url('ViewCourses') }}">All Courses</a></h3>
+<div class="col col-md-11 text-right">
+    <span style="display: inline-block"><h3><a class="deletebutton" href="{{url('RestoreAllCourses') }}"><b>Restore All</b></a></h3></span>
+    <i style="display: inline-block;color: rgb(160,82,45);" class="fa-sharp fa-solid fa-trash-arrow-up"></i>
+</div>
 <table>
     <tr>
         <th>Course Name</th>
@@ -39,16 +40,14 @@
             <td>{{ $courses-> courseDescription }}</td>
             <td>{{ $courses-> courseVideos }}</td>
             <td>{{ $courses-> courseNotes }}</td>
+            <td><a class="deletebutton" href="{{url ('RestoreCourses/'.$courses->id) }}">Restore</a></td>
 
-            <td><a class="editbutton" href="{{url ('EditCourse/'.$courses->id) }}">Edit</a></td>
-            <td><a class="deletebutton" href="{{url ('DeleteCourse/'.$courses->id) }}">Delete</a></td>
-            <td><a class="deletebutton" href="{{url ('ForceDeleteCourses/'.$courses->id) }}">Delete Forever</a></td>
         </tr>
     @endforeach
 </table>
-    <div class="d-flex justify-content-center">
-        {{--    To display on each side of the selected page if the pages are too many--}}
-        {{$course->onEachSide(1)->links()}}
-    </div>
+{{--<div class="d-flex justify-content-center">--}}
+{{--    --}}{{--    To display on each side of the selected page if the pages are too many--}}
+{{--    {{$course->onEachSide(1)->links()}}--}}
+{{--</div>--}}
 </body>
 </html>

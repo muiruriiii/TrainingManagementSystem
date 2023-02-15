@@ -55,18 +55,11 @@
             </div>
             <div class="form-wrapper">
                 <label for="">Role</label>
-                <?php
-                $db = mysqli_connect("localhost", "root", "", "tms");
-                $sql = mysqli_query($db, "SELECT * FROM roles WHERE isDeleted = 0");
-
-                echo "<select class='form-control' name='roleID' >";
-                while ($row = mysqli_fetch_array($sql)) {
-                ?>
-                <option class="form-control"  value="<?php echo$row['id']?>"> <?php echo$row['roleName']; ?> </option>
-                <?php
-                }
-                echo "</select>";
-                ?>
+                 <select class='form-control' name='roleID' >
+                     @foreach($roles as $role)
+                     <option class="form-control"  value="{{$role->id}}">{{$role->roleName}}</option>
+                     @endforeach
+                 </select>
             @if($errors->has('roleID'))
                 <span style="color: red;" class="text-danger">{{ $errors->first('roleID') }}</span>
             @endif
