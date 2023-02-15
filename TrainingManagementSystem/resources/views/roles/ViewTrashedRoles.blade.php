@@ -20,8 +20,8 @@
 
 </head>
 <body>
-
-<h3 style="color: rgb(160,82,45);" id="heading"> TRASHED ROLES | <a id="heading" href="{{url('ViewRoles') }}">All ROLES</a></h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> Roles </h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> Trashed |<a id="heading" href="role"> Add </a>|<a id="heading" href="ViewRoles"> All </a> </h3>
 <div class="col col-md-11 text-right">
     <span style="display: inline-block"><h3><a class="deletebutton" href="{{url('RestoreAllRoles') }}"><b>Restore All</b></a></h3></span>
     <i style="display: inline-block;color: rgb(160,82,45);" class="fa-sharp fa-solid fa-trash-arrow-up"></i>

@@ -16,11 +16,11 @@ class DashboardController extends Controller
             return view('accounts/login');
         }else{
     //To display total number of courses in the system
-        $courses = Courses::all()->where('isDeleted',0)->count('id');
+        $courses = Courses::all()->where('deleted_at',NULL)->count('id');
 //     //To display total number of courses paid for
 //         $coursesPaid = UserPayments::all()->where('status','Accessible')->count('courseID');
     //To display total number of users in the system
-        $users = Users::all()->where('isDeleted',0)->count('id');
+        $users = Users::all()->where('deleted_at',NULL)->count('id');
     //To display users with accounts but have not paid for any course
         $noCourseUsers = Users::all()->where('paymentStatus','Pending')
                                     ->where('userType','user')

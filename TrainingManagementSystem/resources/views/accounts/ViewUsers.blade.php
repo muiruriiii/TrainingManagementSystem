@@ -21,7 +21,8 @@
 </head>
 <body>
 
-<h3 style="color: rgb(160,82,45);" id="heading"> All Users | <a id="heading" href="{{url('ViewTrashedUsers') }}">Trashed Users</a></h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> Users </h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> All |<a id="heading" href="ViewTrashedUsers"> Trashed </a></h3>
 
 @if(session()->has('success'))
 
@@ -55,7 +56,6 @@
                 <td colspan="2"><b>ADMIN</b></td>
             @else
             <td><a class="deletebutton" href="{{url ('DeleteUsers/'.$user->id) }}">Delete</a></td>
-            <td><a class="deletebutton" href="{{url ('ForceDeleteUsers/'.$user->id) }}">Delete Forever</a></td>
             @endif
         </tr>
 

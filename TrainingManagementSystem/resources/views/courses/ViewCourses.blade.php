@@ -21,10 +21,13 @@
 </head>
 <body>
 
-<h3 id="heading"> COURSES </h3>
-<center>
-    <h3 style="color: rgb(160,82,45);" id="heading"> All Courses |<a id="heading" href="course"> Add </a>|<a id="heading" href="ViewTrashedCourses"> Trashed Courses</a> </h3>
-</center>
+{{--<h3 id="heading"> COURSES </h3>--}}
+{{--<center>--}}
+{{--    <h3 style="color: rgb(160,82,45);" id="heading"> All Courses |<a id="heading" href="course"> Add </a>|<a id="heading" href="ViewTrashedCourses"> Trashed Courses</a> </h3>--}}
+{{--</center>--}}
+<h3 style="color: rgb(160,82,45);" id="heading"> Courses </h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> All |<a id="heading" href="course"> Add </a>|<a id="heading" href="ViewTrashedCourses"> Trashed </a> </h3>
+
 <table>
     <tr>
         <th>Course Name</th>
@@ -42,7 +45,6 @@
 
             <td><a class="editbutton" href="{{url ('EditCourse/'.$courses->id) }}">Edit</a></td>
             <td><a class="deletebutton" href="{{url ('DeleteCourse/'.$courses->id) }}">Delete</a></td>
-            <td><a class="deletebutton" href="{{url ('ForceDeleteCourses/'.$courses->id) }}">Delete Forever</a></td>
         </tr>
     @endforeach
 </table>

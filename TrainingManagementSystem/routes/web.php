@@ -67,8 +67,6 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/RestoreRoles/{id}','RestoreRoles')->name('RestoreRoles');
         Route::get('/RestoreAllRoles','RestoreAllRoles')->name('RestoreAllRoles');
         Route::get('/ForceDeleteRoles/{id}','ForceDeleteRoles')->name('ForceDeleteRoles');
-
-
     });
 
     Route::controller(CourseController::class)->group(function(){
@@ -86,7 +84,6 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/ViewTrashedCourses','ViewTrashedCourses')->name('ViewTrashedCourses');
         Route::get('/RestoreCourses/{id}','RestoreCourses')->name('RestoreCourses');
         Route::get('/RestoreAllCourses','RestoreAllCourses')->name('RestoreAllCourses');
-        Route::get('/ForceDeleteCourses/{id}','ForceDeleteCourses')->name('ForceDeleteCourses');
     });
     Route::controller(PaypalPaymentController::class)->group(function(){
         Route::get('/paypalPayment/{id}','payment')->name('payment');

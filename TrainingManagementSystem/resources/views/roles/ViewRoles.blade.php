@@ -21,7 +21,9 @@
     </head>
 <body>
 
-    <h3 style="color: rgb(160,82,45);" id="heading"> All Roles |<a id="heading" href="role"> Add </a>|<a id="heading" href="ViewTrashedRoles"> Trashed Roles</a> </h3>
+    <h3 style="color: rgb(160,82,45);" id="heading"> Roles </h3>
+    <h3 style="color: rgb(160,82,45);" id="heading"> All |<a id="heading" href="role"> Add </a>|<a id="heading" href="ViewTrashedRoles"> Trashed </a> </h3>
+
 <table>
     <tr>
         <th>Role Name</th>
@@ -35,7 +37,7 @@
         <td>{{ $role-> roleDescription }}</td>
         <td><a class="editbutton" href="{{url ('EditRole/'.$role->id) }}">Edit</a></td>
         <td><a class="deletebutton" href="{{url ('DeleteRole/'.$role->id) }}">Delete</a></td>
-        <td><a class="deletebutton" href="{{url ('ForceDeleteRoles/'.$role->id) }}">Force Delete</a></td>
+        <td><a class="deletebutton" href="{{url ('ForceDeleteRoles/'.$role->id) }}">Delete Forever</a></td>
 
     </tr>
     @endforeach

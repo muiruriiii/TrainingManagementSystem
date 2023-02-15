@@ -42,21 +42,21 @@ class AccountsController extends Controller
         return redirect('/login')->with('success','Successful Registration');
     }
     public function ViewUsers(){
-//         if(Auth::user()->userType != 'admin'){
-//             return view('accounts/login');
-//         }else{
-            $users = Users::paginate(3);
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            $users = Users::paginate(1);
             return view('accounts/ViewUsers',['users'=> $users]);
-//         }
+        }
     }
 
     public function DeleteUsers($id){
-//         if(Auth::user()->userType != 'admin'){
-//             return view('accounts/login');
-//         }else{
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
         $users = Users::find($id)->delete();
         return redirect('ViewUsers');
-//         }
+        }
     }
     public function ViewTrashedUsers()
     {
@@ -71,12 +71,6 @@ class AccountsController extends Controller
         Users::onlyTrashed()->restore();
         return back();
     }
-    public function ForceDeleteUsers($id){
-        Users::find($id)->forceDelete();
-        return back();
-    }
-
-
     public function login(){
         return view('accounts/login');
     }

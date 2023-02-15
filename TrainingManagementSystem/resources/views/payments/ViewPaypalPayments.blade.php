@@ -21,7 +21,8 @@
 </head>
 <body>
 
-<h3 style="color: rgb(160,82,45);" id="heading"> All PaypalPayments |<a id="heading" href="ViewMpesaPayments"> Mpesa </a>|<a id="heading" href="ViewTrashedPaypalPayments"> Trashed Paypal Payments</a> </h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> PaypalPayments </h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> All |<a id="heading" href="ViewMpesaPayments"> Mpesa </a>|<a id="heading" href="ViewTrashedPaypalPayments"> Trashed </a> </h3>
 
 <table>
     <tr>

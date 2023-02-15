@@ -54,8 +54,6 @@ class CourseController extends Controller
             return view('accounts/login');
         }else{
         $courses = Courses::find($id)->delete();
-//         $courses->isDeleted = 1;
-//         $courses->save();
         return redirect('ViewCourses');
         }
     }
@@ -70,10 +68,6 @@ class CourseController extends Controller
     }
     public function RestoreAllCourses(){
         Courses::onlyTrashed()->restore();
-        return back();
-    }
-    public function ForceDeleteCourses($id){
-        Courses::find($id)->forceDelete();
         return back();
     }
     public function validateCourses(Request $request)

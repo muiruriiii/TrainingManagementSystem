@@ -9,27 +9,27 @@ use Illuminate\Support\Facades\Auth;
 class RoleController extends Controller
 {
     public function role(){
-//         if(Auth::user()->userType != 'admin'){
-//             return view('accounts/login');
-//         }else{
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
             return view('roles/role');
-//         }
+        }
     }
     public function EditRole($id){
-//         if(Auth::user()->userType != 'admin'){
-//             return view('accounts/login');
-//         }else{
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
         $roles = Roles::find($id);
         return view('roles/EditRole',['roles'=> $roles]);
-//         }
+        }
     }
     public function DeleteRole($id){
-//         if(Auth::user()->userType != 'admin'){
-//             return view('accounts/login');
-//         }else{
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
         $roles = Roles::find($id)->delete();;
         return redirect('ViewRoles');
-//         }
+        }
     }
     public function ViewTrashedRoles()
     {
@@ -51,12 +51,12 @@ class RoleController extends Controller
 
 
     public function ViewRoles(){
-//         if(Auth::user()->userType != 'admin'){
-//             return view('accounts/login');
-//         }else{
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
             $roles = Roles::paginate(1);
         return view('roles/ViewRoles',['roles'=> $roles]);
-//         }
+        }
     }
     public function validateRoles(Request $request)
      {
