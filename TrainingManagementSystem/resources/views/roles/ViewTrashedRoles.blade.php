@@ -43,14 +43,10 @@
         @endforeach
     @else
         <tr>
-            <td colspan="4"class="text-center"><b>No Roles Found</b></td>
+            <td colspan="6"class="text-center"><b>No Trashed Roles Found</b></td>
         </tr>
     @endif
 </table>
-{{--<div class="d-flex justify-content-center">--}}
-{{--    --}}{{--    To display on each side of the selected page if the pages are too many--}}
-{{--    {{$roles->onEachSide(1)->links()}}--}}
-{{--</div>--}}
 
 </body>
 </html>

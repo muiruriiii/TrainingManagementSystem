@@ -46,7 +46,7 @@
         <th>Restore</th>
         {{--        <th colspan="2">Action</th>--}}
     </tr>
-    {{--    @if(count($users) > 0 )--}}
+    @if(count($users) > 0 )
     @foreach($users as $user)
         <tr>
             <td>{{ $user-> firstName }}</td>
@@ -57,25 +57,12 @@
             <td><a class="deletebutton" href="{{url ('RestoreUsers/'.$user->id) }}">Restore</a></td>
 
         </tr>
-
-        {{--        @if($user-> userType == 'user' )--}}
-        {{--            @elseif($user-> userType == 'user')--}}
-        {{--                {--}}
-        {{--                <td><b>Deleted User</b></td>--}}
-        {{--                }--}}
-        {{--            @else--}}
-        {{--            {--}}
-        {{--                <td><b>ADMIN</b></td>--}}
-        {{--            }--}}
-
-        {{--            @endif--}}
-        {{--        </tr>--}}
     @endforeach
-    {{--    @else--}}
-    {{--    <tr>--}}
-    {{--        <td colspan="4"class="text-center">No Users Found</td>--}}
-    {{--    </tr>--}}
-    {{--    @endif--}}
+        @else
+        <tr>
+            <td colspan="6"class="text-center"> <b>No Trashed Users Found</b></td>
+        </tr>
+        @endif
 </table>
 
 {{--<div class="d-flex justify-content-center">--}}

@@ -102,7 +102,7 @@ class PaypalPaymentController extends Controller
         if(Auth::user()->userType != 'admin'){
                 return view('accounts/login');
         }else{
-        $paypalpayments = PaypalPayment::paginate(1);
+        $paypalpayments = PaypalPayment::paginate(5);
         return view('payments/ViewPaypalPayments',['paypalpayments'=> $paypalpayments]);
         }
     }

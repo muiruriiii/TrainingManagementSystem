@@ -37,7 +37,7 @@ class CourseController extends Controller
         if(Auth::user()->userType != 'admin'){
             return view('accounts/login');
         }else{
-            $courses = Courses::paginate(1);
+            $courses = Courses::paginate(3);
             return view('courses/ViewCourses',['course'=> $courses]);
         }
     }

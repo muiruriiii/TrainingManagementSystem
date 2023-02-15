@@ -43,7 +43,7 @@
     @endforeach
     @else
         <tr>
-            <td colspan="4"class="text-center"><b>No Roles Found</b></td>
+            <td colspan="6"class="text-center"><b>No Roles Found</b></td>
         </tr>
     @endif
 </table>

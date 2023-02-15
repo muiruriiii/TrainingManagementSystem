@@ -45,7 +45,7 @@ class AccountsController extends Controller
         if(Auth::user()->userType != 'admin'){
             return view('accounts/login');
         }else{
-            $users = Users::paginate(1);
+            $users = Users::paginate(3);
             return view('accounts/ViewUsers',['users'=> $users]);
         }
     }

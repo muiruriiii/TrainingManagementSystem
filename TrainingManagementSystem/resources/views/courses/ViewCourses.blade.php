@@ -36,6 +36,7 @@
         <th>Course Notes</th>
         <th colspan="3">Action</th>
     </tr>
+    @if(count($course) > 0 )
     @foreach($course as $courses)
         <tr>
             <td>{{ $courses-> courseName }}</td>
@@ -47,6 +48,11 @@
             <td><a class="deletebutton" href="{{url ('DeleteCourse/'.$courses->id) }}">Delete</a></td>
         </tr>
     @endforeach
+    @else
+        <tr>
+            <td colspan="6"class="text-center"><b>No Trashed Mpesa Payments Made</b></td>
+        </tr>
+    @endif
 </table>
     <div class="d-flex justify-content-center">
         {{--    To display on each side of the selected page if the pages are too many--}}

@@ -63,7 +63,7 @@
     @endforeach
     @else
     <tr>
-        <td colspan="4"class="text-center">No Users Found</td>
+        <td colspan="6"class="text-center"><b>No Users Found</b></td>
     </tr>
     @endif
 </table>

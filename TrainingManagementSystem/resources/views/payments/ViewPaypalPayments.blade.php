@@ -34,6 +34,7 @@
         <th>Currency </th>
         <th colspan="3">Action</th>
     </tr>
+    @if(count($paypalpayments) > 0 )
     @foreach($paypalpayments as $paypalpayment)
         <tr>
             <td>{{ $paypalpayment-> payment_id }}</td>
@@ -46,6 +47,11 @@
             <td><a class="deletebutton" href="{{url ('ForceDeletePaypalPayments/'.$paypalpayment->id) }}">Delete Forever</a></td>
         </tr>
     @endforeach
+    @else
+        <tr>
+            <td colspan="6"class="text-center"><b>No Paypal Payments Made</b></td>
+        </tr>
+    @endif
 </table>
 
 <div class="d-flex justify-content-center">

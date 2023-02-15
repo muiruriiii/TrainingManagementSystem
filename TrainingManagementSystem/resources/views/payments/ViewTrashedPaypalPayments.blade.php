@@ -36,6 +36,7 @@
         <th>Currency </th>
         <th colspan="3">Action</th>
     </tr>
+    @if(count($paypalpayments)>0)
     @foreach($paypalpayments as $paypalpayment)
         <tr>
             <td>{{ $paypalpayment-> payment_id }}</td>
@@ -47,12 +48,13 @@
             <td><a class="deletebutton" href="{{url ('RestorePaypalPayments/'.$paypalpayment->id) }}">Restore</a></td>
         </tr>
     @endforeach
+    @else
+        <tr>
+            <td colspan="7"class="text-center"><b>No Trashed Paypal Payments Made</b></td>
+        </tr>
+    @endif
 </table>
 
-{{--<div class="d-flex justify-content-center">--}}
-{{--    --}}{{--    To display on each side of the selected page if the pages are too many--}}
-{{--    {{$paypalpayments->onEachSide(1)->links()}}--}}
-{{--</div>--}}
 
 </body>
 </html>
