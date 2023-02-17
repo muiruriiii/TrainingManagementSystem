@@ -45,6 +45,11 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/register','register')->name('register');
         Route::post('/register','validateRegistration')->name('validateRegistration');
         Route::get('/login','login')->name('login');
+        Route::get('/ForgotPassword','ForgotPassword')->name('ForgotPassword');
+        Route::post('/ForgotPassword','sendResetLink')->name('sendResetLink');
+        Route::get('/ResetPassword/{token}','ResetPassword')->name('ResetPassword');
+        Route::post('/ResetPassword','passwordReset')->name('passwordReset');
+
         Route::post('/login','validateLogin')->name('validateLogin');
         Route::get('/logout','logout')->name('logout');
         Route::get('/ViewUsers','ViewUsers')->name('ViewUsers');
@@ -120,6 +125,7 @@ use Illuminate\Support\Facades\Hash;
     });
 
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/account', [DashboardController::class, 'account'])->name('account');
 //         Route::get('/redirect',[HomeController::class,'redirect']);
 //         Route::get('auth/google',[GoogleAuthController::class,'redirect'])->name('google-auth');
 //         Route::get('auth/google/call-back',[GoogleAuthController::class,'callbackGoogle']);

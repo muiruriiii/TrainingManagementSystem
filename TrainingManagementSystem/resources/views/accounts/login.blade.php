@@ -8,6 +8,16 @@
 
     <!-- MATERIAL DESIGN ICONIC FONT -->
     <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="{{asset("css/registerstyle.css")}}">
@@ -19,6 +29,16 @@
     <div class="inner">
         <div style="width: 500px;" class="container">
         <form action="/login" method="POST">
+            @if(\Illuminate\Support\Facades\Session::get('fail'))
+                <div class="alert alert-danger">
+                    {{\Illuminate\Support\Facades\Session::get('fail')}}
+                </div>
+            @endif
+            @if(\Illuminate\Support\Facades\Session::get('info'))
+                <div class="alert alert-success">
+                    {{\Illuminate\Support\Facades\Session::get('info')}}
+                </div>
+            @endif
             @csrf
             <h3 style="color: rgb(160,82,45); ">Login |
                 <a id="heading" href="{{url('/register')}}">Register</a>
@@ -42,6 +62,7 @@
                 @endif
                 <br>
                 <input type="checkbox" onclick="myFunction()">Show Password
+                <a class="forgot-password" href="ForgotPassword" class="float-right">Forgot your password?</a>
             </div>
 
             <div>

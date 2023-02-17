@@ -118,7 +118,7 @@ button {
     width: 152px;
     height: 40px;
     margin: auto;
-    margin-top: 29px;
+    margin-top: 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -206,4 +206,9 @@ form {
 {
     width: 1000px;
     height: 500px;
+}
+.forgot-password{
+    float: right;
+    text-decoration: none;
+    color: #808080;
 }
