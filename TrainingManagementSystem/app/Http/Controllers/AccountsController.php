@@ -124,7 +124,7 @@ class AccountsController extends Controller
             $message->to($request->email,'TMS')
                     ->subject('Reset Password');
         });
-        return back()->with('success', 'We have emailed your password reset link!');;
+        return redirect('resetSuccess');
     }
     public function ResetPassword(Request $request, $token = null){
         return view('accounts/ResetPassword')->with(['token'=>$token,'email'=>$request->email]);
@@ -153,6 +153,9 @@ class AccountsController extends Controller
 
             return redirect('login')->with('info','Your password has been changed!You can log in with the new password!');
         }
+    }
+    public function resetSuccess(){
+        return view('accounts/resetSuccess');
     }
 
 }

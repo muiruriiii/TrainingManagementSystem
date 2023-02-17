@@ -26,16 +26,16 @@
     <div class="inner">
         <div style="width: 500px;" class="container">
             <form action="{{route('sendResetLink')}}" method="POST">
-                @if(\Illuminate\Support\Facades\Session::get('fail'))
-                    <div class="alert alert-danger">
-                        {{\Illuminate\Support\Facades\Session::get('fail')}}
-                    </div>
-                @endif
-                @if(\Illuminate\Support\Facades\Session::get('success'))
-                    <div class="alert alert-success">
-                        {{\Illuminate\Support\Facades\Session::get('success')}}
-                    </div>
-                @endif
+{{--                @if(\Illuminate\Support\Facades\Session::get('fail'))--}}
+{{--                    <div class="alert alert-danger">--}}
+{{--                        {{\Illuminate\Support\Facades\Session::get('fail')}}--}}
+{{--                    </div>--}}
+{{--                @endif--}}
+{{--                @if(\Illuminate\Support\Facades\Session::get('success'))--}}
+{{--                    <div class="alert alert-success">--}}
+{{--                        {{\Illuminate\Support\Facades\Session::get('success')}}--}}
+{{--                    </div>--}}
+{{--                @endif--}}
 
                 @csrf
                     <h3 style="color: rgb(160,82,45); ">Forgot Password</h3>

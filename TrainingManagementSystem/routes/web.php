@@ -49,6 +49,8 @@ use Illuminate\Support\Facades\Hash;
         Route::post('/ForgotPassword','sendResetLink')->name('sendResetLink');
         Route::get('/ResetPassword/{token}','ResetPassword')->name('ResetPassword');
         Route::post('/ResetPassword','passwordReset')->name('passwordReset');
+        Route::get('/resetSuccess','resetSuccess')->name('resetSuccess');
+
 
         Route::post('/login','validateLogin')->name('validateLogin');
         Route::get('/logout','logout')->name('logout');
