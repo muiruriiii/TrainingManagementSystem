@@ -73,11 +73,11 @@ class CourseController extends Controller
     public function validateCourses(Request $request)
     {
         $request->validate([
-                'courseName'=> 'required',
-                'courseDescription'=> 'required',
-                'courseNotes'=>'required',
-                'courseVideos'=>'required',
-                'courseProfile'=>'nullable'
+            'courseName'=> 'required',
+            'courseDescription'=> 'required',
+            'courseNotes'=>'required',
+            'courseVideos'=>'required',
+            'courseProfile'=>'nullable'
         ]);
         $profileName = time().$request->file('courseProfile')->getClientOriginalName();
         $pathProfile = $request->file('courseProfile')->storeAs('uploads', $profileName, 'public');
@@ -89,11 +89,11 @@ class CourseController extends Controller
         $pathNotes = $request->file('courseNotes')->storeAs('notes', $notes, 'public');
 
         $courses = new Courses([
-        "courseName" => $request->get('courseName'),
-        "courseDescription" => $request->get('courseDescription'),
-        "courseVideos" => '/storage/'.$pathVideos,
-        "courseNotes" => '/storage/'.$pathNotes,
-        "courseProfile"=> '/storage/'.$pathProfile
+            "courseName" => $request->get('courseName'),
+            "courseDescription" => $request->get('courseDescription'),
+            "courseVideos" => '/storage/'.$pathVideos,
+            "courseNotes" => '/storage/'.$pathNotes,
+            "courseProfile"=> '/storage/'.$pathProfile
         ]);
 
         $courses->save();

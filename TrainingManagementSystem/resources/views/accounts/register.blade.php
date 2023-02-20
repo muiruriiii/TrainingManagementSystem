@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="{{asset("css/registerstyle.css")}}">
+    <script src="https://kit.fontawesome.com/c2eec671f5.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -16,8 +17,10 @@
         <form action="{{url ('/register')}}" method="POST">
             @csrf
             <div class="container">
-            <h3 style="color: rgb(160,82,45); ">
-                Register | <a id="heading" href="login">Login</a>
+                <a style="color: rgb(160,82,45);" href="{{url('/')}}">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                </a>
+            <h3 style="color: rgb(160,82,45);">Register | <a id="heading" href="login">Login</a>
             </h3>
             <div class="form-group">
                 <div class="form-wrapper">

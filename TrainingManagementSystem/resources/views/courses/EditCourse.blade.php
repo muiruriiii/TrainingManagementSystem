@@ -47,7 +47,6 @@
                     <video style="width: 320px" controls>
                         <source src="{{asset($course->courseVideos)}}" type="video/mp4">
                     </video>
-{{--                     <img src = "{{asset($course->courseVideos)}}">--}}
                 </div>
                 <div class="form-wrapper">
                     <label for="">Course Notes</label>
@@ -57,7 +56,6 @@
                     @endif
                     <iframe src="{{asset($course->courseNotes)}}">
                     </iframe>
-{{--                    <img src = "{{asset($course->courseNotes)}}">--}}
                 </div>
                 <div class="form-wrapper">
                     <label for="">Course Profile</label>

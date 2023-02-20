@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
-    <link rel="stylesheet" href="{{ asset('css/style2.css') }}" />
+
 
 </head>
 <body>
@@ -40,15 +40,17 @@
         <tr>
             <td>{{ $courses-> courseName }}</td>
             <td>{{ $courses-> courseDescription }}</td>
-            <td>{{ $courses-> courseVideos }}</td>
-            <td>{{ $courses-> courseNotes }}</td>
+            <td><video style="width: 320px" controls><source src="{{asset($courses->courseVideos)}}" type="video/mp4"></video></td>
+            <td><iframe style="width: 320px" src="{{asset($courses->courseNotes)}}"></iframe></td>
+            <td><img style="width: 320px" src = "{{asset($courses->courseProfile)}}"></td>
+
             <td><a class="deletebutton" href="{{url ('RestoreCourses/'.$courses->id) }}">Restore</a></td>
 
         </tr>
     @endforeach
     @else
         <tr>
-            <td colspan="6"class="text-center"><b>No Trashed Mpesa Payments Made</b></td>
+            <td colspan="6"class="text-center"><b>No Trashed Courses Payments Made</b></td>
         </tr>
     @endif
 </table>

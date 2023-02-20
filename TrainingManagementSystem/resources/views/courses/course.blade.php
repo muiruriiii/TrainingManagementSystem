@@ -1,6 +1,5 @@
 @include('templates.dashboardSideBar')
-<!DOCTYPE html>
-<html>
+
 <head>
     <meta charset="utf-8">
     <title>Course</title>
@@ -8,6 +7,8 @@
 
     <!-- MATERIAL DESIGN ICONIC FONT -->
     <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
 
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="{{asset("css/registerstyle.css")}}">
@@ -18,7 +19,7 @@
 
 <div class="wrapper">
     <div class="inner">
-        <form action="/course" enctype="multipart/form-data" method="POST">
+        <form action="/course" enctype="multipart/form-data" method="POST" >
             @csrf
             <div style="width: 500px;" class="container">
                 <h3 id="heading"> COURSES </h3>
@@ -36,7 +37,7 @@
 
                 <div class="form-wrapper">
                     <label for="">Course Description</label>
-                    <input type="text" name="courseDescription" class="form-control">
+                    <textarea name="courseDescription" class="form-control"></textarea>
                     @if($errors->has('courseDescription'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('courseDescription') }}</span>
                     @endif
@@ -68,6 +69,5 @@
         </form>
     </div>
 </div>
-
 </body>
-</html>
+

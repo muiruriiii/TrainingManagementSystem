@@ -31,6 +31,9 @@
                 <div class="form-wrapper">
                     <label for="">Transaction Code</label>
                     <input type="text" id="transaction" name="transaction" class="form-control" placeholder="e.g. RBD4KM3EFU">
+                    @if($errors->has('transaction'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('transaction') }}</span>
+                    @endif
                     <br>
                 </div>
                 <div>

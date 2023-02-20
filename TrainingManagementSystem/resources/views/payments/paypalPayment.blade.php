@@ -11,6 +11,7 @@
 
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="{{asset('css/registerstyle.css')}}">
+    <script src="https://kit.fontawesome.com/c2eec671f5.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -21,6 +22,9 @@
         <form action="{{URL('/payment')}}" method="POST">
             @csrf
             <div style="width: 500px;" class="container">
+                <a style="color: rgb(160,82,45);" href="{{url('/')}}">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                </a>
                 <h3> Course Payment  </h3>
                 <h3 style="color: rgb(160,82,45); ">Paypal | <a id="heading" href="{{url('/mpesaPayment/'.$courses->id)}}">M-Pesa</a></h3>
                 <div class="form-wrapper">

@@ -16,8 +16,6 @@
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
-    <link rel="stylesheet" href="{{ asset('css/style2.css') }}" />
-
 </head>
 <body>
 <h3 style="color: rgb(160,82,45);" id="heading"> PaypalPayments </h3>
