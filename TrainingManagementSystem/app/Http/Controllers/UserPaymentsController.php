@@ -10,12 +10,13 @@ use App\Models\UserPayments;
 
 class UserPaymentsController extends Controller
 {
+//To redirect the user to the specific page they have paid for
     public function paidCoursePage($courseID)
     {
         $courses = Courses::find($courseID);
         return view('courses/courseContent',['courses'=>$courses,'courseID'=>$courseID]);
     }
-    //To check if a user has paid for a course or not on the user payments table. If no payment has been made by that user then redirect to course description page
+//To check if a user has paid for a course or not on the user payments table. If no payment has been made by that user then redirect to course description page
     public function checkifPaid($courseID){
         if(Auth::check())
         {

@@ -20,12 +20,14 @@ class PaypalPaymentController extends Controller
         $this->gateway->setSecret(env('PAYPAL_CLIENT_SECRET'));
         $this->gateway->setTestMode(true);
     }
+
     public function payment($id){
-         $courses = Courses::find($id);
-         UserPayments::create([
-             'courseID'=>$courses->id,
-             'userID'=>Auth::user()->id
-         ]);
+        $courses = Courses::find($id);
+        UserPayments::create([
+            'courseID'=>$courses->id,
+            'userID'=>Auth::user()->id,
+            'status' => 'Pending'
+        ]);
         return view('payments/paypalPayment',['courses'=>$courses]);
     }
     public function pay(Request $request)
@@ -69,19 +71,17 @@ class PaypalPaymentController extends Controller
                 $payment->amount = $arr['transactions'][0]['amount']['total'];
                 $payment->currency = env('PAYPAL_CURRENCY');
                 $payment->payment_status = $arr['state'];
-    //To store the id of the user making the payment in the userpayments table and to retrieve the last payment made and change the status to Accessible
+//To store the id of the user making the payment in the userpayments table and to retrieve the last payment made and change the status to Accessible
                 if(Auth::check()){
                     $payment->userID = Auth::user()->id;
                     $user = Users::find(Auth::user()->id);
                     $userpayment = UserPayments::all()->where('userID', Auth::user()->id)->last();
                     $userpayment->status = 'Accessible';
                 }
-
                 $user->paymentStatus = 'Approved';
-                $payment->save();
                 $user->save();
                 $userpayment->save();
-
+                $payment->save();
                 $date = PaypalPayment::all()->where('payment_id',$arr['id']);
                 return view('payments/paypalConfirm',['userpayment'=>$userpayment,'user'=>$user,'transactionID'=> $arr['id'],'email'=>$arr['payer']['payer_info']['email'],'courseAmount'=>$arr['transactions'][0]['amount']['total'],'date'=>$date]);
 //                 return "Payment is Successful. Your Transaction Id is : " . $arr['id'];
@@ -97,6 +97,9 @@ class PaypalPaymentController extends Controller
     public function errorOccurred()
     {
         return 'User declined the payment!';
+    }
+    public function paypalConfirm(){
+        return view('payments/paypalConfirm');
     }
     public function ViewPaypalPayments(){
         if(Auth::user()->userType != 'admin'){
@@ -131,7 +134,5 @@ class PaypalPaymentController extends Controller
         PaypalPayment::find($id)->forceDelete();
         return back();
     }
-    public function paypalConfirm(){
-        return view('payments/paypalConfirm');
-    }
+
 }
