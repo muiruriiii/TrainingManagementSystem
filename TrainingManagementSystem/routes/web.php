@@ -17,6 +17,7 @@ use App\Http\Controllers\UserPaymentsController;
 
 use App\Models\Users;
 use App\Models\Roles;
+use App\Models\Feedback;
 use App\Models\Courses;
 
 use Illuminate\Support\Facades\Hash;
@@ -34,7 +35,8 @@ use Illuminate\Support\Facades\Hash;
 
     Route::get('/', function () {
         $courses=Courses::all()->where('isDeleted',0);
-        return view('home/index',['courses'=>$courses]);
+        $feedback=Feedback::all()->where('status','Good');;
+        return view('home/index',['courses'=>$courses,'feedback'=>$feedback]);
 
             })->name('index');
 
@@ -43,6 +45,14 @@ use Illuminate\Support\Facades\Hash;
 
     Route::controller(AccountsController::class)->group(function(){
         Route::get('/register','register')->name('register');
+        Route::get('/ViewFeedback','ViewFeedback')->name('ViewFeedback');
+        Route::post('/','feedback')->name('feedback');
+        Route::get('/EditFeedback/{id}','EditFeedback')->name('EditFeedback');
+        Route::post('/FeedbackEdit/{id}','FeedbackEdit')->name('FeedbackEdit');
+        Route::get('/DeleteFeedback/{id}','DeleteFeedback')->name('DeleteFeedback');
+        Route::get('/ViewTrashedFeedback','ViewTrashedFeedback')->name('ViewTrashedFeedback');
+        Route::get('/RestoreFeedback/{id}','RestoreFeedback')->name('RestoreFeedback');
+        Route::get('/RestoreAllFeedback','RestoreAllFeedback')->name('RestoreAllFeedback');
         Route::post('/register','validateRegistration')->name('validateRegistration');
         Route::get('/login','login')->name('login');
         Route::get('/ForgotPassword','ForgotPassword')->name('ForgotPassword');

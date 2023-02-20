@@ -1,8 +1,32 @@
 @include('templates.header')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style>
+.feedback {
+    position: relative;
+    padding: 10px 10px;
+    text-align: center;
+    width: 100%;
+    height: 85%;
+    background-color:#222;
+}
+.feedback p{
+    padding: 10px 0 172px;
+}
+.feedback h2{
+    color: #FFFFFF;
+}
+.feedback h4{
+    padding: 30px 10px;
+}
+</style>
 <div>
     <img class="hrimage" src="{{ asset('images/training4.jpg') }}" alt="Hr Training">
     <h2>OUR COURSES </h2>
     <section id="courses" class="cards">
+        @if(count($courses) > 0 )
         @foreach($courses as $course)
         <article class="card card--1">
             <div class="card__img">
@@ -21,15 +45,16 @@
                 <span class="card__by">by <a href="{{url ('/checkifPaid/'.$course->id)}}" class="card__author" title="author">C.Muiruri</a></span>
             </div>
         </article>
-            @endforeach
+        @endforeach
+        @else
+            <tr>
+                <td colspan="12"class="text-center"><b>No Courses Found</b></td>
+            </tr>
+        @endif
     </section>
-
-
-
-
 </div>
 
-<section id="about" class="fh5co-about-me">
+<section  id="about" class="fh5co-about-me">
     <div class="about-me-inner site-container">
         <article class="portfolio-wrapper">
             <div class="portfolio__img">
@@ -51,55 +76,31 @@
     <div class="about-me-bckg"></div>
 </section>
 
-{{--<section>--}}
-{{--    <div class="rbd-core-ui">--}}
-{{--        <div class="rbd-review-slider">--}}
-{{--            <div class="rbd-review-container">--}}
-{{--                <div class="rbd-review review1.1 rbd-curr">--}}
-{{--                    <h3 class="rbd-heading">Extremely Professional</h3>--}}
-{{--                    <i class="renderSVG" data-icon="star" data-repeat="5"></i>--}}
-{{--                    <div class="rbd-content"><img class="rbd-gravatar" src="https://www.gravatar.com/avatar/ee304528491d860812f73d7d5cd0dc72?s=256">Materials are top notch. People are top notch... they knew exactly how to handle my ignorance and turn it to a positive working business…</div>--}}
-{{--                    <div class="rbd-footing">--}}
-{{--                        <a class="rbd-button rbd-small" href="#">Read More</a>--}}
-{{--                    </div>--}}
-{{--                    <div class="rbd-review-meta">Written by Mark P. on Feb. 18, 2045</div>--}}
-{{--                </div>--}}
-{{--                <div class="rbd-review review1.2 rbd-next">--}}
-{{--                    <h3 class="rbd-heading">Test Company Marketing Delivers Such Great Service!</h3>--}}
-{{--                    <i class="renderSVG" data-icon="star" data-repeat="5"></i>--}}
-{{--                    <div class="rbd-content"><img class="rbd-gravatar" src="https://www.gravatar.com/avatar/ee304528491d860812f73d7d5cd0dc72?s=256">I'm a big fan of this test company. They really do the best work around, and their prices just can't be beat! I hear that Alex is a pretty cool guy…</div>--}}
-{{--                    <div class="rbd-footing">--}}
-{{--                        <a class="rbd-button rbd-small" href="#">Read More</a>--}}
-{{--                    </div>--}}
-{{--                    <div class="rbd-review-meta">Written by Alex D. on Feb. 19, 2045</div>--}}
-{{--                </div>--}}
-{{--                <div class="rbd-review review1.3">--}}
-{{--                    <h3 class="rbd-heading">Test Review </h3>--}}
-{{--                    <i class="renderSVG" data-icon="star" data-repeat="5"></i>--}}
-{{--                    <div class="rbd-content">No Gravatar but here's a review…No Gravatar but here's a review…No Gravatar but here's a review…No Gravatar but here's a review…</div>--}}
-{{--                    <div class="rbd-footing">--}}
-{{--                        <a class="rbd-button rbd-small" href="#">Read More</a>--}}
-{{--                    </div>--}}
-{{--                    <div class="rbd-review-meta">Written by Anonymous. on Feb. 18, 2045</div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</section>--}}
-<section class="fh5co-quotes">
-    <div class="site-container">
-        <div class="about-me-slider">
-            <div>
-                <h2 class="universal-h2 universal-h2-bckg">What People Are Saying</h2>
-                <p>“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, amet, animi aperiam corporis cumque delectus dignissimos dolorem error maiores minima nobis obcaecati perferendis porro provident quasi, quibusdam tempore ullam vitae?”</p>
-
-                <img src="   {{asset('images/images/quotes.svg') }}" alt="quotes svg">
-                <h4>Joy Nkatha</h4>
-                <p>Client</p>
-            </div>
-
+<section class="feedback">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        </ol>
+        <div class="carousel-inner">
+            @foreach($feedback as $key => $feedback)
+                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                    <h2>Testimonials</h2>--}}
+                    <p>{{$feedback->feedback}}</p>
+                    <img src="{{asset('images/images/quotes.svg') }}" alt="quotes svg">
+                    <h4 style="color: #FFFFFF;">{{$feedback->name}}</h4>
+                </div>
+            @endforeach
         </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true">     </span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
+
 </section>
 
 <section id="contact" class="fh5co-social">
@@ -134,13 +135,25 @@
                 </div>
             </div>
             <div class="footer-contact-form">
-                <h5>Contact Form</h5>
-                <form class="contact-form">
+                <h5>Feedback Form</h5>
+
+                <form action="{{route('feedback')}}" method="POST" class="contact-form">
+                    @csrf
                     <div class="contact-form__input">
                         <input type="text" name="name" placeholder="Name">
+                        @if($errors->has('name'))
+                            <span style="color: red;" class="text-danger">{{ $errors->first('name') }}</span>
+                        @endif
                         <input type="email" name="email" placeholder="Email">
+                        @if($errors->has('email'))
+                            <span style="color: red;" class="text-danger">{{ $errors->first('email') }}</span>
+                        @endif
                     </div>
-                    <textarea></textarea>
+                    <textarea name="feedback" placeholder="Feedback"></textarea>
+                    @if($errors->has('feedback'))
+                        <span style="color: red;" class="text-danger">{{ $errors->first('feedback') }}</span>
+                    @endif
+                    <input type="hidden" name="status" value="Poor">
                     <input type="submit" name="submit" value="Submit" class="submit-button">
                 </form>
             </div>
@@ -149,21 +162,9 @@
     <div class="footer-bottom">
         <div class="site-container footer-bottom-inner">
             <p>© 2023 Bityarn | All rights Reserved.</p>
-            {{--            <div class="footer-bottom__img">--}}
-            {{--                <img src="{{ URL::asset('images/images/footer-mastercard.png') }}" alt="footer image">--}}
-            {{--                <img src="{{ URL::asset('images/images/footer-paypal.png') }}" alt="footer image">--}}
-            {{--                <img src="{{ URL::asset('images/images/footer-visa.png') }}" alt="footer image">--}}
-            {{--                <img src="{{ URL::asset('images/images/footer-fedex.png') }}" alt="footer image">--}}
-            {{--                <img src="{{ URL::asset('images/images/footer-dhl.png') }}" alt="footer image">--}}
-            {{--            </div>--}}
         </div>
     </div>
 </footer>
-
-
-
-
-
 
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/slick.min.js') }}"></script>
@@ -181,6 +182,3 @@
 <script src="{{asset('vendor/php-email-form/validate.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
 
-
-</body>
-</html>

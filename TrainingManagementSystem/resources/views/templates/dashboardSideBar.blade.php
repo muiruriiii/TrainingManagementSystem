@@ -60,6 +60,13 @@
             </a>
             <span class="tooltip">View Payments</span>
         </li>
+        <li>
+            <a style="background: rgb(160,82,45);" href="{{url('ViewFeedback')}}">
+                <i class='bx bx-like' ></i>
+                <span class="links_name">View User Feedback</span>
+            </a>
+            <span class="tooltip">View User Feedback</span>
+        </li>
 
         <li>
             <a style="background: rgb(160,82,45);" href="{{url('logout')}}">
