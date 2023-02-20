@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
+use App\Models\Feedback;
 use App\Models\UserPayments;
 use App\Models\Roles;
 use Illuminate\Http\Request;
@@ -19,7 +20,64 @@ class AccountsController extends Controller
         $role = Roles::all();
         return view('accounts/register',['roles'=>$role]);
     }
-
+    public function feedback(Request $request){
+        $request->validate([
+            'name'=> 'required',
+            'email'=> 'required',
+            'feedback'=> 'required'
+        ]);
+        $data = $request->all();
+        Feedback::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'feedback' => $data['feedback']
+        ]);
+        return redirect('/');
+    }
+    public function EditFeedback($id){
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            $feedback = Feedback::find($id);
+            return view('accounts/EditFeedback',['feedback'=> $feedback]);
+        }
+    }
+    public function FeedbackEdit($id,Request $request)
+    {
+        $request->validate([
+        'email'=> 'required',
+        'feedback'=> 'required',
+        'status'=> 'required'
+        ]);
+        $data = $request->all();
+        $feedback = Feedback::find($id);
+        $feedback->email = $data['email'];
+        $feedback->feedback = $data['feedback'];
+        $feedback->status = $data['status'];
+        $feedback->save();
+    return redirect('ViewFeedback');
+    }
+    public function DeleteFeedback($id){
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            $feedback = Feedback::find($id)->delete();
+            return redirect('ViewFeedback');
+        }
+    }
+    public function ViewTrashedFeedback()
+    {
+        $feedback = Feedback::onlyTrashed()->get();
+        return view('accounts/ViewTrashedFeedback',['feedback'=> $feedback]);
+    }
+    public function RestoreFeedback($id){
+        Feedback::whereId($id)->restore();
+         return redirect('ViewTrashedFeedback');
+    }
+    public function RestoreAllFeedback(){
+        Feedback::onlyTrashed()->restore();
+        return back();
+    }
     public function validateRegistration(Request $request)
     {
         $request->validate([
@@ -48,6 +106,14 @@ class AccountsController extends Controller
         }else{
             $users = Users::paginate(3);
             return view('accounts/ViewUsers',['users'=> $users]);
+        }
+    }
+    public function ViewFeedback(){
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            $feedback = Feedback::all();
+            return view('accounts/ViewFeedback',['feedback'=> $feedback]);
         }
     }
 
