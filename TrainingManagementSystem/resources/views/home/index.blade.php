@@ -48,12 +48,17 @@
         @endforeach
         @else
             <tr>
-                <td colspan="12"class="text-center"><b>No Courses Found</b></td>
+                <center>
+                <p><b>No Courses Created</b></p>
+
+                </center>
             </tr>
         @endif
     </section>
 </div>
-
+<button>
+    <a href="{{url ('userProfile/'.$users->id) }}">Profile</a>
+</button>
 <section  id="about" class="fh5co-about-me">
     <div class="about-me-inner site-container">
         <article class="portfolio-wrapper">

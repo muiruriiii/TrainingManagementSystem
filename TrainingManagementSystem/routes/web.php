@@ -35,8 +35,9 @@ use Illuminate\Support\Facades\Hash;
 
     Route::get('/', function () {
         $courses=Courses::all()->where('isDeleted',0);
-        $feedback=Feedback::all()->where('status','Good');;
-        return view('home/index',['courses'=>$courses,'feedback'=>$feedback]);
+        $feedback=Feedback::all()->where('status','Good');
+        $users=Users::all()->where('id',Auth::user()->id)->first();
+        return view('home/index',['courses'=>$courses,'feedback'=>$feedback,'users'=>$users]);
 
             })->name('index');
 
@@ -135,9 +136,14 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/paidCoursePage/{id}', 'paidCoursePage');
         Route::get('/checkifPaid/{id}', 'checkifPaid');
     });
+    Route::controller(DashboardController::class)->group(function(){
+        Route::get('/dashboard',  'dashboard')->name('dashboard');
+        Route::get('/userProfile/{id}', 'userProfile')->name('userProfile');
+        Route::post('/userProfile', 'changePassword')->name('changePassword');
+        Route::post('/changeDetails/{id}','changeDetails')->name('changeDetails');
 
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/account', [DashboardController::class, 'account'])->name('account');
+    });
+
 //         Route::get('/redirect',[HomeController::class,'redirect']);
 //         Route::get('auth/google',[GoogleAuthController::class,'redirect'])->name('google-auth');
 //         Route::get('auth/google/call-back',[GoogleAuthController::class,'callbackGoogle']);

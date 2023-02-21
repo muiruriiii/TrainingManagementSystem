@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Courses;
 use App\Models\UserPayments;
 use App\Models\Users;
@@ -27,6 +28,51 @@ class DashboardController extends Controller
                                     ->count('id');
         return view ('home/dashboard',['courses'=>$courses,'users'=>$users,'noCourseUsers'=>$noCourseUsers]);
         }
+    }
+    public function userProfile($id){
+        $users = Users::find($id);
+        return view('home/userProfile',['users'=>$users]);
+
+    }
+    public function changePassword(Request $request){
+        $request->validate([
+            'oldPassword'=> 'required|min:6',
+            'password'=> 'required|min:6',
+            'confirmPassword'=> 'required|min:6|same:password'
+        ]);
+//Check the entered password if its similar to the password that is in the database
+        $oldPasswordStatus = Hash::check($request->oldPassword, auth()->user()->password);
+//If the two match the the password in the db will update to the new password entered
+        if($oldPasswordStatus){
+
+            Users::findOrFail(Auth::user()->id)->update([
+                'password' => Hash::make($request->password),
+            ]);
+
+            return redirect()->back()->with('message','Password Updated Successfully');
+
+        }else{
+
+            return redirect()->back()->with('message','Current Password does not match with Old Password');
+        }
+    }
+    public function changeDetails($id,Request $request)
+    {
+        $request->validate([
+            'firstName'=> 'required',
+            'lastName'=> 'required',
+            'email'=> 'required|email',
+            'telephoneNumber'=> 'required'
+        ]);
+        $data = $request->all();
+
+            $users = Users::find($id);
+            $users->firstName = $data['firstName'];
+            $users->lastName = $data['lastName'];
+            $users->email = $data['email'];
+            $users->telephoneNumber = $data['telephoneNumber'];
+            $users->save();
+            return redirect()->back()->with('message','Profile Details Updated Successfully');
     }
 
 
