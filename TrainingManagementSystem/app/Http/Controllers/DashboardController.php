@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Courses;
 use App\Models\UserPayments;
 use App\Models\Users;
+use Illuminate\Support\Facades\File;
 
 class DashboardController extends Controller
 {
@@ -73,6 +74,19 @@ class DashboardController extends Controller
             $users->telephoneNumber = $data['telephoneNumber'];
             $users->save();
             return redirect()->back()->with('message','Profile Details Updated Successfully');
+    }
+    public function ProfileEdit($id,Request $request){
+            $request->validate([
+            'userProfile'=> 'required',
+            ]);
+            if($request->userProfile){
+                $profileName = time().$request->file('userProfile')->getClientOriginalName();
+                $pathProfile = $request->file('userProfile')->storeAs('users', $profileName, 'public');
+            }
+                $users = Users::find($id);
+                $users->userProfile =  '/storage/'.$pathProfile;
+                $users->save();
+           return redirect()->back();
     }
 
 

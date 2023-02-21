@@ -141,6 +141,7 @@ use Illuminate\Support\Facades\Hash;
         Route::get('/userProfile/{id}', 'userProfile')->name('userProfile');
         Route::post('/userProfile', 'changePassword')->name('changePassword');
         Route::post('/changeDetails/{id}','changeDetails')->name('changeDetails');
+        Route::post('/ProfileEdit/{id}','ProfileEdit')->name('ProfileEdit');
 
     });
 

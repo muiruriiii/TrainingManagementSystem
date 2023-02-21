@@ -1,0 +1,34 @@
+
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 100%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 5%;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+button{
+    background-color: rgb(160,82,45);
+    border: none;
+    padding: 10px 15px 10px 15px;
+    border-radius: 2px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-family: 'Raleway', sans-serif;
+}
+

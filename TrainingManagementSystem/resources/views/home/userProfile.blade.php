@@ -1,16 +1,23 @@
 <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset("css/userProfile.css")}}">
+
+    <style>
+
+
+    </style>
 </head>
 <section style="background-color: #fff;">
     <div class="container py-5">
         <div class="row">
             <div class="col">
                 <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-                    <ol class="breadcrumb mb-0">
+                    <ul class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                    </ol>
+                        <li class="breadcrumb-item"><a href="/logout">Logout</a></li>
+                    </ul>
                 </nav>
             </div>
         </div>
@@ -29,21 +36,24 @@
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img style="width: 320px" src = "{{asset($users->userProfile)}}" alt="User Profile"
-                             class="rounded-circle img-fluid" style="width: 150px;">
+                        <div class="profile-img">
+                            <form action="{{url('ProfileEdit/' .$users->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                            <img src="{{asset($users->userProfile)}}" alt="User Profile"/>
+                            <div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="userProfile"/>
+                            </div>
+
                         <h5 class="my-3">{{$users->firstName .' '.$users->lastName }}</h5>
-                        <p class="text-muted mb-1">Full Stack Developer</p>
-                        <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
-                    </div>
-                </div>
-                <form action="" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="card mb-4 mb-lg-0">
-                    <div class="card-body p-0">
-                        <input type="file">
-                    </div>
+
+                <div class="mb-3 text-end">
+                    <button type="submit">Update Profile Image</button>
                 </div>
                 </form>
+                    </div>
+                    </div>
+                </div>
 
             </div>
             <div class="col-lg-8">
@@ -53,7 +63,7 @@
                             @csrf
                         <div class="mb-3">
                             <label for="">First Name</label>
-                            <input type="text" name="firstName" value="{{$users->firstName}}" class="form-control">
+                            <input type="text" name="firstName" class="form-control" value="{{$users->firstName}}" class="form-control">
                         </div>
                         <hr>
                         <div class="mb-3">
@@ -72,7 +82,7 @@
                         </div>
                         <div class="mb-3 text-end">
                             <hr>
-                            <button type="submit" class="btn btn-primary">Update Details</button>
+                            <button type="submit">Update Details</button>
                         </div>
                         </form>
                     </div>
@@ -108,7 +118,7 @@
                                     </div>
                                     <div class="mb-3 text-end">
                                         <hr>
-                                    <button type="submit" class="btn btn-primary">Update Password</button>
+                                    <button type="submit" >Update Password</button>
                                     </div>
                                 </form>
                                 </div>

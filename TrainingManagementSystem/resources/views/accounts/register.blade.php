@@ -14,7 +14,7 @@
 <body>
 <div class="wrapper">
     <div class="inner">
-        <form action="{{url ('/register')}}" method="POST">
+        <form action="{{url ('/register')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="container">
                 <a style="color: rgb(160,82,45);" href="{{url('/')}}">
@@ -51,6 +51,10 @@
             @if($errors->has('email'))
                 <span style="color: red;" class="text-danger">{{ $errors->first('email') }}</span>
             @endif
+            </div>
+            <div class="form-wrapper">
+                <label for="">Profile Image</label>
+                <input type="file" id="myFile" name="userProfile">
             </div>
             <div class="form-wrapper">
                 <label for="">Role</label>

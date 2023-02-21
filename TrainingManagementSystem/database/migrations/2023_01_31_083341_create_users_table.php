@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('lastName');
             $table->integer('telephoneNumber');
             $table->string('email')->unique();
+            $table->string('userProfile')->nullable;
             $table->integer('roleID')->unsigned();
             $table->foreign('roleID')->references('id')->on('roles');
             $table->string('userType')->default('user');

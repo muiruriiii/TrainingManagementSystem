@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\File;
 
 
 class AccountsController extends Controller
@@ -89,15 +90,19 @@ class AccountsController extends Controller
             'password'=> 'required|min:6',
             'confirmPassword'=> 'required|min:6|same:password'
         ]);
-        $data = $request->all();
-        Users::create([
-            'firstName' => $data['firstName'],
-            'lastName' => $data['lastName'],
-            'telephoneNumber' => $data['telephoneNumber'],
-            'email' => $data['email'],
-            'roleID' => $data['roleID'],
-            'password' => Hash::make($data['password'])
+        $profileName = time().$request->file('userProfile')->getClientOriginalName();
+        $pathProfile = $request->file('userProfile')->storeAs('users', $profileName, 'public');
+        $users = new Users([
+            "firstName" => $request->get('firstName'),
+            "lastName" => $request->get('lastName'),
+            "telephoneNumber" => $request->get('telephoneNumber'),
+            "email" => $request->get('email'),
+            "roleID" => $request->get('roleID'),
+            "password" => Hash::make($request->get('password')),
+            "userProfile" => '/storage/'.$pathProfile
+
         ]);
+        $users->save();
         return redirect('/login')->with('success','Successful Registration');
     }
     public function ViewUsers(){

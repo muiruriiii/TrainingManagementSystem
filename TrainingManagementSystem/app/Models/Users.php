@@ -15,10 +15,12 @@ class Users extends Model
         'lastName',
         'telephoneNumber',
         'email',
+        'userProfile',
         'roleID',
         'password',
         'userType',
         'paymentStatus',
+
     ];
 
     protected $dates = ['deleted_at'];
