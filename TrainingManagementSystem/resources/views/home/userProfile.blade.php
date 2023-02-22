@@ -37,15 +37,15 @@
                 <div class="card mb-4">
                     <div class="card-body text-center">
                         <div class="profile-img">
-                            <form action="{{url('ProfileEdit/' .$users->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{url('ProfileEdit/' .Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                            <img src="{{asset($users->userProfile)}}" alt="User Profile"/>
+                            <img src="{{asset(Auth::user()->userProfile)}}" alt="User Profile"/>
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
                                 <input type="file" name="userProfile"/>
                             </div>
 
-                        <h5 class="my-3">{{$users->firstName .' '.$users->lastName }}</h5>
+                        <h5 class="my-3">{{Auth::user()->firstName }}</h5>
 
                 <div class="mb-3 text-end">
                     <button type="submit">Update Profile Image</button>
@@ -59,26 +59,26 @@
             <div class="col-lg-8">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <form action="{{url('changeDetails/'.$users->id)}}" method="POST">
+                        <form action="{{url('changeDetails/'.Auth::user()->id)}}" method="POST">
                             @csrf
                         <div class="mb-3">
                             <label for="">First Name</label>
-                            <input type="text" name="firstName" class="form-control" value="{{$users->firstName}}" class="form-control">
+                            <input type="text" name="firstName" class="form-control" value="{{Auth::user()->firstName}}" class="form-control">
                         </div>
                         <hr>
                         <div class="mb-3">
                             <label for="">Last Name</label>
-                            <input type="text" name="lastName" value="{{$users->lastName}}" class="form-control">
+                            <input type="text" name="lastName" value="{{Auth::user()->lastName}}" class="form-control">
                         </div>
                         <hr>
                         <div class="mb-3">
                             <label for="">Email</label>
-                            <input type="text" name="email" value="{{$users->email}}" class="form-control">
+                            <input type="text" name="email" value="{{Auth::user()->email}}" class="form-control">
                         </div>
                         <hr>
                         <div class="mb-3">
                                 <label for="">Telephone Number</label>
-                            <input type="text" name="telephoneNumber" value="{{$users->telephoneNumber}}" class="form-control">
+                            <input type="text" name="telephoneNumber" value="{{Auth::user()->telephoneNumber}}" class="form-control">
                         </div>
                         <div class="mb-3 text-end">
                             <hr>

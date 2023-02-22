@@ -48,7 +48,7 @@
     @endforeach
     @else
         <tr>
-            <td colspan="6"class="text-center"><b>No Paypal Payments Made</b></td>
+            <td colspan="7"class="text-center"><b>No Paypal Payments Made</b></td>
         </tr>
     @endif
 </table>

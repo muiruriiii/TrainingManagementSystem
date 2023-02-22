@@ -1,8 +1,5 @@
 @include('templates.header')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 <style>
 .feedback {
     position: relative;
@@ -23,7 +20,6 @@
 }
 </style>
 <div>
-    <img class="hrimage" src="{{ asset('images/training4.jpg') }}" alt="Hr Training">
     <h2>OUR COURSES </h2>
     <section id="courses" class="cards">
         @if(count($courses) > 0 )
@@ -57,7 +53,7 @@
     </section>
 </div>
 <button>
-    <a href="{{url ('userProfile/'.$users->id) }}">Profile</a>
+    <a href="{{url ('userProfile') }}">Profile</a>
 </button>
 <section  id="about" class="fh5co-about-me">
     <div class="about-me-inner site-container">
@@ -81,7 +77,7 @@
     <div class="about-me-bckg"></div>
 </section>
 
-<section class="feedback">
+<section id="feedback" class="feedback">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -89,7 +85,7 @@
         <div class="carousel-inner">
             @foreach($feedback as $key => $feedback)
                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                    <h2>Testimonials</h2>--}}
+                    <h2>Testimonials</h2>
                     <p>{{$feedback->feedback}}</p>
                     <img src="{{asset('images/images/quotes.svg') }}" alt="quotes svg">
                     <h4 style="color: #FFFFFF;">{{$feedback->name}}</h4>
@@ -98,11 +94,10 @@
         </div>
         <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true">     </span>
-            <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+
         </a>
     </div>
 
