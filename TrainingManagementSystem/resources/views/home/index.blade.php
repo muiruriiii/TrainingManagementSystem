@@ -52,9 +52,6 @@
         @endif
     </section>
 </div>
-<button>
-    <a href="{{url ('userProfile') }}">Profile</a>
-</button>
 <section  id="about" class="fh5co-about-me">
     <div class="about-me-inner site-container">
         <article class="portfolio-wrapper">

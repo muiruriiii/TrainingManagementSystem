@@ -8,12 +8,26 @@ use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
+    //CRUD Functionality
     public function role(){
         if(Auth::user()->userType != 'admin'){
             return view('accounts/login');
         }else{
             return view('roles/role');
         }
+    }
+    public function validateRoles(Request $request)
+    {
+        $request->validate([
+            'roleName'=> 'required',
+            'roleDescription'=> 'required'
+        ]);
+        $data = $request->all();
+        Roles::create([
+            'roleName' => $data['roleName'],
+            'roleDescription' => $data['roleDescription']
+        ]);
+        return redirect('ViewRoles');
     }
     public function EditRole($id){
         if(Auth::user()->userType != 'admin'){
@@ -31,25 +45,6 @@ class RoleController extends Controller
         return redirect('ViewRoles');
         }
     }
-    public function ViewTrashedRoles()
-    {
-        $roles = Roles::onlyTrashed()->get();
-        return view('roles/ViewTrashedRoles',['roles'=> $roles]);
-    }
-    public function RestoreRoles($id){
-        Roles::whereId($id)->restore();
-         return redirect('ViewTrashedRoles');
-    }
-    public function RestoreAllRoles(){
-        Roles::onlyTrashed()->restore();
-        return back();
-    }
-    public function ForceDeleteRoles($id){
-        Roles::find($id)->forceDelete();
-        return back();
-    }
-
-
     public function ViewRoles(){
         if(Auth::user()->userType != 'admin'){
             return view('accounts/login');
@@ -58,19 +53,7 @@ class RoleController extends Controller
         return view('roles/ViewRoles',['roles'=> $roles]);
         }
     }
-    public function validateRoles(Request $request)
-     {
-        $request->validate([
-            'roleName'=> 'required',
-            'roleDescription'=> 'required'
-        ]);
-        $data = $request->all();
-        Roles::create([
-            'roleName' => $data['roleName'],
-            'roleDescription' => $data['roleDescription']
-        ]);
-        return redirect('ViewRoles');
-     }
+
      public function RolesEdit($id,Request $request)
      {
         $request->validate([
@@ -84,6 +67,20 @@ class RoleController extends Controller
             $roles->roleDescription = $data['roleDescription'];
             $roles->save();
         return redirect('ViewRoles');
+     }
+     //SoftDeletes
+     public function ViewTrashedRoles()
+     {
+         $roles = Roles::onlyTrashed()->get();
+         return view('roles/ViewTrashedRoles',['roles'=> $roles]);
+     }
+     public function RestoreRoles($id){
+         Roles::whereId($id)->restore();
+          return redirect('ViewTrashedRoles');
+     }
+     public function RestoreAllRoles(){
+         Roles::onlyTrashed()->restore();
+         return back();
      }
 
 }

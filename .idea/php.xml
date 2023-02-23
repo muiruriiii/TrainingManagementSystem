@@ -124,6 +124,7 @@
       <path value="$PROJECT_DIR$/TrainingManagementSystem/vendor/league/oauth1-client" />
       <path value="$PROJECT_DIR$/TrainingManagementSystem/vendor/laravel/socialite" />
       <path value="$PROJECT_DIR$/TrainingManagementSystem/vendor/safaricom/mpesa" />
+      <path value="$PROJECT_DIR$/TrainingManagementSystem/vendor/owen-it/laravel-auditing" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

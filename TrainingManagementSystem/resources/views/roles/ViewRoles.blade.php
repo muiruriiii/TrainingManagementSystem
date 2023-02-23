@@ -36,8 +36,6 @@
         <td>{{ $role-> roleDescription }}</td>
         <td><a class="editbutton" href="{{url ('EditRole/'.$role->id) }}">Edit</a></td>
         <td><a class="deletebutton" href="{{url ('DeleteRole/'.$role->id) }}">Delete</a></td>
-        <td><a class="deletebutton" href="{{url ('ForceDeleteRoles/'.$role->id) }}">Delete Forever</a></td>
-
     </tr>
     @endforeach
     @else

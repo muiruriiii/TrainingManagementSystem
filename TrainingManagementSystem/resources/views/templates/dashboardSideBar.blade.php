@@ -32,17 +32,17 @@
         <li>
             <a style="background: rgb(160,82,45);" href="{{url('role')}}">
                 <i class='bx bx-group' ></i>
-                <span class="links_name">Add a Role</span>
+                <span class="links_name">Roles</span>
             </a>
-            <span class="tooltip">Add a Role</span>
+            <span class="tooltip">Roles</span>
         </li>
 
         <li>
             <a style="background: rgb(160,82,45);" href="{{url('course')}}">
                 <i class='bx bx-notepad' ></i>
-                <span class="links_name">Add a Course</span>
+                <span class="links_name">Courses</span>
             </a>
-            <span class="tooltip">Add a Course</span>
+            <span class="tooltip">Courses</span>
         </li>
 
         <li>

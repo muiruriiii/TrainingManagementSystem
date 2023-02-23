@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class PaypalPayment extends Model
+class PaypalPayment extends Model implements Auditable
 {
     use HasFactory, SoftDeletes;
+    use \OwenIt\Auditing\Auditable;
+
     protected $fillable = ['id','payment_id','payer_id','payer_email','userID','amount','currency','payment_status'];
     protected $dates = ['deleted_at'];
+
     //To display the user's name on the view payments table
     public function users()
     {

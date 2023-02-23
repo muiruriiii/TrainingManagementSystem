@@ -60,10 +60,9 @@ use Illuminate\Support\Facades\Auth;
                         <li><a href="#courses" class="nav-link">Courses</a></li>
                         <li><a href="#feedback" class="nav-link">Feedback</a></li>
                         <li><a href="{{url('/login')}}" class="nav-link">Account</a></li>
-                        <li><a class="dropdown-item" href="">My Profile</a></li>
-                        <li><a class="dropdown-item" href="">Log out</a></li>
-{{--                        <li><a href="{{url('/logout')}}" class="nav-link">Logout</a></li>--}}
-{{--                    </ul>--}}
+                        <li><a href="{{url('/userProfile')}}" class="nav-link">Profile</a></li>
+                        <li><a href="{{url('/logout')}}" class="nav-link">Logout</a></li>
+                    </ul>
                 </nav>
             </div>
             <i class="fa fa-user" aria-hidden="true"></i>

@@ -33,10 +33,12 @@
 
                 <div class="form-wrapper">
                     <label for="">Course Description</label>
-                    <input type="text" name="courseDescription" value="{{$course->courseDescription}}" class="form-control">
+                    <textarea type="text" name="courseDescription" value="{{$course->courseDescription}}" class="form-control">
+                    </textarea>
                     @if($errors->has('courseDescription'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('courseDescription') }}</span>
                     @endif
+
                 </div>
                 <div class="form-wrapper">
                     <label for="">Course Videos</label>
