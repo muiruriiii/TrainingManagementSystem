@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Courses;
+use App\Models\CourseTopics;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -18,17 +19,41 @@ class CourseController extends Controller
             return view('courses/course');
         }
     }
+    public function courseTopics(){
+        $course = Courses::all();
+        return view('courses/courseTopics',['courses'=>$course]);
+    }
     public function courseContent($id){
         $courses = Courses::find($id);
         return view('courses/courseContent', ['courses'=>$courses , 'courseID'=>$id]);
     }
     public function courseNotes($id){
+        $coursetopics = CourseTopics::find($id);
+       //To display the course name based on the chosen course
         $courses = Courses::find($id);
-        return view('courses/courseNotes', ['courseID'=>$id, 'course'=>$courses]);
+        return view('courses/courseNotes', ['courseID'=>$id, 'coursetopics'=>$coursetopics]);
+    }
+
+    public function listTopics($id){
+        //To fetch all the topics
+        $coursetopics = CourseTopics::all();
+        //To display the course name based on the chosen course
+        $courses = Courses::find($id);
+        return view('courses/listTopics', ['courseID'=>$id,'courses'=>$courses,'coursetopics'=>$coursetopics]);
+    }
+
+    public function topicContent($id){
+        //To display the notes and videos options specific to the course
+        $coursetopics = CourseTopics::find($id);
+        //To display the course name based on the chosen course
+        $courses = Courses::find($id);
+        return view('courses/topicContent', ['courseID'=>$id,'courses'=>$courses,'coursetopics'=>$coursetopics]);
     }
     public function courseVideos($id){
+        $coursetopics = CourseTopics::find($id);
+        //To display the course name based on the chosen course
         $courses = Courses::find($id);
-        return view('courses/courseVideos',['courseID'=>$id, 'course'=>$courses]);
+        return view('courses/courseVideos',['courseID'=>$id,'courses'=>$courses, 'coursetopics'=>$coursetopics]);
     }
     public function coursesDescription($id){
         $courses = Courses::find($id);
@@ -62,6 +87,33 @@ class CourseController extends Controller
         ]);
 
         $courses->save();
+        return redirect('ViewCourses');
+    }
+    public function validateCourseTopics(Request $request)
+    {
+        $request->validate([
+            'courseID'=> 'required',
+            'topicName'=> 'required',
+            'topicNumber'=> 'required',
+            'courseNotes'=>'required',
+            'courseVideos'=>'required',
+        ]);
+
+        $notes = time().$request->file('courseNotes')->getClientOriginalName();
+        $pathNotes = $request->file('courseNotes')->storeAs('notes', $notes, 'public');
+
+        $videos = time().$request->file('courseVideos')->getClientOriginalName();
+        $pathVideos = $request->file('courseVideos')->storeAs('videos', $videos, 'public');
+
+        $coursetopics = new CourseTopics([
+            "courseID" => $request->get('courseID'),
+            "topicNumber" => $request->get('topicNumber'),
+            "topicName" => $request->get('topicName'),
+            "courseVideos" => '/storage/'.$pathVideos,
+            "courseNotes" => '/storage/'.$pathNotes,
+        ]);
+
+        $coursetopics->save();
         return redirect('ViewCourses');
     }
     public function ViewCourses(){

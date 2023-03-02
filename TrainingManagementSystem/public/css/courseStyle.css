@@ -288,5 +288,17 @@
 .cardBox .card:hover{
     background-color:rgb(170,100,60);
 }
+.topiclist {
+    width: 50%;
+    text-align: center;
+    border: solid 1px ;
+    justify-content: center;
+    border-radius: 25px;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color:rgb(160,82,45);
+    cursor: pointer;
+ }
 
-/*rgb(170,90,60);*/

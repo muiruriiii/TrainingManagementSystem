@@ -33,18 +33,11 @@
         </li>
 
         <li>
-            <a style="background: rgb(160,82,45);" href="{{url('courseNotes/'.$courseID)}}">
-                <i class='bx bx-note' ></i>
-                <span class="links_name">Course Notes</span>
+            <a style="background: rgb(160,82,45);" href="{{url('listTopics/'.$courseID)}}">
+                <i class='bx bx-notepad' ></i>
+                <span class="links_name">Course Topics</span>
             </a>
-            <span class="tooltip">Course Notes</span>
-        </li>
-        <li>
-            <a style="background: rgb(160,82,45);" href="{{url('courseVideos/'.$courseID)}}">
-                <i class="bx bx-video"></i>
-                <span class="links_name">Course Videos</span>
-            </a>
-            <span class="tooltip">Course Videos</span>
+            <span class="tooltip">Course Topics</span>
         </li>
         <li>
             <a style="background: rgb(160,82,45);" href="/logout">
