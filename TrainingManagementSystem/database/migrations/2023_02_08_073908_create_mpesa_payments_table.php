@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->string('phoneNumber');
                 $table->integer('userID')->unsigned()->nullable();
                 $table->foreign('userID')->references('id')->on('users');
-
+                $table->softDeletes()->nullable;
                 $table->timestamps();
         });
     }

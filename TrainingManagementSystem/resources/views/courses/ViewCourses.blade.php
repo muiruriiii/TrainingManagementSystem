@@ -20,7 +20,7 @@
 </head>
 <body>
 <h3 style="color: rgb(160,82,45);" id="heading"> Courses </h3>
-<h3 style="color: rgb(160,82,45);" id="heading"> All |<a id="heading" href="course"> Add </a>|<a id="heading" href="ViewTrashedCourses"> Trashed </a> </h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> All |<a id="heading" href="course"> Add </a>|<a id="heading" href="ViewTrashedCourses"> Inactive </a> </h3>
 
 <table class="table table-striped">
     <thead>

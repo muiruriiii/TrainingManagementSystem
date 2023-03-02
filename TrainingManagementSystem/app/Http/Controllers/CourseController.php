@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    //Page Displays
     public function course(){
         if(Auth::user()->userType != 'admin'){
             return view('accounts/login');
@@ -33,43 +34,7 @@ class CourseController extends Controller
         $courses = Courses::find($id);
         return view('courses/coursesDescription', ['courses'=>$courses]);
     }
-    public function ViewCourses(){
-        if(Auth::user()->userType != 'admin'){
-            return view('accounts/login');
-        }else{
-            $courses = Courses::paginate(3);
-            return view('courses/ViewCourses',['course'=> $courses]);
-        }
-    }
-    public function EditCourse($id){
-        if(Auth::user()->userType != 'admin'){
-            return view('accounts/login');
-        }else{
-            $courses = Courses::find($id);
-            return view('courses/EditCourse',['courseID'=>$id, 'course'=>$courses]);
-        }
-    }
-    public function DeleteCourse($id){
-        if(Auth::user()->userType != 'admin'){
-            return view('accounts/login');
-        }else{
-        $courses = Courses::find($id)->delete();
-        return redirect('ViewCourses');
-        }
-    }
-    public function ViewTrashedCourses()
-    {
-        $courses = Courses::onlyTrashed()->get();
-        return view('courses/ViewTrashedCourses',['course'=> $courses]);
-    }
-    public function RestoreCourses($id){
-        Courses::whereId($id)->restore();
-         return redirect('ViewTrashedCourses');
-    }
-    public function RestoreAllCourses(){
-        Courses::onlyTrashed()->restore();
-        return back();
-    }
+    //CRUD Functionality
     public function validateCourses(Request $request)
     {
         $request->validate([
@@ -98,7 +63,46 @@ class CourseController extends Controller
 
         $courses->save();
         return redirect('ViewCourses');
-     }
+    }
+    public function ViewCourses(){
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            $courses = Courses::paginate(3);
+            return view('courses/ViewCourses',['course'=> $courses]);
+        }
+    }
+    public function EditCourse($id){
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+            $courses = Courses::find($id);
+            return view('courses/EditCourse',['courseID'=>$id, 'course'=>$courses]);
+        }
+    }
+    public function DeleteCourse($id){
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+        $courses = Courses::find($id)->delete();
+        return redirect('ViewCourses');
+        }
+    }
+    //SoftDeletes
+    public function ViewTrashedCourses()
+    {
+        $courses = Courses::onlyTrashed()->get();
+        return view('courses/ViewTrashedCourses',['course'=> $courses]);
+    }
+    public function RestoreCourses($id){
+        Courses::whereId($id)->restore();
+         return redirect('ViewTrashedCourses');
+    }
+    public function RestoreAllCourses(){
+        Courses::onlyTrashed()->restore();
+        return back();
+    }
+
     public function CoursesEdit($id,Request $request){
         $request->validate([
         'courseName'=> 'required',

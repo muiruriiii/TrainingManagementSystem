@@ -19,7 +19,7 @@
 </head>
 <body>
 <h3 style="color: rgb(160,82,45);" id="heading"> PaypalPayments </h3>
-<h3 style="color: rgb(160,82,45);" id="heading"> Trashed |<a id="heading" href="ViewMpesaPayments"> Mpesa </a>|<a id="heading" href="ViewPaypalPayments"> All </a> </h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> Inactive |<a id="heading" href="ViewMpesaPayments"> Mpesa </a>|<a id="heading" href="ViewPaypalPayments"> All </a> </h3>
 <div class="col col-md-11 text-right">
     <span style="display: inline-block"><h3><a class="deletebutton" href="{{url('RestoreAllPaypalPayments') }}"><b>Restore All</b></a></h3></span>
     <i style="display: inline-block;color: rgb(160,82,45);" class="fa-sharp fa-solid fa-trash-arrow-up"></i>

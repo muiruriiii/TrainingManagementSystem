@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\File;
 
@@ -35,8 +36,17 @@ class AccountsController extends Controller
             'telephoneNumber'=> 'required',
             'email'=> 'required|email|unique:users',
             'roleID'=> 'required',
-            'password'=> 'required|min:6',
-            'confirmPassword'=> 'required|min:6|same:password'
+            'password'=> [
+                'required',
+                Password::min(8)
+                        ->letters()
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols()
+                        ->uncompromised()
+            ],
+            'confirmPassword'=> 'required|same:password',
+
         ]);
         $profileName = time().$request->file('userProfile')->getClientOriginalName();
         $pathProfile = $request->file('userProfile')->storeAs('users', $profileName, 'public');

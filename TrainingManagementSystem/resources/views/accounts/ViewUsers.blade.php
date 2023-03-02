@@ -20,7 +20,7 @@
 <body>
 
 <h3 style="color: rgb(160,82,45);" id="heading"> Users </h3>
-<h3 style="color: rgb(160,82,45);" id="heading"> All |<a id="heading" href="ViewTrashedUsers"> Trashed </a></h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> All |<a id="heading" href="ViewTrashedUsers"> Inactive </a></h3>
 
 @if(session()->has('success'))
 

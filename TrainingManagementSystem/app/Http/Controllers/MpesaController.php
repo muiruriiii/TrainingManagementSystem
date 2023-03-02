@@ -103,8 +103,8 @@ class MpesaController extends Controller
         'PartyA' => $phoneNumber,
         'PartyB' => 174379,
         'PhoneNumber' => $phoneNumber,
-        'CallBackURL' => 'https://9c7f-41-80-108-126.ngrok.io/api/stk/push/callback/url',
-        'AccountReference' => "TMS Tester Payment",
+        'CallBackURL' => 'https://f6f2-105-162-17-56.ngrok.io/api/stk/push/callback/url',
+        'AccountReference' => "TMS Lipa na Mpesa Payment",
         'TransactionDesc' => "Lipa Na M-PESA"
         ];
 
@@ -120,11 +120,13 @@ class MpesaController extends Controller
         $courses = Courses::find($id);
         UserPayments::create([
             'courseID'=>$courses->id,
-            'userID'=>Auth::user()->id
+            'userID'=>Auth::user()->id,
+            'status'=>'Pending'
         ]);
         return redirect('/mpesaConfirm');
 
     }
+//To store the payment details in the mpesapayments table
     public function MpesaRes(Request $request)
     {
         $response = json_decode($request->getContent());
@@ -142,22 +144,24 @@ class MpesaController extends Controller
         $mpesaPayment->phoneNumber = $phoneNumber;
         $mpesaPayment->save();
 
-
         Log::info($mpesaPayment);
     }
     public function mpesaConfirm(){
-        $userpayment = UserPayments::all()->where('userID', Auth::user()->id)->last();
-        if($userpayment->status == 'Accessible'){
+//         $userpayment = UserPayments::all()->where('userID', Auth::user()->id)->last();
+//         if($userpayment->status == 'Accessible'){
             return view('payments/mpesaConfirm');
-        }else{
-           return view('payments/mpesaPayment');
-        }
+//         }else{
+//            return view('payments/mpesaPayment');
+//         }
     }
 //To check if the transaction code in the database is similar to the one entered by the user
     public function confirmTransaction(Request $request){
+        $request->validate([
+            'transaction'=>'required',
+        ]);
         $mpesaPayment = $request->transaction;
         $allmpesaTransaction = MpesaPayments::all()->where('transactionID',$mpesaPayment)->first();
-//If similar the status is set to Accessible and user ID of the logged in user is set
+//If similar, the status is set to Accessible and user ID of the logged in user is set
         if($allmpesaTransaction){
             $user = Users::find(Auth::user()->id);
             $allmpesaTransaction->userID = Auth::user()->id;
@@ -168,7 +172,7 @@ class MpesaController extends Controller
             $allmpesaTransaction->save();
             $user->save();
             $userpayment->save();
-
+            return 'hello';
             return redirect ('paidCoursePage/'.$userpayment->courseID);
         }
     }
@@ -176,14 +180,33 @@ class MpesaController extends Controller
         if(Auth::user()->userType != 'admin'){
                 return view('accounts/login');
         }else{
-        $mpesapayments = MpesaPayments::paginate(1);
+        $mpesapayments = MpesaPayments::paginate(5);
         return view('payments/ViewMpesaPayments',['mpesapayments'=> $mpesapayments]);
         }
     }
-
-
-
-
-
-
+    public function DeleteMpesaPayment($id){
+        if(Auth::user()->userType != 'admin'){
+            return view('accounts/login');
+        }else{
+        $mpesapayments = MpesaPayments::find($id)->delete();
+            return redirect('ViewMpesaPayments');
+        }
+    }
+    public function ViewTrashedMpesaPayments()
+    {
+        $mpesapayments = MpesaPayments::onlyTrashed()->get();
+        return view('payments/ViewTrashedMpesaPayments',['mpesapayments'=> $mpesapayments]);
+    }
+    public function RestoreMpesaPayments($id){
+        MpesaPayments::whereId($id)->restore();
+         return redirect('ViewTrashedMpesaPayments');
+    }
+    public function RestoreAllMpesaPayments(){
+        MpesaPayments::onlyTrashed()->restore();
+        return back();
+    }
+    public function ForceDeleteMpesaPayments($id){
+        MpesaPayments::find($id)->forceDelete();
+        return back();
+    }
 }

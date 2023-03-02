@@ -21,7 +21,7 @@
 <body>
 
 <h3 style="color: rgb(160,82,45);" id="heading"> User Feedback </h3>
-<h3 style="color: rgb(160,82,45);" id="heading"> All |<a id="heading" href="ViewTrashedFeedback"> Trashed </a> </h3>
+<h3 style="color: rgb(160,82,45);" id="heading"> All |<a id="heading" href="ViewTrashedFeedback"> Inactive </a> </h3>
 
 <table>
     <tr>
