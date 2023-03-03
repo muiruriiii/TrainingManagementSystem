@@ -11,7 +11,7 @@ class Courses extends Model implements Auditable
 {
     use HasFactory, SoftDeletes;
     use \OwenIt\Auditing\Auditable;
-    protected $fillable = ['id','courseName','courseDescription','courseVideos','courseNotes','courseProfile','isDeleted'];
+    protected $fillable = ['id','courseName','courseDescription','courseProfile','isDeleted'];
     protected $dates = ['deleted_at'];
 
 }

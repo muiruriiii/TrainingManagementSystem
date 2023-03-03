@@ -17,8 +17,6 @@ return new class extends Migration
             $table->increments('id');
             $table->string('courseName');
             $table->string('courseDescription');
-            $table->string('courseVideos');
-            $table->string('courseNotes');
             $table->string('courseProfile');
              $table->softDeletes()->nullable;
             $table->timestamps();

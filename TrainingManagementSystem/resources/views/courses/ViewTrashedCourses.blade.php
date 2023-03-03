@@ -31,8 +31,6 @@
     <tr>
         <th>Course Name</th>
         <th>Course Description</th>
-        <th>Course Videos</th>
-        <th>Course Notes</th>
         <th colspan="3">Action</th>
     </tr>
     @if(count($course) > 0 )
@@ -40,8 +38,6 @@
         <tr>
             <td>{{ $courses-> courseName }}</td>
             <td>{{ $courses-> courseDescription }}</td>
-            <td><video style="width: 320px" controls><source src="{{asset($courses->courseVideos)}}" type="video/mp4"></video></td>
-            <td><iframe style="width: 320px" src="{{asset($courses->courseNotes)}}"></iframe></td>
             <td><img style="width: 320px" src = "{{asset($courses->courseProfile)}}"></td>
 
             <td><a class="deletebutton" href="{{url ('RestoreCourses/'.$courses->id) }}">Restore</a></td>

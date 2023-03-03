@@ -43,6 +43,7 @@ class AccountsController extends Controller
                         ->mixedCase()
                         ->numbers()
                         ->symbols()
+                        //password submitted is not compromised on the internet with a public password data breach leak
                         ->uncompromised()
             ],
             'confirmPassword'=> 'required|same:password',
@@ -66,7 +67,16 @@ class AccountsController extends Controller
     public function validateLogin(Request $request){
         $request->validate([
             'email'=>'required',
-            'password'=>'required',
+           'password'=> [
+                       'required',
+                       Password::min(8)
+                           ->letters()
+                           ->mixedCase()
+                           ->numbers()
+                           ->symbols()
+                           //password submitted is not compromised on the internet with a public password data breach leak
+                           ->uncompromised()
+                    ],
         ]);
         $credentials = $request->only('email','password');
 

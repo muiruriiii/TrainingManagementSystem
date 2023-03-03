@@ -65,29 +65,19 @@ class CourseController extends Controller
         $request->validate([
             'courseName'=> 'required',
             'courseDescription'=> 'required',
-            'courseNotes'=>'required',
-            'courseVideos'=>'required',
             'courseProfile'=>'nullable'
         ]);
         $profileName = time().$request->file('courseProfile')->getClientOriginalName();
         $pathProfile = $request->file('courseProfile')->storeAs('uploads', $profileName, 'public');
 
-        $videos = time().$request->file('courseVideos')->getClientOriginalName();
-        $pathVideos = $request->file('courseVideos')->storeAs('videos', $videos, 'public');
-
-        $notes = time().$request->file('courseNotes')->getClientOriginalName();
-        $pathNotes = $request->file('courseNotes')->storeAs('notes', $notes, 'public');
-
         $courses = new Courses([
             "courseName" => $request->get('courseName'),
             "courseDescription" => $request->get('courseDescription'),
-            "courseVideos" => '/storage/'.$pathVideos,
-            "courseNotes" => '/storage/'.$pathNotes,
             "courseProfile"=> '/storage/'.$pathProfile
         ]);
 
         $courses->save();
-        return redirect('ViewCourses');
+        return redirect('courseTopics');
     }
     public function validateCourseTopics(Request $request)
     {

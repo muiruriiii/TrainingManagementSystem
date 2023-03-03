@@ -39,25 +39,6 @@
                     @endif
                 </div>
                 <div class="form-wrapper">
-                    <label for="">Course Videos</label>
-                    <input type="file" id="myFile"  name="courseVideos">
-                    @if($errors->has('courseVideos'))
-                        <span style="color: red;" class="text-danger">{{ $errors->first('courseVideos') }}</span>
-                    @endif
-                    <video style="width: 320px" controls>
-                        <source src="{{asset($course->courseVideos)}}" type="video/mp4">
-                    </video>
-                </div>
-                <div class="form-wrapper">
-                    <label for="">Course Notes</label>
-                    <input type="file" id="myFile" name="courseNotes">
-                    @if($errors->has('courseNotes'))
-                        <span style="color: red;" class="text-danger">{{ $errors->first('courseNotes') }}</span>
-                    @endif
-                    <iframe src="{{asset($course->courseNotes)}}">
-                    </iframe>
-                </div>
-                <div class="form-wrapper">
                     <label for="">Course Profile</label>
                     <input type="file" id="myFile" name="courseProfile">
                     @if($errors->has('courseProfile'))
