@@ -288,17 +288,86 @@
 .cardBox .card:hover{
     background-color:rgb(170,100,60);
 }
-.topiclist {
-    width: 50%;
-    text-align: center;
-    border: solid 1px ;
-    justify-content: center;
-    border-radius: 25px;
+
+.float-container {
+    border: 3px solid #fff;
+    padding: 5px;
+    overflow-x:hidden ;
+}
+.topiclist{
+    width:  40%;
+    height: 40%;
     padding: 10px;
-    margin: auto;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    color:rgb(160,82,45);
-    cursor: pointer;
- }
+    margin:2%;
+    margin-left: 30%;
+    border: solid transparent;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
+
+    /*font-family: 'Raleway', sans-serif;*/
+}
+
+.topiclist span{
+    display: inline-block;
+    margin: 10px 80px;
+}
+a{
+    color: rgb(160,82,45);
+}
+/*.float-child {*/
+/*    !*width: 30%;*!*/
+/*    !*!*float: left;*!*!*/
+/*    !*padding: 20px;*!*/
+/*    !*margin-left: 8%;*!*/
+/*    !*height: 30% ;*!*/
+/*    !*border: solid transparent;*!*/
+/*    !*border-radius: 4px;*!*/
+/*    !*text-align: center;*!*/
+/*    !*box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;*!*/
+
+/*    width: 30%;*/
+/*    float: left;*/
+/*    padding: 20px;*/
+/*    border: solid transparent;*/
+/*    border-radius: 4px;*/
+/*    text-align: center;*/
+/*    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;*/
+/*    margin-left: 8%;*/
+/*}*/
+
+/*.float-child2 {*/
+/*    width: 60%;*/
+/*    float: left;*/
+/*    padding: 20px;*/
+/*    border: 2px solid red;*/
+/*    margin-left: 1%;*/
+/*    border: solid transparent;*/
+/*    border-radius: 4px;*/
+/*    text-align: center;*/
+/*    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;*/
+
+
+/*    !*width: 10%;*!*/
+/*    !*height: 30% ;*!*/
+
+/*    !*width:  500px;*!*/
+/*    !*height: 30px ;*!*/
+/*    !*border: solid transparent;*!*/
+/*    !*border-radius: 4px;*!*/
+/*    !*text-align: center;*!*/
+/*    !*box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;*!*/
+/*    !*background-size: cover;*!*/
+/*    !*background-repeat: no-repeat;*!*/
+/*    !*align-items: center;*!*/
+/*    !*padding-top: 20px;*!*/
+/*    !*padding-bottom: 80px;*!*/
+/*    !*margin-bottom: 20px;*!*/
+/*    !*margin-left: 5%;*!*/
+/*    !*font-family: 'Raleway', sans-serif;*!*/
+/*}*/
+
+
 

@@ -48,8 +48,6 @@ use Illuminate\Support\Facades\Hash;
         Route::post('/userProfile', 'changePassword')->name('changePassword');
         Route::post('/changeDetails/{id}','changeDetails')->name('changeDetails');
         Route::post('/ProfileEdit/{id}','ProfileEdit')->name('ProfileEdit');
-
-
     });
      Route::controller(PasswordController::class)->group(function(){
         Route::get('/ForgotPassword','ForgotPassword')->name('ForgotPassword');
@@ -77,14 +75,18 @@ use Illuminate\Support\Facades\Hash;
 
     Route::controller(CourseController::class)->group(function(){
         Route::get('/course','course')->name('course');
+        Route::get('/courseTopics','courseTopics')->name('courseTopics');
         Route::get('/courseContent/{id}','courseContent')->name('courseContent');
         Route::get('/courseNotes/{id}','courseNotes')->name('courseNotes');
+        Route::get('/listTopics/{id}','listTopics')->name('listTopics');
+        Route::get('/topicContent/{id}','topicContent')->name('topicContent');
         Route::get('/courseVideos/{id}','courseVideos')->name('courseVideos');
         Route::get('/coursesDescription/{id}','coursesDescription')->name('coursesDescription');
 
         Route::get('/ViewCourses','ViewCourses')->name('ViewCourses');
         Route::get('/EditCourse/{id}','EditCourse')->name('EditCourse');
         Route::get('/DeleteCourse/{id}','DeleteCourse')->name('DeleteCourse');
+        Route::post('/courseTopics','validateCourseTopics')->name('validateCourseTopics');
         Route::post('/course','validateCourses')->name('validateCourses');
         Route::post('/CoursesEdit/{id}','CoursesEdit')->name('CoursesEdit');
 

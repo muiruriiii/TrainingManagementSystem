@@ -23,7 +23,9 @@
             @csrf
             <div style="width: 500px;" class="container">
                 <h3 id="heading"> COURSES </h3>
-
+                <center>
+                    <h3 style="color: rgb(160,82,45);" id="heading">Topics | <a id="heading" href="ViewCourses">View</a> |<a id="heading" href="course"> Add </a> </h3>
+                </center>
                 <div class="form-wrapper">
                     <label for="">Course Name</label>
                     <select class='form-control' name='courseID' >
