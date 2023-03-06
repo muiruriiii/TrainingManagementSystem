@@ -36,7 +36,7 @@ class CourseController extends Controller
 
     public function listTopics($id){
         //To fetch all the topics
-        $coursetopics = CourseTopics::all();
+        $coursetopics = CourseTopics::all()->where('courseID',$id);
         //To display the course name based on the chosen course
         $courses = Courses::find($id);
         return view('courses/listTopics', ['courseID'=>$id,'courses'=>$courses,'coursetopics'=>$coursetopics]);
@@ -57,7 +57,8 @@ class CourseController extends Controller
     }
     public function coursesDescription($id){
         $courses = Courses::find($id);
-        return view('courses/coursesDescription', ['courses'=>$courses]);
+        $coursetopics = CourseTopics::all()->where('courseID',$id);
+        return view('courses/coursesDescription', ['courses'=>$courses,'coursetopics'=>$coursetopics]);
     }
     //CRUD Functionality
     public function validateCourses(Request $request)

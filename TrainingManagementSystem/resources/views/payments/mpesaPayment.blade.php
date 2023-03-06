@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-wrapper">
                     <label for="">Amount</label>
-                    <input type="text" name="amount" class="form-control" value="250" readonly>
+                    <input type="text" name="amount" class="form-control" value="3,202.50" readonly>
                     @if ($errors->has('amount'))
                         <span style="color: red;" class="text-danger">{{ $errors->first('amount') }}</span>
                     @endif

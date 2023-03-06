@@ -97,7 +97,7 @@
                                     <h6 class="text-center">Change Password</h6>
                                 <div class="mb-3">
                                     <label for="">Old Password</label>
-                                    <input type="password" name="oldPassword" class="form-control">
+                                    <input id="oldInput" type="password" name="oldPassword" class="form-control">
                                     @if($errors->has('oldPassword'))
                                         <span style="color: red;" class="text-danger">{{ $errors->first('oldPassword') }}</span>
                                     @endif
@@ -105,7 +105,7 @@
                                 <hr>
                                 <div class="mb-3">
                                     <label>New Password</label>
-                                    <input type="password" name="password" class="form-control" />
+                                    <input id="newInput" type="password" name="password" class="form-control" />
                                     @if($errors->has('password'))
                                         <span style="color: red;" class="text-danger">{{ $errors->first('password') }}</span>
                                     @endif
@@ -113,11 +113,12 @@
                                 <hr>
                                 <div class="mb-3">
                                     <label>Confirm Password</label>
-                                    <input type="password" name="confirmPassword" class="form-control">
+                                    <input id="confirmInput" type="password" name="confirmPassword" class="form-control">
                                     @if($errors->has('confirmPassword'))
                                         <span style="color: red;" class="text-danger">{{ $errors->first('confirmPassword') }}</span>
                                     @endif
                                     </div>
+                                    <input type="checkbox" onclick="myFunction()">Show Password
                                     <div class="mb-3 text-end">
                                         <hr>
                                     <button type="submit" >Update Password</button>
@@ -133,6 +134,21 @@
     </div>
     </div>
 </section>
+
 <script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
+        function myFunction() {
+        var x = document.getElementById("oldInput");
+        var y = document.getElementById("newInput");
+        var z = document.getElementById("confirmInput");
+        if (x.type === "password" && y.type === "password" && z.type === "password") {
+        x.type = "text";
+        y.type = "text";
+        z.type = "text";
+    } else {
+        x.type = "password";
+        y.type = "password";
+        z.type = "password";
+    }
+    }
 </script>
+

@@ -11,18 +11,21 @@
         </a>
         <span>
              <a href="{{url('courseNotes/'.$coursetopic->id)}}">
+                 <input type="checkbox">
                  Notes
              </a>
         </span>
         <span>
             <a href="{{url('courseVideos/'.$coursetopic->id)}}">
+                 <input type="checkbox">
                 Videos
             </a>
         </span>
     </div>
+    <div class="topiclist">
+        <h4>Print certificate</h4>
+    </div>
 @endforeach
-
-
 </div>
 
 {{--<div class="float-container">--}}
