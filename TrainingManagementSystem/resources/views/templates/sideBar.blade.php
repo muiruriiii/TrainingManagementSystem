@@ -31,7 +31,6 @@
             </a>
             <span class="tooltip">Home</span>
         </li>
-
         <li>
             <a style="background: rgb(160,82,45);" href="{{url('listTopics/'.$courseID)}}">
                 <i class='bx bx-notepad' ></i>

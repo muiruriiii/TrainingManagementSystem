@@ -67,7 +67,7 @@ class AccountsController extends Controller
     public function validateLogin(Request $request){
         $request->validate([
             'email'=>'required',
-           'password'=> [
+            'password'=> [
                        'required',
                        Password::min(8)
                            ->letters()
@@ -102,13 +102,27 @@ class AccountsController extends Controller
         return redirect('login');
     }
     public function userProfile(){
-        return view('home/userProfile');
+    //If the user is not logged in redirect to login page to view the profile page
+        if(!Auth::check()){
+            return redirect('login');
+        }
+            return view('home/userProfile');
+
 
     }
     public function changePassword(Request $request){
         $request->validate([
             'oldPassword'=> 'required|min:6',
-            'password'=> 'required|min:6',
+            'password'=> [
+               'required',
+               Password::min(8)
+                   ->letters()
+                   ->mixedCase()
+                   ->numbers()
+                   ->symbols()
+                   //password submitted is not compromised on the internet with a public password data breach leak
+                   ->uncompromised()
+            ],
             'confirmPassword'=> 'required|min:6|same:password'
         ]);
         //Check the entered password if its similar to the password that is in the database

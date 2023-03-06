@@ -45,7 +45,7 @@
                                 <input type="file" name="userProfile"/>
                             </div>
 
-                        <h5 class="my-3">{{Auth::user()->firstName }}</h5>
+                        <h5 class="my-3">{{Auth::user()->firstName.' '.Auth::user()->lastName }}</h5>
 
                 <div class="mb-3 text-end">
                     <button type="submit">Update Profile Image</button>
@@ -61,6 +61,7 @@
                     <div class="card-body">
                         <form action="{{url('changeDetails/'.Auth::user()->id)}}" method="POST">
                             @csrf
+                            <h6 class="text-center">Personal Details</h6>
                         <div class="mb-3">
                             <label for="">First Name</label>
                             <input type="text" name="firstName" class="form-control" value="{{Auth::user()->firstName}}" class="form-control">
@@ -93,6 +94,7 @@
                             <div class="card-body">
                                 <form action="{{route('changePassword')}}" method="POST">
                                     @csrf
+                                    <h6 class="text-center">Change Password</h6>
                                 <div class="mb-3">
                                     <label for="">Old Password</label>
                                     <input type="password" name="oldPassword" class="form-control">
