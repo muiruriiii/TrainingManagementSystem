@@ -17,10 +17,6 @@
     <tr bgcolor="#333">
         <td height="50" style="color: #333;  font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 16px; vertical-align: top;"></td>
     </tr>
-
-            <!-- Seperator End -->
-
-            <!-- Generic Pod Left Aligned with Price breakdown Start -->
             <table align="center" cellpadding="0" cellspacing="0" cols="3" bgcolor="white" class="bordered-left-right" style="border-left: 10px solid #d7d7d7; border-right: 10px solid #d7d7d7; max-width: 600px; width: 100%;">
                 <tr height="50"><td colspan="3" style="color: #333;  font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 16px; vertical-align: top;"></td></tr>
                 <tr align="center">

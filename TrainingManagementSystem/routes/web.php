@@ -75,6 +75,8 @@ use Illuminate\Support\Facades\Hash;
 
     Route::controller(CourseController::class)->group(function(){
         Route::get('/course','course')->name('course');
+        Route::get('/certificate/{id}','certificate')->name('certificate');
+
         Route::get('/courseTopics','courseTopics')->name('courseTopics');
         Route::get('/courseContent/{id}','courseContent')->name('courseContent');
         Route::get('/courseNotes/{id}','courseNotes')->name('courseNotes');

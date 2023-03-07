@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Courses;
 use App\Models\CourseTopics;
 use App\Models\Payment;
+use App\Models\Users;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -191,6 +192,13 @@ class CourseController extends Controller
             'phoneNumber' => $data['phoneNumber'],
         ]);
          return redirect('/')->with('success','Successful Payment');
+    }
+    public function certificate($id){
+        //To fetch the name of the course completed
+        $courses = Courses::find($id);
+        //To fetch the name of the user
+        $user = Users::find(Auth::user()->id);
+        return view('courses/certificate', ['courses'=>$courses, 'user'=>$user]);
     }
 
 }

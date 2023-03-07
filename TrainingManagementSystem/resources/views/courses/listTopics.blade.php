@@ -11,22 +11,25 @@
         </a>
         <span>
              <a href="{{url('courseNotes/'.$coursetopic->id)}}">
-                 <input type="checkbox">
+                 <input type="checkbox" id="notes" >
                  Notes
              </a>
         </span>
         <span>
             <a href="{{url('courseVideos/'.$coursetopic->id)}}">
-                 <input type="checkbox">
+               <input type="checkbox" id="videos">
                 Videos
             </a>
         </span>
     </div>
-    <div class="topiclist">
-        <h4>Print certificate</h4>
-    </div>
+
 @endforeach
+       <a href="{{url('certificate/'.$courseID)}}" @click.prevent="printCertificate" target="_blank"><button>
+        Print Certificate
+        </button></a>
 </div>
+
+
 
 {{--<div class="float-container">--}}
 {{--    <div class="float-child">--}}

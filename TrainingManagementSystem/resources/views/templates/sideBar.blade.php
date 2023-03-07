@@ -32,6 +32,13 @@
             <span class="tooltip">Home</span>
         </li>
         <li>
+            <a style="background: rgb(160,82,45);" href="{{url('courseContent/'.$courseID)}}">
+                <i class='bx bx-notepad' ></i>
+                <span class="links_name">Course Content</span>
+            </a>
+            <span class="tooltip">Course Content</span>
+        </li>
+        <li>
             <a style="background: rgb(160,82,45);" href="{{url('listTopics/'.$courseID)}}">
                 <i class='bx bx-notepad' ></i>
                 <span class="links_name">Course Topics</span>

@@ -158,7 +158,7 @@
     </div>
     <div class="footer-bottom">
         <div class="site-container footer-bottom-inner">
-            <p>© 2023 Bityarn | All rights Reserved.</p>
+            <p>Copyright © {{ date('Y') }}| All rights Reserved.</p>
         </div>
     </div>
 </footer>

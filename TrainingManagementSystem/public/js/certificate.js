@@ -1,0 +1,3 @@
+printCertificate: {
+    window.print();
+}
