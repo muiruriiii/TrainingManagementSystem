@@ -47,7 +47,7 @@ use Illuminate\Support\Facades\Auth;
 
             <div class="col-3">
                 <div class="site-logo">
-                    <a href="" style="color: rgb(160,82,45);" class="font-weight-bold">TMS</a>
+                    <a href="/" style="color: rgb(160,82,45);" class="font-weight-bold">TMS</a>
                 </div>
             </div>
             <div class="col-9  text-right">

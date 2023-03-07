@@ -26,7 +26,8 @@ class CourseController extends Controller
     }
     public function courseContent($id){
         $courses = Courses::find($id);
-        return view('courses/courseContent', ['courses'=>$courses , 'courseID'=>$id]);
+        $coursetopics = CourseTopics::all()->where('courseID',$id)->count('id');;
+        return view('courses/courseContent', ['courses'=>$courses , 'courseID'=>$id,'coursetopics'=>$coursetopics]);
     }
     public function courseNotes($id){
         $coursetopics = CourseTopics::find($id);

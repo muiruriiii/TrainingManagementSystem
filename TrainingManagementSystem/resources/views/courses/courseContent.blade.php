@@ -3,10 +3,13 @@
 <h3 id="heading"> {{$courses->courseName}} </h3>
 <div class="descContainer text-center">
     <div class="description">
-        {{$courses->courseDescription}}
-
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut blanditiis distinctio dolorem doloremque ea eius, eligendi harum inventore itaque magnam minus molestias non odio officiis rem velit veritatis voluptatem?
-        <p>For further details...</p>
+        {{$courses->courseDescription}}.
+        This course entails {{$coursetopics}} topic(s).
+        <br>
+        <div>To start learning more about the course click <a style="color: rgb(160,82,45);" href="{{url('listTopics/'.$courseID)}}" >here</a>.</div>
+        <br>
+        <p>Once you have completed watching all the videos and reading through all the notes,</p>
+        <p>kindly check out all the checkboxes to get your certificate. </p>
 
     </div>
 
