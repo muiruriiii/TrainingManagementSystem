@@ -9,7 +9,7 @@
         <div>To start learning more about the course click <a style="color: rgb(160,82,45);" href="{{url('listTopics/'.$courseID)}}" >here</a>.</div>
         <br>
         <p>Once you have completed watching all the videos and reading through all the notes,</p>
-        <p>kindly check out all the checkboxes to get your certificate. </p>
+        <p>kindly check out the 'complete course' checkbox to get your certificate. </p>
 
     </div>
 

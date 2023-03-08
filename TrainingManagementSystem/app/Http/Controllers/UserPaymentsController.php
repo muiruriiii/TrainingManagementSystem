@@ -7,13 +7,15 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Courses;
 use App\Models\Users;
 use App\Models\UserPayments;
+use App\Models\CourseTopics;
 
 class UserPaymentsController extends Controller
 {
 //To redirect the user to the specific page they have paid for
-    public function paidCoursePage($courseID)
+    public function paidCoursePage( $id, $courseID)
     {
         $courses = Courses::find($courseID);
+//         $coursetopics = CourseTopics::all()->where('courseID',$id)->count('id');
         return view('courses/courseContent',['courses'=>$courses,'courseID'=>$courseID]);
     }
 //To check if a user has paid for a course or not on the user payments table. If no payment has been made by that user then redirect to course description page

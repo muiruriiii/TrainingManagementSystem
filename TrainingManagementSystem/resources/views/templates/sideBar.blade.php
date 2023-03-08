@@ -40,7 +40,7 @@
         </li>
         <li>
             <a style="background: rgb(160,82,45);" href="{{url('listTopics/'.$courseID)}}">
-                <i class='bx bx-notepad' ></i>
+                <i class='bx bx-note' ></i>
                 <span class="links_name">Course Topics</span>
             </a>
             <span class="tooltip">Course Topics</span>

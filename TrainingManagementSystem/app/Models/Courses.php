@@ -14,4 +14,5 @@ class Courses extends Model implements Auditable
     protected $fillable = ['id','courseName','courseDescription','courseProfile','isDeleted'];
     protected $dates = ['deleted_at'];
 
+
 }
